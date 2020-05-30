@@ -67,6 +67,9 @@ if(isset($_POST['add_quizz'])){
             $req=$bdd->prepare("INSERT INTO question(id_test,question,choix1,choix2,answer) VALUES(?,?,?,?,?)");
             $req->execute(array($test_id,$_POST['q'.$i],$_POST['c1q'.$i],$_POST['c2q'.$i],$_POST['r'.$i]));
         }
+        $_SESSION['flash']['success']="Votre exercice a été ajouté avec succes";
+        header('Location:ajouterexercice.php');
+        exit();
     }
 
 

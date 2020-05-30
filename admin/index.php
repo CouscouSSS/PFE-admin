@@ -159,8 +159,9 @@ if($_SESSION['role']!='admin' && $_SESSION['role']!='admin_cours' && $_SESSION['
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Gestion des chapitre</h6>
-                            <a class="collapse-item" href="listexercice.php">Liste des exercices</a>
+                            <a class="collapse-item" href="listexercice.php">List des exercice</a>
                             <a class="collapse-item" href="ajouterexercice.php">Ajouter un exercice</a>
+                            <a class="collapse-item" href="modifierexercice.php">Modifier un exercice</a>
                             <a class="collapse-item" href="suprimerexercice.php">Suprimmer un exercice</a>
                         </div>
                     </div>

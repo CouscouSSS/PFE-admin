@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -207,75 +210,124 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
+                    <?php if(!isset($_GET['section'])) : ?>
 
-                    <h3 class=" text-center pb-3 font-weight-bold mb-0 text-gray-800"> Voici la liste des cours
-                        disponible maitenant : </h3>
-
-                    <form class="pb-2" method="POST" action="">
-                        <div class="form-row mb-2">
-                            <div class="col-10">
-                                <input type="text" name="search_bar" class="form-control" placeholder="Search..." ">
+                        <h3 class=" text-center pb-3 font-weight-bold mb-0 text-gray-800"> Voici la liste des exercices
+                            disponible maintenant : </h3>
+                        <form class="pb-2" method="POST" action="">
+                            <div class="form-row mb-2">
+                                <div class="col-10">
+                                    <input type="text" name="search_bar" class="form-control" placeholder="Search..." >
+                                        </div>
+                                        <div class=" col-2">
+                                    <input type="submit" name="submit" class="psm-2 form-control border " value="Search">
+                                </div>
                             </div>
-                            <div class=" col-2">
-                                <input type="submit" name="submit" class="psm-2 form-control border " value="Search">
-                            </div>
-                        </div>
-                    </form>
+                        </form>
 
-                    <?php if(!empty($courses)) : ?>
+                        <?php if(!empty($tests)) : ?>
 
-                        <table class="table  font-weight-bold text-center table-bordered"  id="dataTable" width="100%" cellspacing="0">
+                        <table class="table  font-weight-bold text-center table-bordered" id="dtBasicExample" width="100%"
+                            cellspacing="0">
                             <thead class="thead-dark ">
                                 <tr>
-                                    <th>Section </th>
-                                    <th>Titre </th>
-                                    <th>Sous-titre</th>
-                                    <th>Image</th>
+                                    <th>Exercice</th>
+                                    <th>Cours de l'exercice</th>
+                                    <th>Voir les question de l'exercice</th>
                                 </tr>
                             </thead>
 
-                            <?php foreach($courses as $course) : ?>
+                            <?php foreach($tests as $test) : ?>
+                            <?php 
+                                            $req=$bdd->prepare("SELECT * FROM cours WHERE id=?");
+                                            $req->execute([$test['id_cours']]);
+                                            $course=$req->fetch();
+                                        ?>
 
-                                <tr>
-                                    <td class="text-uppercase bg-warning font-weight-bold text-white"><?= $sections[$course['id_section']-1]['nom'] ?></td>
-                                    <td><?= $course['titre'] ?></td>
-                                    
-                                        <?php if(!empty($course['sous_titre'])) : ?>
-                                            <td class="text-white bg-success"> <?= $course['sous_titre'] ?> </td>
-                                        <?php else : ?>
-                                            <td class="bg-danger text-white font-weight-bold"><i class="fas fa-exclamation-circle"></i> Ce cours n'a pas de sous titre <i class="fas fa-exclamation-circle"></i></td>
-                                        <?php endif; ?>
-                                        <?php if(!empty($course['img'])) : ?>
-                                            <td class="text-white"><a class="text-decoration-none" href="<?= $course['img'] ?>">Image ilustratif</a></td>
-                                        <?php else : ?>
-                                            <td class="bg-danger text-white font-weight-bold"><i class="fas fa-exclamation-circle"></i> Ce cours n'a pas d'image ilustratif <i class="fas fa-exclamation-circle"></i></td>
-                                        <?php endif; ?>
-                                    
-                                
-                                </tr>
+                            <tr>
+                                <td style="vertical-align: middle;" class="bg-warning text-white text-capitalize">
+                                    <?=$test['titre']?></td>
+                                <td style="vertical-align: middle;" class="text-dark"><?=$course['titre']?></td>
+                                <td style="vertical-align: middle;"><a
+                                        href="listexercice.php?section=question&id_exo=<?=$test['id']?>"><button
+                                            class="btn btn-outline-warning btn-lg"> Voir les question </button></a></td>
+                            </tr>
 
                             <?php endforeach; ?>
 
                             <tfoot class="thead-dark ">
                                 <tr>
-                                    <th>Section</th>
-                                    <th>Titre </th>
-                                    <th>Sous-titre</th>
-                                    <th>Image</th>
+                                    <th>Exercice</th>
+                                    <th>Cours de l'exercice</th>
+                                    <th>Voir les question de l'exercice</th>
                                 </tr>
                             </tfoot>
 
                         </table>
 
-                    <?php else: ?>
+                        <?php else: ?>
                         <div class="text-center">
-                            <h1 class="display-3 text-dark"> Aucun cours n'a été trouvé pour la recherche que vous avez effectué </h1>
-                            <a href="listecours.php"> <button class="btn btn-lg btn-outline-dark"> Revenir a la liste des cours ? </button></a>
+                            <h1 class="display-3 text-dark"> Aucun exercice n'a été trouvé pour la recherche que vous avez
+                                effectué </h1>
+                            <a href="listexercice.php"> <button class="btn btn-lg btn-outline-dark"> Revenir en arriere
+                                    ? </button></a>
                         </div>
+                        <?php endif; ?>
 
-                    <?php endif; ?>
+                    <?php else : ?>
 
-                </div>
+                        <?php 
+                                $req=$bdd->prepare("SELECT * FROM test WHERE id=?"); 
+                                $req->execute([$_GET['id_exo']]);
+                                $test=$req->fetch();
+                            ?>
+
+                        <h3 class=" text-center pb-3 font-weight-bold mb-0 text-gray-800"> Voici la liste des question que
+                            contient l'exercice : <br> <b
+                                class="text-danger text-capitalize font-weight-bold"><?=$test['titre'] ?>.</b>
+                        </h3>
+
+                        <table class="table  font-weight-bold text-center table-bordered" id="dtBasicExample" width="100%"
+                            cellspacing="0">
+                            <thead class="thead-dark ">
+                                <tr>
+                                    <th>Question</th>
+                                    <th>Choix 1</th>
+                                    <th>Choix 2</th>
+                                    <th>Reponse</th>
+                                    
+                                </tr>
+                            </thead>
+
+                            <?php foreach($questions as $question) : ?>
+
+                            <tr>
+                                <td style="vertical-align: middle;" class="bg-warning text-white text-capitalize"><?=$question['question']?></td>
+                                <td style="vertical-align: middle;" class="text-dark"><?=$question['choix1']?></td>
+                                <td style="vertical-align: middle;" class="text-dark"><?=$question['choix2']?></td>
+                                <td style="vertical-align: middle;" class="text-dark"><?=$question['answer']?></td>
+                            </tr>
+
+                            <?php endforeach; ?>
+
+                            <tfoot class="thead-dark ">
+                                <tr>
+                                    <th>Question</th>
+                                    <th>Choix 1</th>
+                                    <th>Choix 2</th>
+                                    <th>Reponse</th>
+                                </tr>
+                            </tfoot>
+
+                        </table>
+                        <div class="text-center">
+                            <a href="modifierexercice.php">
+                                <button class="btn btn-outline-dark btn-lg pr-2 pl-2 mt-2 mb-4">Revenir en arriere</button>
+                            </a>
+                        </div>
+                    <?php endif;?>
+
+                    </div>
                 <!-- /.container-fluid -->
 
             </div>
@@ -313,7 +365,7 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/jquer  y/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
@@ -330,9 +382,9 @@
     <script src="js/demo/chart-pie-demo.js"></script>
     <script src="https://kit.fontawesome.com/6e8ba3d05b.js" crossorigin="anonymous"></script>
     <script>
-        $(".alert").delay(3000).slideUp(400, function() {
-            $(this).alert('close');
-        });
+    $(".alert").delay(3000).slideUp(400, function() {
+        $(this).alert('close');
+    });
     </script>
 
 </body>
