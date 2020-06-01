@@ -5074,9 +5074,9 @@ border-color: white;
 
 .list-group-item-action:hover, .list-group-item-action:focus {
   z-index: 1;
-  color: #6e707e;
+  color: #ffffff;
   text-decoration: none;
-  background-color: #f8f9fc;
+  background-color: #cecece;
 }
 
 .list-group-item-action:active {
@@ -10995,4 +10995,11 @@ footer.sticky-footer .copyright {
 
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
+}
+
+.gradient-orange{
+  background: #ff512f; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #ff512f, #f09819); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #ff512f, #f09819); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  filter: opacity(0.9);
 }

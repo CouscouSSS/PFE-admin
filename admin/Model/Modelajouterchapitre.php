@@ -23,20 +23,13 @@ if(isset($_POST['add_chapitre'])){
 
     if(empty($_POST['titre'])){
         $errors['titre']="Veuillez saisir le titre du chapitre";
-    }else{
-        $req=$bdd->prepare("SELECT * FROM chapitre WHERE titre=?");
-        $req->execute();
-        $ok=$req->rowCount();
-        if($ok){
-            $errors['titre']="Ce titre apartient a un autre chapitre vous ne pouvez pas l'utiliser";
-        }
     }
 
     if(empty($_POST['contenue'])){
         $errors['contenue']="Veuillez saisir le contenue du chapitre";
     }else{
         $req=$bdd->prepare("SELECT * FROM chapitre WHERE contenue=?");
-        $req->execute();
+        $req->execute([$_POST['contenue']]);
         $ok=$req->rowCount();
         if($ok){
             $errors['contenue']="Le contenue de ce chapitre est le meme qu'un autre chapitre veuillez le changer s'il vous plait";

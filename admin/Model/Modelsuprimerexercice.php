@@ -38,7 +38,9 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
     $req=$bdd->prepare("DELETE FROM question WHERE id_test = ?");
     $req->execute([$_GET['id']]);
 
-    
+    $req=$bdd->prepare("DELETE FROM resultat WHERE num = ?");
+    $req->execute([$_GET['id']]);
+
     $req=$bdd->prepare("DELETE FROM test WHERE id = ?");
     $req->execute([$_GET['id']]);
 

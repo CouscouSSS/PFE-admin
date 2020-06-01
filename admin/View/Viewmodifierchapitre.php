@@ -74,6 +74,7 @@
                     </div>
                 </li>
             <?php endif; ?>
+            
 
             <?php if($_SESSION['role']=='admin' || $_SESSION['role']=='admin_cours') : ?>
                 <li class="nav-item">
@@ -95,7 +96,6 @@
                 </li>
             <?php endif; ?>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
             <?php if($_SESSION['role']=='admin' || $_SESSION['role']=='admin_cours') : ?>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -110,6 +110,7 @@
                             <a class="collapse-item" href="listecours.php">Liste des cours</a>
                             <a class="collapse-item" href="ajoutercours.php">Ajouter un cours</a>
                             <a class="collapse-item" href="modifiercours.php">Modifier un cours</a>
+                            <a class="collapse-item" href="suprimercours.php">Supprimer un cours</a>
                         </div>
                     </div>
                 </li>
@@ -209,7 +210,11 @@
                     <!-- Page Heading -->
 
                     <?php if(!isset($_GET['section'])) : ?>
-                        <h3 class=" text-center pb-3 font-weight-bold mb-0 text-gray-800"> Voici la liste des chapitres disponible maintenant : </h3>
+                        <?php if(!empty($chapitres) && !isset($_POST['submit'])) : ?>
+                        
+                            <h3 class=" text-center pb-3 font-weight-bold mb-0 text-gray-800"> Voici la liste des chapitres disponible maintenant : </h3>
+
+                        <?php endif; ?>
 
                         <?php if(isset($_SESSION['flash'])) : ?>
 
@@ -231,16 +236,18 @@
 
                         <?php endif; ?>
 
-                        <form class="pb-2" method="POST" action="">
-                            <div class="form-row mb-2">
-                                <div class="col-10">
-                                    <input type="text" name="search_bar" class="form-control" placeholder="Search..." ">
+                        <?php if(!empty($chapitres) && !isset($_POST['submit'])) : ?>
+                            <form class="pb-2" method="POST" action="">
+                                <div class="form-row mb-2">
+                                    <div class="col-10">
+                                        <input type="text" name="search_bar" class="form-control" placeholder="Search..." ">
+                                    </div>
+                                    <div class=" col-2">
+                                        <input type="submit" name="submit" class="psm-2 form-control border " value="Search">
+                                    </div>
                                 </div>
-                                <div class=" col-2">
-                                    <input type="submit" name="submit" class="psm-2 form-control border " value="Search">
-                                </div>
-                            </div>
-                        </form>
+                            </form>
+                        <?php endif; ?>
 
                         <?php if(!empty($chapitres)) : ?>
 
@@ -249,19 +256,23 @@
                                     <tr>
                                         <th style="vertical-align: middle;" >Cours</th>
                                         <th style="vertical-align: middle;" >Titre du chapitre</th>
-                                        <th style="vertical-align: middle;" >Contenue</th>
                                         <th style="vertical-align: middle;" >Modifier le chapitre</th>
                                     </tr>
                                 </thead>
 
                                 <?php foreach($chapitres as $chapitre) : ?>
 
-                                        <tr>
-                                            <td style="vertical-align: middle;" class="bg-warning text-white"><?=$courses[$chapitre['id_cours']-1]['titre']?></td>
-                                            <td style="vertical-align: middle;"><?=$chapitre['titre']?></td>
-                                            <td style="vertical-align: middle;"><?=$chapitre['contenue']?></td>
-                                            <td style="vertical-align: middle;"><a href="modifierchapitre.php?section=edit&id=<?=$chapitre['id']?>"><button class="btn btn-outline-warning btn-lg">Modifier</button></a></td>
-                                        </tr>
+                                    <?php 
+                                        $req=$bdd->prepare("SELECT * FROM cours WHERE id=?");
+                                        $req->execute([$chapitre['id_cours']]);
+                                        $courses=$req->fetch();
+                                    ?>
+
+                                    <tr>
+                                        <td style="vertical-align: middle;" class="bg-warning text-white"> <?=$courses['titre'] ?> </td>
+                                        <td style="vertical-align: middle;"><?=$chapitre['titre']?></td>                                       
+                                        <td style="vertical-align: middle;"><a href="modifierchapitre.php?section=edit&id=<?=$chapitre['id']?>"><button class="btn btn-outline-warning btn-lg">Modifier</button></a></td>
+                                    </tr>
 
                                 <?php endforeach; ?>
 
@@ -269,23 +280,49 @@
                                     <tr>
                                         <th style="vertical-align: middle;">Cours</th>
                                         <th style="vertical-align: middle;">Titre du chapitre</th>
-                                        <th style="vertical-align: middle;">Contenue</th>
                                         <th style="vertical-align: middle;">Modifier le chapitre</th>
                                     </tr>
                                 </tfoot>
 
                             </table>
 
-                        <?php else: ?>
-                            <div class="text-center">
-                                <h1 class="display-3 text-dark"> Aucun chapitre n'a été trouvé pour la recherche que vous avez effectué </h1>
-                                <a href="listechapitre.php"> <button class="btn btn-lg btn-outline-dark"> Revenir a la liste des chapitre ? </button></a>
+                        <?php elseif(empty($chapitres) && isset($_POST['submit'])) : ?>
+                            <br>
+
+                            <div class="text-center bg-danger text-white pb-3 " style="border-radius:5px;">
+                                
+                                <h1 class="display-3 "> <i class="fas fa-exclamation-circle"></i> Aucun chapitre n'a été trouvé pour la recherche que vous avez effectué </h1>
+                                <a href="modifierchapitre.php"> <button class="btn btn-lg btn-outline-light"> Revenir en arriere ? </button></a>
                             </div>
+
+                            
+
+                        <?php else: ?>
+
+                            <br>
+
+                            <div class="text-center text-warning pb-3 mb-5 " style="border-radius:5px;">
+                                
+                                <h1 class="display-3">  Le site web ne contient aucun chapitre pour l'instant vous pouvez acceder a l'ajout des chapitre en cliquant ci-dessous</h1>
+                                <a href="ajouterchapitre.php"> <button class="btn btn-lg pt-3 pb-3 btn-outline-dark"> Acceder a l'ajout des chapitres </button></a>
+                            
+                            </div>
+                            
                         <?php endif; ?>
 
                     <?php else : ?>
 
-                        <h2 class="font-weight-bold text-gray text-center ">Vous etes maintenant entrain de modifier le chapitre <br> <b class="text-danger"> <?=$chapitres[$_GET['id']-1]['titre']?>. </b></h2>
+                        <?php 
+                            $req=$bdd->prepare("SELECT * FROM chapitre WHERE id=?");
+                            $req->execute([$_GET['id']]);
+                            $chapitre=$req->fetch();
+
+                            $req=$bdd->prepare("SELECT * FROM cours WHERE id=?");
+                            $req->execute([$chapitre['id_cours']]);
+                            $courses=$req->fetch();
+                        ?>
+
+                        <h2 class="font-weight-bold text-dark text-center ">Vous etes maintenant entrain de modifier le chapitre <br> <b class="text-danger"> <?=$courses['titre'] ?>. </b></h2>
                         
                         <?php if(!empty($errors)) : ?>
                             <div class="alert alert-danger bg-danger ">
@@ -302,14 +339,14 @@
                         <form action="" method="POST" class="pt-3">
 
                             <div class="form-group">
-                                <h2 class="text-dark font-weight-bold">Ici vous pouvez modifier le titre du chapitre :</h2>
+                                <h2 class="text-gray font-weight-bold">Ici vous pouvez modifier le titre du chapitre :</h2>
                                 <input type="text" name="titre" class="form-control form-control-user"
                                     placeholder="Modifier titre du chapitre"
                                     value="<?php if(isset($_POST['titre'])) echo $_POST['titre']; ?>" />
                             </div>
 
                             <div class="form-group">
-                                <h2 class="text-dark font-weight-bold">Ici vous pouvez modifier le contenue du chapitre:</h2>
+                                <h2 class="text-gray font-weight-bold">Ici vous pouvez modifier le contenue du chapitre:</h2>
                                 <textarea name="contenue" class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Ajouter ici le nouveau contenue du chapitre "></textarea>
                             </div>
 
@@ -360,7 +397,7 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquer  y/jquery.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
@@ -374,8 +411,8 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
     <script src="https://kit.fontawesome.com/6e8ba3d05b.js" crossorigin="anonymous"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
     <script>
         $(".alert").delay(3000).slideUp(400, function() {
             $(this).alert('close');

@@ -6,14 +6,9 @@ include "connexion.inc.php";
 if(isset($_GET['id'])){
     $req=$bdd->prepare("SELECT * FROM section WHERE id=?");
     $req->execute(array($_GET['id']));
-    $ok=$req->rowCount();
-    if($ok){
-        $sections=$req->fetch();
-    }else{
-        $_SESSION['flash']['danger']="La valeur que vous avez entrez n'est pas valide";
-        header('location:index.php');
-        exit();
-    }
+
+    $sections=$req->fetch();
+    
 
     $req=$bdd->prepare("SELECT * FROM cours WHERE id_section=?");
     $req->execute(array($_GET['id']));
@@ -55,15 +50,21 @@ if(isset($_GET['id'])){
 
     <?php if(isset($_SESSION['flash'])) : ?>
 
-        <?php foreach($_SESSION['flash'] as $type => $message):?>
-        <div class="alert alert-<?= $type ?>">
-            <div style="font-family:Rubik,sans-serif;" class="pt-2 pb-2 lead text-align-center text-center text-white ">
+    <?php foreach($_SESSION['flash'] as $type => $message):?>
+
+        <div class="alert fade show alert-<?= $type ?>">
+            <div style="font-family:Rubik,sans-serif;"
+                class="pt-2 pb-2 lead text-align-center text-center ">
                 <i class="fas fa-exclamation-circle"></i> <?= $message ?>
+                <button type="button" class="close text-white" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"> <i class="far fa-times-circle" ></i> </span>
+                </button>
             </div>
         </div>
-        <?php  endforeach ?>
 
-        <?php unset($_SESSION['flash']); ?>
+    <?php  endforeach ?>
+
+    <?php unset($_SESSION['flash']); ?>
 
     <?php endif ?>
 
@@ -209,7 +210,7 @@ if(isset($_GET['id'])){
 
                                 <b class="display-3 text-danger text-center"> Cette section est nouvelle les cours vont
                                     etre ajouté prochainement </b>
-                                <a href="courses.php" class="primary-btn2 text-uppercase enroll rounded-0 text-black">
+                                <a href="courses.php" class="primary-btn2 mt-2 text-uppercase enroll rounded-0 text-black">
                                     Revenir au au cours </a>
 
                                 <?php endif; ?>

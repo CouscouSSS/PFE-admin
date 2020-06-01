@@ -77,6 +77,7 @@
                     </div>
                 </li>
             <?php endif; ?>
+            
 
             <?php if($_SESSION['role']=='admin' || $_SESSION['role']=='admin_cours') : ?>
                 <li class="nav-item">
@@ -98,7 +99,6 @@
                 </li>
             <?php endif; ?>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
             <?php if($_SESSION['role']=='admin' || $_SESSION['role']=='admin_cours') : ?>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -113,6 +113,7 @@
                             <a class="collapse-item" href="listecours.php">Liste des cours</a>
                             <a class="collapse-item" href="ajoutercours.php">Ajouter un cours</a>
                             <a class="collapse-item" href="modifiercours.php">Modifier un cours</a>
+                            <a class="collapse-item" href="suprimercours.php">Supprimer un cours</a>
                         </div>
                     </div>
                 </li>
@@ -211,19 +212,23 @@
 
                     <!-- Page Heading -->
                     <?php if(!isset($_GET['section'])) : ?>
+                        
+                        <?php if(!empty($tests) && !isset($_POST['submit'])) :?>
 
-                        <h3 class=" text-center pb-3 font-weight-bold mb-0 text-gray-800"> Voici la liste des exercices
-                            disponible maintenant : </h3>
-                        <form class="pb-2" method="POST" action="">
-                            <div class="form-row mb-2">
-                                <div class="col-10">
-                                    <input type="text" name="search_bar" class="form-control" placeholder="Search..." >
-                                        </div>
-                                        <div class=" col-2">
-                                    <input type="submit" name="submit" class="psm-2 form-control border " value="Search">
+                            <h3 class=" text-center pb-3 font-weight-bold mb-0 text-gray-800"> Voici la liste des exercices disponible maintenant : </h3>
+
+                            <form class="pb-2" method="POST" action="">
+                                <div class="form-row mb-2">
+                                    <div class="col-10">
+                                        <input type="text" name="search_bar" class="form-control" placeholder="Search..." >
+                                            </div>
+                                            <div class=" col-2">
+                                        <input type="submit" name="submit" class="psm-2 form-control border " value="Search">
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+
+                        <?php endif; ?>
 
                         <?php if(!empty($tests)) : ?>
 
@@ -231,48 +236,63 @@
                             cellspacing="0">
                             <thead class="thead-dark ">
                                 <tr>
-                                    <th>Exercice</th>
-                                    <th>Cours de l'exercice</th>
-                                    <th>Voir les question de l'exercice</th>
+                                    <th style="vertical-align: middle;">Exercice</th>
+                                    <th style="vertical-align: middle;">Cours de l'exercice</th>
+                                    <th style="vertical-align: middle;">Voir les question de l'exercice</th>
                                 </tr>
                             </thead>
 
                             <?php foreach($tests as $test) : ?>
-                            <?php 
-                                            $req=$bdd->prepare("SELECT * FROM cours WHERE id=?");
-                                            $req->execute([$test['id_cours']]);
-                                            $course=$req->fetch();
-                                        ?>
 
-                            <tr>
-                                <td style="vertical-align: middle;" class="bg-warning text-white text-capitalize">
-                                    <?=$test['titre']?></td>
-                                <td style="vertical-align: middle;" class="text-dark"><?=$course['titre']?></td>
-                                <td style="vertical-align: middle;"><a
-                                        href="listexercice.php?section=question&id_exo=<?=$test['id']?>"><button
-                                            class="btn btn-outline-warning btn-lg"> Voir les question </button></a></td>
-                            </tr>
+                                <?php 
+                                    $req=$bdd->prepare("SELECT * FROM cours WHERE id=?");
+                                    $req->execute([$test['id_cours']]);
+                                    $course=$req->fetch();
+                                ?>
+
+                                <tr>
+                                    <td style="vertical-align: middle;" class="bg-warning text-white text-capitalize">
+                                        <?=$test['titre']?></td>
+                                    <td style="vertical-align: middle;" class="text-dark"><?=$course['titre']?></td>
+                                    <td style="vertical-align: middle;"><a
+                                            href="listexercice.php?section=question&id_exo=<?=$test['id']?>"><button
+                                                class="btn btn-outline-warning btn-lg"> Voir les question </button></a></td>
+                                </tr>
 
                             <?php endforeach; ?>
 
                             <tfoot class="thead-dark ">
                                 <tr>
-                                    <th>Exercice</th>
-                                    <th>Cours de l'exercice</th>
-                                    <th>Voir les question de l'exercice</th>
+                                    <th style="vertical-align: middle;">Exercice</th>
+                                    <th style="vertical-align: middle;">Cours de l'exercice</th>
+                                    <th style="vertical-align: middle;">Voir les question de l'exercice</th>
                                 </tr>
                             </tfoot>
 
                         </table>
 
-                        <?php else: ?>
-                        <div class="text-center">
-                            <h1 class="display-3 text-dark"> Aucun exercice n'a été trouvé pour la recherche que vous avez
-                                effectué </h1>
-                            <a href="listexercice.php"> <button class="btn btn-lg btn-outline-dark"> Revenir en arriere
-                                    ? </button></a>
+                    <?php elseif(empty($tests) && isset($_POST['submit'])) : ?>
+                        
+                        <br>
+
+                        <div class="text-center bg-danger text-white pb-3 " style="border-radius:5px;">
+                            
+                            <h1 class="display-3 "> <i class="fas fa-exclamation-circle"></i> Aucun exercice n'a été trouvé pour la recherche que vous avez effectué </h1>
+                            <a href="listexercice.php"> <button class="btn btn-lg btn-outline-light"> Revenir en arriere ? </button></a>
                         </div>
-                        <?php endif; ?>
+
+                    <?php else: ?>
+
+                        <br>
+
+                        <div class="text-center text-warning pb-3 mb-5 " style="border-radius:5px;">
+                            
+                            <h1 class="display-3">  Le site web ne contient aucun exercice pour l'instant vous pouvez acceder a l'ajout des chapitre en cliquant ci-dessous</h1>
+                            <a href="ajouterexercice.php"> <button class="btn btn-lg pt-3 pb-3 btn-outline-dark"> Acceder a l'ajout des exercices </button></a>
+                        </div>
+                        
+
+                    <?php endif; ?>
 
                     <?php else : ?>
 
@@ -365,7 +385,7 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquer  y/jquery.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
@@ -379,14 +399,13 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
     <script src="https://kit.fontawesome.com/6e8ba3d05b.js" crossorigin="anonymous"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
     <script>
-    $(".alert").delay(3000).slideUp(400, function() {
-        $(this).alert('close');
-    });
+        $(".alert").delay(3000).slideUp(400, function() {
+            $(this).alert('close');
+        });
     </script>
-
 </body>
 
 </html>

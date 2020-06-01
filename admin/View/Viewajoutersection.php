@@ -77,6 +77,7 @@
                     </div>
                 </li>
             <?php endif; ?>
+            
 
             <?php if($_SESSION['role']=='admin' || $_SESSION['role']=='admin_cours') : ?>
                 <li class="nav-item">
@@ -98,7 +99,6 @@
                 </li>
             <?php endif; ?>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
             <?php if($_SESSION['role']=='admin' || $_SESSION['role']=='admin_cours') : ?>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -113,6 +113,7 @@
                             <a class="collapse-item" href="listecours.php">Liste des cours</a>
                             <a class="collapse-item" href="ajoutercours.php">Ajouter un cours</a>
                             <a class="collapse-item" href="modifiercours.php">Modifier un cours</a>
+                            <a class="collapse-item" href="suprimercours.php">Supprimer un cours</a>
                         </div>
                     </div>
                 </li>
@@ -302,11 +303,12 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
+    <script src="https://kit.fontawesome.com/6e8ba3d05b.js" crossorigin="anonymous"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
     <script>
-    $(".alert").delay(3000).slideUp(400, function() {
-        $(this).alert('close');
-    });
+        $(".alert").delay(3000).slideUp(400, function() {
+            $(this).alert('close');
+        });
     </script>
 
 </body>

@@ -27,64 +27,79 @@ if(isset($_POST['submit'])){
     }
 }
 
-if(isset($_POST['update_section'])){
-    $errors=array();
 
-    if(empty($_POST['nom'] && $_POST['niveau'] && $_POST['objectif'])){
-        $errors['empty']="Vous devez modifier au moins un champ pour pouvoir modifier une section";
-    }
+if(isset($_GET['section']) && $_GET['section']!='edit'){ 
+    $_SESSION['flash']['danger']="Une erreur s'est produite : Veuillez ne pas essayé d'entré des information erroné";
+    header('location:index.php');
+    exit();
+}
 
-    if(!empty($_POST['nom'])){
-        $req=$bdd->prepare("SELECT * FROM section WHERE titre=?");
-        $req->execute([$_POST['nom']]);
-        $ok=$req->rowCount();
-        if($ok){
-            $errors['nom']="Cette nom de section existe déja vous ne pouvez pas l'utiliser";
-        }
-        else{
-            $req=$bdd->prepare(" UPDATE section SET nom = ? WHERE id=?");
-            $req->execute(array($_POST['nom'],$_GET['id']));
-            $_SESSION['flash']['success']="La section a été modifié avec success";
-            header("location: modifiersection.php");
-            exit();
-        }
-    }
-    else{
-        $errors['nom']="Veuillez saisir le nom de la section";
-    }
 
-    if(!empty($_POST['niveau'])){
-        $req=$bdd->prepare(" UPDATE section SET niveau = ? WHERE id=?");
-        $req->execute(array($_POST['niveau'],$_GET['id']));
-        $_SESSION['flash']['success']="La section a été modifié avec success";
-        header("location: modifiersection.php");
+if(isset($_GET['id'])){
+    $req=$bdd->prepare("SELECT * FROM section WHERE id=?");
+    $req->execute([$_GET['id']]);
+    $ok=$req->rowCount();
+    if(!$ok){
+        $_SESSION['flash']['danger']="Une erreur s'est produite : Cette section n'existe pas";
+        header('location:modifiersection.php');
         exit();
     }
-    else{
-        $errors['niveau']="Veuillez saisir le niveau de la section";
-    }
+}
 
-    if(!empty($_POST['objectif'])){
-        $req=$bdd->prepare("SELECT * FROM section WHERE objectif=?");
-        $req->execute([$_POST['objectif']]);
-        $ok=$req->rowCount();
-        if($ok){
-            $errors['objectif']="Cette objectif existe déja pour une autre section vous ne pouvez pas l'utiliser";
+if(isset($_POST['update_section'])){
+    
+    $errors=array();
+    $success=false;
+
+    if(empty($_POST['nom']) && empty($_POST['niveau']) && empty($_POST['objectif'])){
+        $errors['empty']="Vous devez modifier au moins un champ pour pouvoir modifier une section";
+    }else{
+
+        if(!empty($_POST['nom'])){
+            $req=$bdd->prepare("SELECT * FROM section WHERE titre=?");
+            $req->execute([$_POST['nom']]);
+            $ok=$req->rowCount();
+
+            $req=$bdd->prepare(" UPDATE section SET nom = ? WHERE id=?");
+            $req->execute(array($_POST['nom'],$_GET['id']));
+            $success=true;
         }
-        else{
-            $req=$bdd->prepare(" UPDATE section SET objectif = ? WHERE id=?");
-            $req->execute(array($_POST['objectif'],$_GET['id']));
+        
+    
+        if(!empty($_POST['niveau'])){
+            $req=$bdd->prepare(" UPDATE section SET niveau = ? WHERE id=?");
+            $req->execute(array($_POST['niveau'],$_GET['id']));
             $_SESSION['flash']['success']="La section a été modifié avec success";
             header("location: modifiersection.php");
-            exit();
+            $success=true;
         }
-    }
-    else{
-        $errors['objectif']="Veuillez saisir l'objectif de la section";
+       
+    
+        if(!empty($_POST['objectif'])){
+            $req=$bdd->prepare("SELECT * FROM section WHERE objectif=?");
+            $req->execute([$_POST['objectif']]);
+            $ok=$req->rowCount();
+            if($ok){
+                $errors['objectif']="Cette objectif existe déja pour une autre section vous ne pouvez pas l'utiliser";
+            }
+            else{
+                $req=$bdd->prepare(" UPDATE section SET objectif = ? WHERE id=?");
+                $req->execute(array($_POST['objectif'],$_GET['id']));
+                $success=true;
+            }
+        }
+
     }
 
+    if($success){
+        $_SESSION['flash']['success']="Votre section a été modifier avec succès";
+        header('location:modifiersection.php');
+        exit();
+    }
 
 }
+
+
 
 
 ?>

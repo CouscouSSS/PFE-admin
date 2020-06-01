@@ -74,6 +74,7 @@
                     </div>
                 </li>
             <?php endif; ?>
+            
 
             <?php if($_SESSION['role']=='admin' || $_SESSION['role']=='admin_cours') : ?>
                 <li class="nav-item">
@@ -95,7 +96,6 @@
                 </li>
             <?php endif; ?>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
             <?php if($_SESSION['role']=='admin' || $_SESSION['role']=='admin_cours') : ?>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -110,6 +110,7 @@
                             <a class="collapse-item" href="listecours.php">Liste des cours</a>
                             <a class="collapse-item" href="ajoutercours.php">Ajouter un cours</a>
                             <a class="collapse-item" href="modifiercours.php">Modifier un cours</a>
+                            <a class="collapse-item" href="suprimercours.php">Supprimer un cours</a>
                         </div>
                     </div>
                 </li>
@@ -207,20 +208,23 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
+                    <?php if(!empty($courses) && !isset($_POST['submit'])) : ?>
 
-                    <h3 class=" text-center pb-3 font-weight-bold mb-0 text-gray-800"> Voici la liste des cours
-                        disponible maitenant : </h3>
+                        <h3 class=" text-center pb-3 font-weight-bold mb-0 text-gray-800"> Voici la liste des cours
+                            disponible maitenant : </h3>
 
-                    <form class="pb-2" method="POST" action="">
-                        <div class="form-row mb-2">
-                            <div class="col-10">
-                                <input type="text" name="search_bar" class="form-control" placeholder="Search..." ">
+                        <form class="pb-2" method="POST" action="">
+                            <div class="form-row mb-2">
+                                <div class="col-10">
+                                    <input type="text" name="search_bar" class="form-control" placeholder="Search..." ">
+                                </div>
+                                <div class=" col-2">
+                                    <input type="submit" name="submit" class="psm-2 form-control border " value="Search">
+                                </div>
                             </div>
-                            <div class=" col-2">
-                                <input type="submit" name="submit" class="psm-2 form-control border " value="Search">
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+
+                    <?php endif; ?>
 
                     <?php if(!empty($courses)) : ?>
 
@@ -241,7 +245,7 @@
                                     <td><?= $course['titre'] ?></td>
                                     
                                         <?php if(!empty($course['sous_titre'])) : ?>
-                                            <td class="text-white bg-success"> <?= $course['sous_titre'] ?> </td>
+                                            <td class="text-gray "> <?= $course['sous_titre'] ?> </td>
                                         <?php else : ?>
                                             <td class="bg-danger text-white font-weight-bold"><i class="fas fa-exclamation-circle"></i> Ce cours n'a pas de sous titre <i class="fas fa-exclamation-circle"></i></td>
                                         <?php endif; ?>
@@ -267,10 +271,23 @@
 
                         </table>
 
-                    <?php else: ?>
-                        <div class="text-center">
-                            <h1 class="display-3 text-dark"> Aucun cours n'a été trouvé pour la recherche que vous avez effectué </h1>
-                            <a href="listecours.php"> <button class="btn btn-lg btn-outline-dark"> Revenir a la liste des cours ? </button></a>
+                    <?php elseif(empty($courses) && isset($_POST['submit'])): ?>
+                        <br>
+
+                        <div class="text-center bg-danger text-white pb-3 " style="border-radius:5px;">
+                            
+                            <h1 class="display-3 "> <i class="fas fa-exclamation-circle"></i> Aucun cours n'a été trouvé pour la recherche que vous avez effectué </h1>
+                            <a href="listecours.php"> <button class="btn btn-lg btn-outline-light"> Revenir en arriere ? </button></a>
+                        </div>
+
+                    <?php else : ?>
+
+                        <br>
+
+                        <div class="text-center text-warning pb-3 " style="border-radius:5px;">
+                            
+                            <h1 class="display-3 ">  Le site web ne contient aucun cours pour l'instant vous pouvez acceder a l'ajout des cours en cliquant sur le boutton ci-dessous</h1>
+                            <a href="ajoutercours.php"> <button class="btn btn-lg pt-3 pb-3 btn-outline-dark"> Acceder a l'ajout des cours </button></a>
                         </div>
 
                     <?php endif; ?>
@@ -327,8 +344,8 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
     <script src="https://kit.fontawesome.com/6e8ba3d05b.js" crossorigin="anonymous"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
     <script>
         $(".alert").delay(3000).slideUp(400, function() {
             $(this).alert('close');

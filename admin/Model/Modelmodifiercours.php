@@ -38,6 +38,23 @@
 
     }
 
+    if(isset($_GET['id'])){
+        $req=$bdd->prepare("SELECT * FROM cours WHERE id=?");
+        $req->execute([$_GET['id']]);
+        $ok=$req->rowCount();
+        if(!$ok){
+            $_SESSION['flash']['danger']="Une erreur s'est produite : ce cours n'existe pas.";
+            header('location:modifiercours.php');
+            exit();
+        }
+    }
+
+    if(isset($_GET['section']) && $_GET['section']!='edit'){
+        $_SESSION['flash']['danger']="Une erreur s'est produite : Veuillez ne pas entré des valeurs invalides";
+        header('location:index.php');
+        exit();
+    }
+
     
     if(isset($_POST['update_course'])){
         $errors=array();

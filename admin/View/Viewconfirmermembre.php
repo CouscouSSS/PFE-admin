@@ -74,6 +74,7 @@
                     </div>
                 </li>
             <?php endif; ?>
+            
 
             <?php if($_SESSION['role']=='admin' || $_SESSION['role']=='admin_cours') : ?>
                 <li class="nav-item">
@@ -95,7 +96,6 @@
                 </li>
             <?php endif; ?>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
             <?php if($_SESSION['role']=='admin' || $_SESSION['role']=='admin_cours') : ?>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -110,6 +110,7 @@
                             <a class="collapse-item" href="listecours.php">Liste des cours</a>
                             <a class="collapse-item" href="ajoutercours.php">Ajouter un cours</a>
                             <a class="collapse-item" href="modifiercours.php">Modifier un cours</a>
+                            <a class="collapse-item" href="suprimercours.php">Supprimer un cours</a>
                         </div>
                     </div>
                 </li>
@@ -206,16 +207,6 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <?php 
-                    $i=0;
-                    foreach($membres as $membre) {
-                        if($membre['confirmed_at']==NULL){
-                            $i++;
-                        }
-                    }
-                    ?>
-
-
                     <?php if(isset($_SESSION['flash'])) : ?>
 
                         <?php foreach($_SESSION['flash'] as $type => $message):?>
@@ -236,95 +227,105 @@
 
                     <?php endif ?>
                     
-
-                    <?php if($i>1) : ?>
                     <!-- Page Heading -->
 
-                    <h3 class="font-weight-bold text-center pb-4 mb-0 text-gray-800"> Voici la liste des membre non
-                        confirmé : </h3>
-
+                    <?php if(!isset($membres) && !isset($_POST['submit'])) : ?>
+                        <h3 class="font-weight-bold text-center pb-4 mb-0 text-gray-800"> Voici la liste des membre non confirmé : </h3>
+                    <?php endif ; ?>
 
                     <?php if(isset($_SESSION['flash'])) : ?>
 
-                    <?php foreach($_SESSION['flash'] as $type => $message):?>
+                        <?php foreach($_SESSION['flash'] as $type => $message):?>
 
-                    <div class="alert fade show alert-<?= $type ?>">
-                        <div style="font-family:Rubik,sans-serif;"
-                            class="pt-2 pb-2 lead text-align-center text-center ">
-                            <i class="fas fa-exclamation-circle"></i> <?= $message ?>
-                            <button type="button" class="close text-white" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true"><i class="far fa-times-circle"></i></span>
-                            </button>
+                        <div class="alert fade show alert-<?= $type ?>">
+                            <div style="font-family:Rubik,sans-serif;"
+                                class="pt-2 pb-2 lead text-align-center text-center ">
+                                <i class="fas fa-exclamation-circle"></i> <?= $message ?>
+                                <button type="button" class="close text-white" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true"><i class="far fa-times-circle"></i></span>
+                                </button>
+                            </div>
                         </div>
-                    </div>
 
-                    <?php  endforeach ?>
+                        <?php  endforeach ?>
 
-                    <?php unset($_SESSION['flash']); ?>
+                        <?php unset($_SESSION['flash']); ?>
 
                     <?php endif ?>
 
-
-                    <form class="pb-3" method="POST" action="">
-                        <div class="form-row mb-2">
-                            <div class="col-10">
-                                <input type="text" name="search_bar" class="form-control" placeholder="Search..." ">
+                    <?php if(!isset($membres) && !isset($_POST['submit'])) : ?>
+                        <form class="pb-3" method="POST" action="">
+                            <div class="form-row mb-2">
+                                <div class="col-10">
+                                    <input type="text" name="search_bar" class="form-control" placeholder="Search..." ">
+                                    </div>
+                                    <div class=" col-2">
+                                    <input type="submit" name="submit" class="psm-2 form-control border " value="Search">
                                 </div>
-                                <div class=" col-2">
-                                <input type="submit" name="submit" class="psm-2 form-control border " value="Search">
                             </div>
-                        </div>
-                    </form>
-
-                    <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
-                        <thead class="thead-dark ">
-                            <tr>
-                                <th>Name </th>
-                                <th>E-mail </th>
-                                <th> Confirmed At :</th>
-                                <th> Confirm membre </th>
-                            </tr>
-                        </thead>
-
-                        <?php foreach($membres as $membre) : ?>
-                        <?php if($membre['role'] == 'user') :?>
-                        <?php if($membre['confirmed_at']==NULL) : ?>
-                        <tr>
-                            <td class="text-capitalize"><?= $membre['name'] ?></td>
-                            <td><?= $membre['email'] ?></td>
-                            <?php if ($membre['confirmed_at']) :?>
-                            <td class="<?php echo 'bg-success' ?> text-white">Confirmé le :
-                                <?= $membre['confirmed_at'] ?></td>
-                            <?php else : ?>
-                            <td class="<?php echo 'bg-danger' ?> text-white"> Non confirmé</td>
-                            <td> <a href="confirmermembre.php?id=<?= $membre['id']?>"> <button
-                                        class="btn btn-outline-success"> Confirmer </button></a></td>
-                            <?php endif; ?>
-                        </tr>
-                        <?php endif; ?>
-                        <?php endif; ?>
-
-                        <?php endforeach; ?>
-
-                        <tfoot class="thead-dark ">
-                            <tr>
-                                <th>Name </th>
-                                <th>E-mail </th>
-                                <th> Confirmed At :</th>
-                                <th> Confirmer </th>
-                            </tr>
-                        </tfoot>
-                    </table>
-
-                    <?php else : ?>
-                    <div class="text-center">
-                        <h2 class="display-2 text-warning font-weight-bold "> Tous les membre inscrit actuellement sont
-                            confirmés </h2>
-                        <a href="listemembre.php" class="text-center"> <button class="btn btn-outline-dark btn-lg">
-                                Revenir a la liste des membres ? </button></a>
-                    </div>
+                        </form>
                     <?php endif; ?>
+                        
+                    <?php if(!empty($membres)) : ?>
+                        <table class="table table-bordered text-center font-weight-bold " id="dataTable" width="100%" cellspacing="0">
+                            
+                            <thead class="thead-dark ">
+                                <tr>
+                                    <th> Name </th>
+                                    <th> E-mail </th>
+                                    <th> Confirmed At :</th>
+                                    <th> Confirm membre </th>
+                                </tr>
+                            </thead>
 
+                            <?php foreach($membres as $membre) : ?>
+                                <?php if($membre['role'] == 'user') :?>       
+                                    <tr>
+                                        <td class="text-capitalize" style="vertical-align: middle;"><?= $membre['name'] ?></td>
+                                        <td style="vertical-align: middle;"><?= $membre['email'] ?></td>
+                                        <td class="bg-danger text-white" style="vertical-align: middle;"> Non confirmé</td>
+                                        <td> 
+                                            <a href="confirmermembre.php?id=<?= $membre['id']?>"> 
+                                                <button class="btn btn-outline-success btn-lg pr-4 pl-4" style="vertical-align: middle;">
+                                                    Confirmer 
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+
+                            <tfoot class="thead-dark ">
+                                <tr>
+                                    <th> Name </th>
+                                    <th> E-mail </th>
+                                    <th> Confirmed At :</th>
+                                    <th> Confirmer </th>
+                                </tr>
+                            </tfoot>
+
+                        </table>
+
+                    <?php elseif(empty($membres) && isset($_POST['submit'])) : ?>
+
+                        <div class="text-center bg-danger text-white pb-3 " style="border-radius:5px;">
+                            
+                            <h1 class="display-3 "> <i class="fas fa-exclamation-circle"></i> Aucun membre n'a été trouvé pour la recherche que vous avez effectué </h1>
+                            <a href="confirmermembre.php"> <button class="btn btn-lg btn-outline-light"> Revenir en arriere ? </button></a>
+                        </div>
+                    
+
+                    <?php else:  ?>
+
+                        <div class="text-center text-warning pb-3 " style="border-radius:5px;">
+                            
+                            <h1 class="display-1 font-weight-bold"> Tout les membres inscrit dans votre site web sont confirmé </h1>
+                            <a href="listemembre.php"> <button class="btn btn-lg btn-outline-dark"> Revenir a la liste des membres ? </button></a>
+
+                        </div>
+
+                    <?php endif; ?>
+                   
                 </div>
                 <!-- /.container-fluid -->
 

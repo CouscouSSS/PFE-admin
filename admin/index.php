@@ -87,6 +87,7 @@ if($_SESSION['role']!='admin' && $_SESSION['role']!='admin_cours' && $_SESSION['
                     </div>
                 </li>
             <?php endif; ?>
+            
 
             <?php if($_SESSION['role']=='admin' || $_SESSION['role']=='admin_cours') : ?>
                 <li class="nav-item">
@@ -108,7 +109,6 @@ if($_SESSION['role']!='admin' && $_SESSION['role']!='admin_cours' && $_SESSION['
                 </li>
             <?php endif; ?>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
             <?php if($_SESSION['role']=='admin' || $_SESSION['role']=='admin_cours') : ?>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -123,6 +123,7 @@ if($_SESSION['role']!='admin' && $_SESSION['role']!='admin_cours' && $_SESSION['
                             <a class="collapse-item" href="listecours.php">Liste des cours</a>
                             <a class="collapse-item" href="ajoutercours.php">Ajouter un cours</a>
                             <a class="collapse-item" href="modifiercours.php">Modifier un cours</a>
+                            <a class="collapse-item" href="suprimercours.php">Supprimer un cours</a>
                         </div>
                     </div>
                 </li>
@@ -216,13 +217,145 @@ if($_SESSION['role']!='admin' && $_SESSION['role']!='admin_cours' && $_SESSION['
                 </nav>
                 <!-- End of Topbar -->
 
+                
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa molestiae blanditiis inventore dolores quasi consectetur, quidem illo laborum! Nam, repellat asperiores maxime quisquam voluptates reiciendis minus officia aspernatur perspiciatis rerum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat neque ipsum qui nulla possimus fugiat dolore maxime, voluptas voluptatum illum? Aliquid placeat recusandae modi officiis natus in ab quidem! Perferendis? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas, sed sequi distinctio earum aliquid eius laborum sint voluptates! Et est inventore labore veritatis corrupti fuga ipsa doloremque aliquid error reprehenderit? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut autem id voluptatibus illo eligendi accusantium ipsa laborum quas dolor illum, officiis modi ab error tempora, saepe maxime possimus esse eaque. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, nihil sequi necessitatibus quos qui ullam laboriosam non unde repellendus voluptas odit libero accusantium tempore dolorum, quae hic architecto excepturi officiis! </h1>
-                    </div>
+                    <?php if(isset($_SESSION['flash'])) : ?>
+
+                        <?php foreach($_SESSION['flash'] as $type => $message):?>
+
+                            <div class="alert fade show alert-<?= $type ?>">
+                                <div style="font-family:Rubik,sans-serif;"
+                                    class="pt-2 pb-2 lead text-align-center text-center ">
+                                    <i class="fas fa-exclamation-circle"></i> <?= $message ?>
+                                    <button type="button" class="close text-white" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true"><i class="far fa-times-circle"></i></span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        <?php  endforeach ?>
+
+                        <?php unset($_SESSION['flash']); ?>
+
+                    <?php endif ?>
+
+                    <?php  if($_SESSION['role']==="admin_membre" || $_SESSION['role']==="admin") : ?>
+                        <div class="text-center">
+                            <h1 class="font-weight-bold text-warning mb-3" >Bienvenue a votre paneau d'administration :  </h1>
+
+                            <div class="list-group">
+                                <a class="list-group-item list-group-item-action  disabled gradient-orange text-white p-3 font-weight-bold">Gestion des membres </a>
+                                <a href="listemembre.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold p-4">
+                                    Liste de tout les membres inscrit avec leur information (nom,email,date de confirmation).
+                                </a>
+                                <a href="ajoutermembre.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold p-4">
+                                    Ajouter un membre qui serat confirmer automatiquement grace a un formulaire a remplire.
+                                </a>
+                                <a href="confirmermembre.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold p-4">
+                                    Confirmer un membre manuellement.
+                                </a>
+                                <a href="modifiermembre.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold p-4">
+                                    Modifier les information d'un membre données.
+                                </a>
+                                <a href="suprimermembre.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold p-4">
+                                    Suprimer un membre definitivement de la base de données.
+                                </a>
+                                <a class="list-group-item list-group-item-action disabled gradient-orange text-white p-3 font-weight-bold mb-5">Gestion des membres</a>
+                            </div>
+                        </div>
+
+                    <?php endif; ?>
+
+                    <?php if($_SESSION['role']==="admin" || $_SESSION['role']==="admin_cours") : ?>
+                        <div class="text-center">
+                            <?php if ($_SESSION['role']!="admin") : ?>
+                                <h1 class="font-weight-bold text-warning mb-3" >Bienvenue a votre paneau d'administration de cours:  </h1>
+                            <?php endif; ?>
+                        </div>
+
+                        <div class="d-flex justify-content-around text-center">
+
+                            <div class="card" style="width: 20rem;">
+                                <div class="card-header gradient-orange text-white font-weight-bold">
+                                    Gestion des sections
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <a href="listesections.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold ">Liste de toutes les section</a>
+                                    <a href="ajoutersection.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold ">Ajouter une section</a>
+                                    <a href="modifiersection.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold ">Modifier une section</a>
+                                    <a href="suprimersection.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold ">Supprimer une section</a>            
+                                </ul>
+                            </div>
+
+                            <div class="card" style="width: 20rem;">
+                                <div class="card-header  gradient-orange text-white font-weight-bold">
+                                    Gestion des cours
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <a href="listecours.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold ">Liste de toutes les cours</a>
+                                    <a href="ajoutercours.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold ">Ajouter un cours</a>
+                                    <a href="modifiercours.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold ">Modifier un cours</a>
+                                    <a href="suprimercours.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold ">Supprimer un cours</a> 
+                                </ul>
+                            </div>
+                            
+
+                        </div>
+
+                        <div class="d-flex justify-content-around mt-4 text-center mb-5">
+
+                            <div class="card" style="width: 20rem;">
+                                <div class="card-header  gradient-orange text-white font-weight-bold">
+                                    Gestion des chapitres
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <a href="listechapitre.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold ">Liste de toutes les chapitres</a>
+                                    <a href="ajouterchapitre.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold ">Ajouter un chapitre</a>
+                                    <a href="modifierchapitre.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold ">Modifier un chapitre</a>
+                                    <a href="suprimerchapitre.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold ">Supprimer un chapitre</a>
+                                </ul>
+                            </div>
+
+                            <div class="card" style="width: 20rem;" >
+                                <div class="card-header  gradient-orange text-white font-weight-bold" >
+                                    Gestion des exercices
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <a href="listexercice.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold ">Liste de toutes les exercices</a>
+                                    <a href="ajouterexercice.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold ">Ajouter un exercice</a>
+                                    <a href="modifierexercice.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold ">Modifier un exercice</a>
+                                    <a href="suprimerexercice.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold ">Supprimer un exercice</a>
+                                </ul>
+                            </div>
+                            
+
+                        </div>
+                            
+                    
+                    <?php endif; ?>
+
+                    <?php if($_SESSION['role']=='admin') : ?>
+                        <div class="text-center">
+                            <div class="list-group">
+                                <a class="list-group-item list-group-item-action  disabled gradient-orange text-white p-3 font-weight-bold">Gestion de l'administration </a>
+                                <a href="listadmin.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold p-4">
+                                    Liste de tous les administrateur
+                                </a>
+                                <a href="ajouteradmin.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold p-4">
+                                    Ajouter un administrateur.
+                                </a>
+                                <a href="suprimeradmin.php" title="Cliquez pour y accéder" class="list-group-item list-group-item-action font-weight-bold p-4">
+                                    Suprimer un administrateur.
+                                </a>
+                                <a class="list-group-item list-group-item-action disabled gradient-orange text-white p-3 font-weight-bold mb-5">Gestion de l'administration</a>
+                            </div>
+                        </div>  
+
+                    <?php endif; ?>
+
+                    </div> 
 
                 </div>
                 <!-- /.container-fluid -->

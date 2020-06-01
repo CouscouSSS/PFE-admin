@@ -11,17 +11,9 @@ if($_SESSION['role']!='admin' && $_SESSION['role']!='admin_cours' && $_SESSION['
 
 }
 
-
-$req=$bdd->query("SELECT * FROM membre ");
+$req=$bdd->query("SELECT * FROM membre WHERE confirmation_token IS NOT NULL");
 $membres=$req->fetchAll();
 
-if(isset($_GET['id'])){
-    $req=$bdd->prepare("UPDATE membre SET confirmed_at = NOW() WHERE id=?");
-    $req->execute([$_GET['id']]);
-    $_SESSION['flash']['success']="Votre compte a été confirmé avec succées";
-    header('location:confirmermembre.php');
-    exit();
-}
 
 if(isset($_POST['submit'])){
     if(!empty($_POST['search_bar'])){
@@ -30,11 +22,18 @@ if(isset($_POST['submit'])){
         $req->execute(array($searchbar,$searchbar,$searchbar));
         $membres=$req->fetchAll();
     }else{
-        $req=$bdd->query("SELECT * FROM membre ");
+        $req=$bdd->query("SELECT * FROM membre WHERE confirmation_token IS NOT NULL");
         $membres=$req->fetchAll();
     }
 }
 
+if(isset($_GET['id'])){
+    $req=$bdd->prepare("UPDATE membre SET confirmed_at = NOW(),confirmation_token = NULL WHERE id=?");
+    $req->execute([$_GET['id']]);
+    $_SESSION['flash']['success']="Votre compte a été confirmé avec succées";
+    header('location:confirmermembre.php');
+    exit();
+}
 
 
 

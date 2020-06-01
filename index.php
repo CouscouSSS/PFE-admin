@@ -10,6 +10,11 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
    $userinfo = $requser->fetch();
 }
 
+$req=$bdd->prepare("SELECT * from section");
+$req->execute();
+$sections=$req->fetchAll();
+
+
 ?>
 
 
@@ -56,20 +61,21 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
 
     <?php if(isset($_SESSION['flash'])) : ?>
 
-    <?php foreach($_SESSION['flash'] as $type => $message):?>
+        <?php foreach($_SESSION['flash'] as $type => $message):?>
 
-    <div class="alert fade show alert-<?= $type ?>">
-        <div style="font-family:Rubik,sans-serif;"
-            class="pt-2 pb-2 lead text-align-center text-center ">
-            <i class="fas fa-exclamation-circle"></i> <?= $message ?>
-            <button type="button" class="close text-white" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true"><i class="far fa-times-circle" ></i></span>
-    </button>
-        </div>
-    </div>
-    <?php  endforeach ?>
+            <div class="alert fade show alert-<?= $type ?>">
+                <div style="font-family:Rubik,sans-serif;"
+                    class="pt-2 pb-2 lead text-align-center text-center ">
+                    <i class="fas fa-exclamation-circle"></i> <?= $message ?>
+                    <button type="button" class="close text-white" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true"> <i class="far fa-times-circle" ></i> </span>
+                    </button>
+                </div>
+            </div>
 
-    <?php unset($_SESSION['flash']); ?>
+        <?php  endforeach ?>
+
+        <?php unset($_SESSION['flash']); ?>
 
     <?php endif ?>
     
@@ -202,12 +208,13 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
     <!--================ Start Registration Area =================-->
     <section class="section_gap_top" style="background-color:#002347;">
         <div class="container text-center text-white">
+
             <div class="text-danger" style="position:relative; bottom:30px">
+
                 <i class="pb-2 fas fa-exclamation-triangle fa-10x"></i>
 
+                <h2 class=" display-3 text-danger text-uppercase text-white" style="letter-spacing:2px;"> Coronavirus disease </h2>
 
-                <h2 class=" display-3 text-danger text-uppercase text-white" style="letter-spacing:2px;"> Coronavirus
-                    disease </h2>
             </div>
 
             <div class=" mb-2 text-center lead" style="position:relative; bottom:45px;">
@@ -277,7 +284,6 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
                             <h4 class="mt-3 mb-2">Trusted content</h4>
                             <p>
                                 Created by experts, Our lessons covers grammar, english, and comprehension.
-
                             </p>
                         </div>
                     </div>
@@ -316,60 +322,33 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
                 <!-- single course -->
                 <div class="col-lg-12">
                     <div class="owl-carousel active_course">
-                        <div class="single_course">
-                            <div class="course_head">
-                                <img class="img-fluid" src="img/courses/c1.jpg" alt="" />
-                            </div>
-                            <div class="course_content">
-                                <span class="tag mb-4 d-inline-block">Grammar</span>
-                                <h4 class="mb-3">
-                                    <a href="course-details-grammar.php">Beginner to pre-intermediate</a>
-                                </h4>
-                                <p>
-                                    In this section you can improve your grammar with our clear and simple grammar
-                                    lessons. Start with an example then read the explanation to improve your grammar
-                                    knowledge.
+                    <?php $i=1; foreach($sections as $section) : ?>
+                            <div class="single_course">
+                                <div class="course_head">
+                                <a href="course-section.php?id=<?=$section['id']?>"><img class="img-fluid" src="img/courses/c<?=$i;?>.jpg" alt=""/></a>
+                                </div>
+                                <div class="course_content">
 
-                                </p>
-                            </div>
-                        </div>
+                                    <span class="tag mb-4 d-inline-block"><?= $section['nom'] ?></span>
+                                    <h4 class="mb-3">
+                                        <a href="course-section.php?id=<?=$section['id']?>"><?= $section['niveau'] ?></a>
+                                    </h4>
+                                    <p>
+                                        <?= $section['objectif'] ?>
 
-                        <div class="single_course">
-                            <div class="course_head">
-                                <img class="img-fluid" src="img/courses/c2.jpg" alt="" />
+                                    </p>
+                                
+                                </div>
                             </div>
-                            <div class="course_content">
-                                <span class="tag mb-4 d-inline-block">Skills</span>
-                                <h4 class="mb-3">
-                                    <a href="course-details-skills.php">Beginner to pre-intermediate</a>
-                                </h4>
-                                <p>
-                                    Here you can find activities to practise your writing skills. You can improve your
-                                    writing by understanding model texts and how they're structured.
-                                    <br>
-                                    <br>
-                                </p>
 
-                            </div>
-                        </div>
+                            <?php $i++;?>
 
-                        <div class="single_course">
-                            <div class="course_head">
-                                <img class="img-fluid" src="img/courses/c3.jpg" alt="" />
-                            </div>
-                            <div class="course_content">
-                                <span class="tag mb-4 d-inline-block">General english</span>
-                                <h4 class="mb-3">
-                                    <a href="course-general-english.php">Beginner to pre-intermediate </a>
-                                </h4>
-                                <p>
-                                    In this section you will find activities to help you learn the meaning,
-                                    pronunciation and spelling of new words. Learning vocabulary will help you improve
-                                    your language level .
+                            <?php if($i==4) break; ?>
 
-                                </p>
-                            </div>
-                        </div>
+                        <?php endforeach; ?>    
+                        
+                              
+                        
                     </div>
                 </div>
             </div>

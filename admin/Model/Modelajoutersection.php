@@ -17,13 +17,6 @@ if(isset($_POST['add_section'])){
 
     if(empty($_POST['nom']) || !preg_match("/^[a-zA-Z]+$/",$_POST['nom'])){
         $errors['nom']="Veuillez saisir un nom valide ou bien remplire ce champ";
-    }else{
-        $req=$bdd->prepare("SELECT * FROM section WHERE nom=?");
-        $req->execute([$_POST['nom']]);
-        $ok=$req->rowCount();
-        if($ok){
-            $errors['nom']="Ce titre apartient a une autre section vous ne pouvez pas l'utiliser";
-        }
     }
 
     if(empty($_POST['niveau']) ){

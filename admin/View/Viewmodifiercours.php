@@ -74,6 +74,7 @@
                     </div>
                 </li>
             <?php endif; ?>
+            
 
             <?php if($_SESSION['role']=='admin' || $_SESSION['role']=='admin_cours') : ?>
                 <li class="nav-item">
@@ -95,7 +96,6 @@
                 </li>
             <?php endif; ?>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
             <?php if($_SESSION['role']=='admin' || $_SESSION['role']=='admin_cours') : ?>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -110,6 +110,7 @@
                             <a class="collapse-item" href="listecours.php">Liste des cours</a>
                             <a class="collapse-item" href="ajoutercours.php">Ajouter un cours</a>
                             <a class="collapse-item" href="modifiercours.php">Modifier un cours</a>
+                            <a class="collapse-item" href="suprimercours.php">Supprimer un cours</a>
                         </div>
                     </div>
                 </li>
@@ -207,59 +208,89 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <?php if(!isset($_GET['section'])): ?>
-                    <h3 class=" text-center pb-3 font-weight-bold mb-0 text-gray-800"> Voici la liste des cours
-                        disponible maitenant : </h3>
+                    <?php if(!empty($courses) && !isset($_POST['submit'])) : ?>
+                        <?php if(!isset($_GET['section'])): ?>
+                            <div >
+                                <h3 class=" text-center pb-3 font-weight-bold mb-0 text-gray-800"> Voici la liste des cours
+                                    disponible maitenant : </h3>
+                            </div>
+                        <?php endif; ?>
                     <?php endif; ?>
 
-                    <?php if(!isset($_GET['section'])) : ?>
-                    <form method="POST" action="">
-                        <div class="form-row mb-2">
-                            <div class="col-10">
-                                <input type="text" name="search_bar" class="form-control" placeholder="Search..." ">
+                    <?php if(isset($_SESSION['flash'])) : ?>
+
+                        <?php foreach($_SESSION['flash'] as $type => $message):?>
+
+                            <div class="alert fade show alert-<?= $type ?>">
+                                <div style="font-family:Rubik,sans-serif;"
+                                    class="pt-2 pb-2 lead text-align-center text-center ">
+                                    <i class="fas fa-exclamation-circle"></i> <?= $message ?>
+                                    <button type="button" class="close text-white" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true"><i class="far fa-times-circle"></i></span>
+                                    </button>
                                 </div>
-                                <div class=" col-2">
-                                <input type="submit" name="submit" class="psm-2 form-control border " value="Search">
                             </div>
-                        </div>
-                    </form>
+
+                        <?php  endforeach ?>
+
+                        <?php unset($_SESSION['flash']); ?>
+
+                    <?php endif ?>
+                            
+                    <?php if(!isset($_GET['section'])) : ?>
+                        <?php if(!empty($courses) && !isset($_POST['submit'])) : ?>
+                            <form method="POST" action="">
+                                <div class="form-row mb-3">
+                                    <div class="col-10">
+                                        <input type="text" name="search_bar" class="form-control" placeholder="Search..." ">
+                                        </div>
+                                        <div class=" col-2">
+                                        <input type="submit" name="submit" class="psm-2 form-control border " value="Search">
+                                    </div>
+                                </div>
+                            </form>
+                        <?php endif; ?>
+                   
 
                     <?php if(!empty($courses)) : ?>
-                        <table class="font-weight-bold table-responsive table text-center table-bordered" id="dataTable"
+                        <table class="table text-center table-bordered font-weight-bold " id="dataTable"
                             width="100%" cellspacing="0">
                             <thead class="thead-dark ">
                                 <tr>
-                                    <th>Section </th>
-                                    <th>Titre </th>
-                                    <th>Sous-titre</th>
-                                    <th>Image</th>
-                                    <th>Modifier le cours</th>
+                                    <th style="vertical-align: middle;">Section </th>
+                                    <th style="vertical-align: middle;">Titre </th>
+                                    <th style="vertical-align: middle;">Sous-titre</th>
+                                    <th style="vertical-align: middle;">Image</th>
+                                    <th style="vertical-align: middle;">Modifier le cours</th>
                                 </tr>
                             </thead>
 
                             <?php foreach($courses as $course) : ?>
 
                             <tr>
-                                <td class="text-uppercase bg-warning font-weight-bold text-white">
+                                <td style="vertical-align: middle;" class="text-uppercase bg-warning  text-white">
                                     <?= $sections[$course['id_section']-1]['nom'] ?></td>
-                                <td><?= $course['titre'] ?></td>
+                                    
+                                <td style="vertical-align: middle;"><?= $course['titre'] ?></td>
 
                                 <?php if(!empty($course['sous_titre'])) : ?>
-                                <td class="text-white bg-success w-25"> <?= $course['sous_titre'] ?> </td>
+                                <td style="vertical-align: middle;" class="text-gray  "> <?= $course['sous_titre'] ?> </td>
                                 <?php else : ?>
-                                <td class="bg-danger text-white font-weight-bold"><i class="fas fa-exclamation-circle"></i>
-                                    Ce cours n'a pas de sous titre <i class="fas fa-exclamation-circle"></i></td>
+                                <td style="vertical-align: middle;" class="text-white bg-danger  "> <i class="fas fa-exclamation-circle"></i>
+                                        Ce cours n'a pas de sous titre <i class="fas fa-exclamation-circle"></i> </td>
                                 <?php endif; ?>
+                                
+                                
                                 <?php if(!empty($course['img'])) : ?>
-                                <td class="text-white"><a class="text-decoration-none" style="position:relative; top:10px;"
-                                        href="<?= $course['img'] ?>">Image ilustratif</a></td>
+                                    <td style="vertical-align: middle;" class="text-white"><a class="text-decoration-none" 
+                                            href="<?= $course['img'] ?>">Image ilustratif</a></td>
                                 <?php else : ?>
-                                <td class="bg-danger text-white font-weight-bold"><i class="fas fa-exclamation-circle"></i>
-                                    Ce cours n'a pas d'image ilustratif <i class="fas fa-exclamation-circle"></i></td>
+                                    <td style="vertical-align: middle;" class="bg-danger text-white "><i class="fas fa-exclamation-circle"></i>
+                                        Ce cours n'a pas d'image ilustratif <i class="fas fa-exclamation-circle"></i></td>
                                 <?php endif; ?>
-                                <td class="w-25">
+                                <td style="vertical-align: middle;">
                                     <a href="modifiercours.php?section=edit&id=<?=$course['id']?>"> <button
-                                            class=" font-weight-bold pr-5 pl-5 btn btn-outline-warning"> Modifer </button>
+                                            class="btn pl-5 pr-5 btn-lg btn-outline-warning"> Modifer </button>
                                     </a>
                                 </td>
 
@@ -270,20 +301,33 @@
 
                             <tfoot class="thead-dark ">
                                 <tr>
-                                    <th>Section</th>
-                                    <th>Titre </th>
-                                    <th>Sous-titre</th>
-                                    <th>Image</th>
-                                    <th>Modifier le cours</th>
+                                    <th style="vertical-align: middle;">Section</th>
+                                    <th style="vertical-align: middle;">Titre </th>
+                                    <th style="vertical-align: middle;">Sous-titre</th>
+                                    <th style="vertical-align: middle;">Image</th>
+                                    <th style="vertical-align: middle;">Modifier le cours</th>
                                 </tr>
                             </tfoot>
 
                         </table>
+
+                    <?php elseif(empty($courses) && !isset($_POST['submit'])) : ?>
+      
+                        <br>
+
+                        <div class="text-center text-warning pb-3 " style="border-radius:5px;">
+                            
+                            <h1 class="display-3 ">  Le site web ne contient aucun cours pour l'instant vous pouvez acceder a l'ajout des cours en cliquant sur le boutton ci-dessous</h1>
+                            <a href="ajoutercours.php"> <button class="btn btn-lg pt-3 pb-3 btn-outline-dark"> Acceder a l'ajout des cours </button></a>
+                        </div>
                         
                     <?php else : ?>
-                        <div class="text-center">
-                        <h1 class="display-3 text-dark"> Aucun cours n'a été trouvé pour la recherche que vous avez effectué </h1>
-                        <a href="listecours.php"> <button class="btn btn-lg btn-outline-dark"> Revenir a la liste des cours ? </button></a>
+                        <br>
+
+                        <div class="text-center bg-danger text-white pb-3 " style="border-radius:5px;">
+                            
+                            <h1 class="display-3 "> <i class="fas fa-exclamation-circle"></i> Aucun cours n'a été trouvé pour la recherche que vous avez effectué </h1>
+                            <a href="modifiercours.php"> <button class="btn btn-lg btn-outline-light"> Revenir en arriere ? </button></a>
                         </div>
                     <?php endif; ?>
 
@@ -427,8 +471,8 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
     <script src="https://kit.fontawesome.com/6e8ba3d05b.js" crossorigin="anonymous"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
     <script>
         $(".alert").delay(3000).slideUp(400, function() {
             $(this).alert('close');

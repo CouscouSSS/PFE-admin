@@ -183,13 +183,17 @@ else{
 
             <?php if(isset($_SESSION['flash'])) : ?>
 
-            <?php foreach($_SESSION['flash'] as $type => $message):?>
+                <?php foreach($_SESSION['flash'] as $type => $message):?>
 
-                <div class="alert alert-<?= $type ?>">
-                    <div style="font-family:Rubik,sans-serif;" class="pt-2 pb-2 lead text-align-center text-center border ">
-                        <?= $message ?>
+                    <div class="alert fade show alert-<?= $type ?>">
+                        <div style="font-family:Rubik,sans-serif;"
+                            class="pt-2 pb-2 lead text-align-center text-center ">
+                            <i class="fas fa-exclamation-circle"></i> <?= $message ?>
+                            <button type="button" class="close text-white" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true"> <i class="far fa-times-circle" ></i> </span>
+                            </button>
+                        </div>
                     </div>
-                </div>
 
                 <?php  endforeach ?>
 

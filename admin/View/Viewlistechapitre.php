@@ -74,6 +74,7 @@
                     </div>
                 </li>
             <?php endif; ?>
+            
 
             <?php if($_SESSION['role']=='admin' || $_SESSION['role']=='admin_cours') : ?>
                 <li class="nav-item">
@@ -95,7 +96,6 @@
                 </li>
             <?php endif; ?>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
             <?php if($_SESSION['role']=='admin' || $_SESSION['role']=='admin_cours') : ?>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -110,6 +110,7 @@
                             <a class="collapse-item" href="listecours.php">Liste des cours</a>
                             <a class="collapse-item" href="ajoutercours.php">Ajouter un cours</a>
                             <a class="collapse-item" href="modifiercours.php">Modifier un cours</a>
+                            <a class="collapse-item" href="suprimercours.php">Supprimer un cours</a>
                         </div>
                     </div>
                 </li>
@@ -208,6 +209,7 @@
 
                     <!-- Page Heading -->
 
+                    <?php if(!empty($chapitres) && !isset($_POST['submit'])) : ?>
                     <h3 class=" text-center pb-3 font-weight-bold mb-0 text-gray-800"> Voici la liste des chapitres disponible maintenant : </h3>
 
                     <form class="pb-2" method="POST" action="">
@@ -220,43 +222,62 @@
                             </div>
                         </div>
                     </form>
+                
+                    <?php endif; ?>
 
                     <?php if(!empty($chapitres)) : ?>
 
                         <table class="table  font-weight-bold text-center table-bordered"  id="dtBasicExample" width="100%" cellspacing="0">
                             <thead class="thead-dark ">
                                 <tr>
-                                    <th>Cours</th>
-                                    <th>Titre du chapitre</th>
-                                    <th>Contenue</th>
+                                    <th style="vertical-align: middle;">Cours</th>
+                                    <th style="vertical-align: middle;">Titre du chapitre</th>
                                 </tr>
                             </thead>
 
                             <?php foreach($chapitres as $chapitre) : ?>
+                                <?php 
+                                    $req=$bdd->prepare("SELECT * FROM cours WHERE id=?");
+                                    $req->execute([$chapitre['id_cours']]);
+                                    $courses=$req->fetch();
+                                ?>
 
-                                    <tr>
-                                        <td style="vertical-align: middle;" class="bg-warning text-white"><?=$courses[$chapitre['id_cours']-1]['titre']?></td>
-                                        <td style="vertical-align: middle;"><?=$chapitre['titre']?></td>
-                                        <td style="vertical-align: middle;"><?=$chapitre['contenue']?></td>
-                                    </tr>
+                                <tr>
+                                    <td style="vertical-align: middle;" class="bg-warning text-white"> <?=$courses['titre'] ?> </td>
+                                    <td style="vertical-align: middle;"><?=$chapitre['titre']?></td>
+                                </tr>
 
                             <?php endforeach; ?>
 
                             <tfoot class="thead-dark ">
                                 <tr>
-                                    <th>Cours</th>
-                                    <th>Titre du chapitre</th>
-                                    <th>Contenue</th>
+                                    <th style="vertical-align: middle;">Cours</th>
+                                    <th style="vertical-align: middle;">Titre du chapitre</th>
                                 </tr>
                             </tfoot>
 
                         </table>
 
-                    <?php else: ?>
-                        <div class="text-center">
-                            <h1 class="display-3 text-dark"> Aucun chapitre n'a été trouvé pour la recherche que vous avez effectué </h1>
-                            <a href="listechapitre.php"> <button class="btn btn-lg btn-outline-dark"> Revenir a la liste des chapitre ? </button></a>
+                    <?php elseif(empty($chapitres) && isset($_POST['submit'])) : ?>
+                        
+                        <br>
+
+                        <div class="text-center bg-danger text-white pb-3 " style="border-radius:5px;">
+                            
+                            <h1 class="display-3 "> <i class="fas fa-exclamation-circle"></i> Aucun chapitre n'a été trouvé pour la recherche que vous avez effectué </h1>
+                            <a href="listechapitre.php"> <button class="btn btn-lg btn-outline-light"> Revenir en arriere ? </button></a>
                         </div>
+
+                    <?php else: ?>
+
+                        <br>
+
+                        <div class="text-center text-warning pb-3 mb-5 " style="border-radius:5px;">
+                            
+                            <h1 class="display-3">  Le site web ne contient aucun chapitre pour l'instant vous pouvez acceder a l'ajout des chapitre en cliquant ci-dessous</h1>
+                            <a href="ajouterchapitre.php"> <button class="btn btn-lg pt-3 pb-3 btn-outline-dark"> Acceder a l'ajout des chapitres </button></a>
+                        </div>
+                        
 
                     <?php endif; ?>
 
@@ -298,7 +319,6 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -313,8 +333,8 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
     <script src="https://kit.fontawesome.com/6e8ba3d05b.js" crossorigin="anonymous"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
     <script>
         $(".alert").delay(3000).slideUp(400, function() {
             $(this).alert('close');

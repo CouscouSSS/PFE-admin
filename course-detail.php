@@ -52,8 +52,6 @@ session_start();
     <link rel="stylesheet" href="css/themify-icons.css" />
     <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css" />
     <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css" />
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- main css -->
     <link rel="stylesheet" href="css/style.css" />
 
@@ -64,14 +62,21 @@ session_start();
 
     <?php if(isset($_SESSION['flash'])) : ?>
 
-        <?php foreach($_SESSION['flash'] as $type => $message):?>
-        <div class="alert alert-<?= $type ?>">
-            <div style="font-family:Rubik,sans-serif;" class="pt-2 pb-2 lead text-align-center text-center border ">
-                <?= $message ?> </div>
-        </div>
-        <?php  endforeach ?>
+    <?php foreach($_SESSION['flash'] as $type => $message):?>
 
-        <?php unset($_SESSION['flash']); ?>
+        <div class="alert fade show alert-<?= $type ?>">
+            <div style="font-family:Rubik,sans-serif;"
+                class="pt-2 pb-2 lead text-align-center text-center ">
+                <i class="fas fa-exclamation-circle"></i> <?= $message ?>
+                <button type="button" class="close text-white" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"> <i class="far fa-times-circle" ></i> </span>
+                </button>
+            </div>
+        </div>
+
+    <?php  endforeach ?>
+
+    <?php unset($_SESSION['flash']); ?>
 
     <?php endif ?>
 

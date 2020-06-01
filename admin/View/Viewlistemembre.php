@@ -74,6 +74,7 @@
                     </div>
                 </li>
             <?php endif; ?>
+            
 
             <?php if($_SESSION['role']=='admin' || $_SESSION['role']=='admin_cours') : ?>
                 <li class="nav-item">
@@ -95,7 +96,6 @@
                 </li>
             <?php endif; ?>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
             <?php if($_SESSION['role']=='admin' || $_SESSION['role']=='admin_cours') : ?>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -110,6 +110,7 @@
                             <a class="collapse-item" href="listecours.php">Liste des cours</a>
                             <a class="collapse-item" href="ajoutercours.php">Ajouter un cours</a>
                             <a class="collapse-item" href="modifiercours.php">Modifier un cours</a>
+                            <a class="collapse-item" href="suprimercours.php">Supprimer un cours</a>
                         </div>
                     </div>
                 </li>
@@ -243,42 +244,53 @@
 
                     <?php endif ?>
 
+                    <?php if(!empty($membres)) : ?>
+                        <table class="table table-bordered font-weight-bold text-center" id="dataTable" width="100%" cellspacing="0">
+                            <thead class="thead-dark ">
+                                <tr>
+                                    <th style="vertical-align: middle;">Name </th>
+                                    <th style="vertical-align: middle;">E-mail </th>
+                                    <th style="vertical-align: middle;"> Confirmed At :</th>
+                                </tr>
+                            </thead>
 
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead class="thead-dark ">
+                            <?php foreach($membres as $membre) : ?>
+                            <?php if($membre['role'] == 'user') :?>
+
                             <tr>
-                                <th>Name </th>
-                                <th>E-mail </th>
-                                <th> Confirmed At :</th>
+                                <td class="text-capitalize" style="vertical-align: middle;"><?= $membre['name'] ?></td>
+                                <td style="vertical-align: middle;"><?= $membre['email'] ?></td>
+                                <?php if ($membre['confirmed_at']) :?>
+                                <td class="<?php echo 'bg-success'?> text-white " style="vertical-align: middle;">Confirmé le :
+                                    <?= $membre['confirmed_at'] ?></td>
+                                <?php else : ?>
+                                <td class="<?php echo 'bg-danger' ?> text-white" style="vertical-align: middle;"> Non confirmé</td>
+                                <?php endif; ?>
                             </tr>
-                        </thead>
-
-                        <?php foreach($membres as $membre) : ?>
-                        <?php if($membre['role'] == 'user') :?>
-
-                        <tr>
-                            <td class="text-capitalize"><?= $membre['name'] ?></td>
-                            <td><?= $membre['email'] ?></td>
-                            <?php if ($membre['confirmed_at']) :?>
-                            <td class="<?php echo 'bg-success' ?> text-white">Confirmé le :
-                                <?= $membre['confirmed_at'] ?></td>
-                            <?php else : ?>
-                            <td class="<?php echo 'bg-danger' ?> text-white"> Non confirmé</td>
                             <?php endif; ?>
-                        </tr>
-                        <?php endif; ?>
 
-                        <?php endforeach; ?>
+                            <?php endforeach; ?>
 
-                        <tfoot class="thead-dark ">
-                            <tr>
-                                <th>Name </th>
-                                <th>E-mail </th>
-                                <th> Confirmed At :</th>
-                            </tr>
-                        </tfoot>
+                            <tfoot class="thead-dark ">
+                                <tr>
+                                    <th style="vertical-align: middle;">Name </th>
+                                    <th style="vertical-align: middle;">E-mail </th>
+                                    <th style="vertical-align: middle;"> Confirmed At :</th>
+                                </tr>
+                            </tfoot>
 
-                    </table>
+                        </table>
+                        
+                    <?php else : ?>
+                        <br>
+
+                        <div class="text-center bg-danger text-white pb-3 " style="border-radius:5px;">
+                            
+                            <h1 class="display-3 "> <i class="fas fa-exclamation-circle"></i> Aucun membre n'a été trouvé pour la recherche que vous avez effectué </h1>
+                            <a href="listemembre.php"> <button class="btn btn-lg btn-outline-light"> Revenir a la liste des membres ? </button></a>
+                        </div>
+
+                    <?php endif; ?>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -332,12 +344,14 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
+    <script src="https://kit.fontawesome.com/6e8ba3d05b.js" crossorigin="anonymous"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
     <script>
         $(".alert").delay(3000).slideUp(400, function() {
             $(this).alert('close');
         });
     </script>
+    
 </body>
 
 </html>

@@ -39,6 +39,22 @@ if(isset($_POST['submit'])){
 
 }
 
+if(isset($_GET['id'])){
+    $req=$bdd->prepare("SELECT * FROM chapitre WHERE id=?");
+    $req->execute([$_GET['id']]);
+    $ok=$req->rowCount();
+    if(!$ok){
+        $_SESSION['flash']['danger']="Une erreur s'est produite : Ce chapitre n'existe pas";
+        header('location: modifierchapitre.php');
+        exit();
+    }
+}
+
+if(isset($_GET['section']) && $_GET['section']!='edit'){
+    $_SESSION['flash']['danger']="Une erreur s'est produite : Veuillez ne pas entrez des valeurs erroné";
+    header('location: index.php');
+    exit();
+}
 
 if(isset($_POST['update_chapitre'])){
     $errors=array();

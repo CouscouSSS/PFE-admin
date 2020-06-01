@@ -27,11 +27,21 @@ if(isset($_POST['submit'])){
 }   
 
 if(isset($_GET['id'])){
+    $req=$bdd->prepare("SELECT * FROM section WHERE id=?");
+    $req->execute([$_GET['id']]);
+    $ok=$req->rowCount();
+    if(!$ok){
+        $_SESSION['flash']['danger']="Une erreur s'est produite : Cette section n'existe pas";
+        header('location:modifiersection.php');
+        exit();
+    }
+}
+
+if(isset($_GET['id'])){
     $idsection=htmlentities($_GET['id']);
 
     $req=$bdd->prepare("DELETE FROM question WHERE id_test=(SELECT id FROM test WHERE id_cours=(SELECT id from cours WHERE id_section=?))");
     $req->execute([$idsection]);
-
 
     $req=$bdd->prepare("DELETE FROM test WHERE id_cours=(SELECT id FROM cours WHERE id_section=?)");
     $req->execute([$idsection]);

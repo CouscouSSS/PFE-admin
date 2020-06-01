@@ -206,11 +206,15 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    
 
                     <!-- Page Heading -->
+                    <?php if(!empty($courses) && !isset($_POST['submit'])) : ?>
+
+                        <h3 class=" text-center pb-3 font-weight-bold mb-0 text-gray-800"> Voici la liste des cours disponible maitenant : </h3>
+
+                        <h2 class="text-uppercase bg-danger mb-3 text-white text-center"><i class="fas fa-exclamation-circle"></i> Une fois cliquez sur le bouton suprimer le cours est supprimer (Il n'ya pas de confirmation) <i class="fas fa-exclamation-circle"></i></h2>
                    
-                        <h3 class="font-weight-bold text-center pb-3 mb-0 text-gray-800"> Ici vous pouvez suprimer des membres inscrit : </h3>
+                    <?php endif; ?>
 
                     <?php if(isset($_SESSION['flash'])) : ?>
 
@@ -231,77 +235,72 @@
                         <?php unset($_SESSION['flash']); ?>
 
                     <?php endif ?>
-                            
-                    <?php if(!empty($membres)) : ?>
-                    <h2 class="text-uppercase bg-danger mb-3 text-white text-center"><i class="fas fa-exclamation-circle"></i>Si vous cliquez sur suprimer le compte est directement suprimmer (il n'ya pas de confirmation) <i class="fas fa-exclamation-circle"></i></h2>
-                    <?php endif; ?>
-                    <form class="pb-2" method="POST" action="">
-                        <div class="form-row mb-2">
-                            <div class="col-10">
-                                <input type="text" name="search_bar" class="form-control" placeholder="Search..." ">
-                            </div>
-                            <div class=" col-2">
-                                <input type="submit" name="submit" class="psm-2 form-control border " value="Search">
-                            </div>
-                        </div>
-                    </form>
 
-                    <?php if(!empty($membres)) : ?>
-                        <table class="table table-bordered text-center font-weight-bold" id="dataTable" width="100%" cellspacing="0">
+                    <?php if(!empty($courses) && !isset($_POST['submit'])) : ?>
+                        <form class="pb-2" method="POST" action="">
+                            <div class="form-row mb-2">
+                                <div class="col-10">
+                                    <input type="text" name="search_bar" class="form-control" placeholder="Search..." ">
+                                </div>
+                                <div class=" col-2">
+                                    <input type="submit" name="submit" class="psm-2 form-control border " value="Search">
+                                </div>
+                            </div>
+                        </form>
+                    <?php endif; ?>
+
+                    <?php if(!empty($courses)) : ?>
+
+                        <table class="table  font-weight-bold text-center table-bordered"  id="dataTable" width="100%" cellspacing="0">
                             <thead class="thead-dark ">
                                 <tr>
-                                    <th style="vertical-align: middle;">Name </th>
-                                    <th style="vertical-align: middle;">E-mail </th>
-                                    <th style="vertical-align: middle;"> Confirmed At :</th>
-                                    <th style="vertical-align: middle;"> Supprimer le membre </th>
+                                    <th>Section </th>
+                                    <th>Titre </th>
+                                    <th>Supprimer un cours </th>
                                 </tr>
                             </thead>
 
-                            <?php foreach($membres as $membre) : ?>
-                            <?php if($membre['role'] == 'user') :?>
-                            
-                            <tr>
-                                <td class="text-capitalize"><?= $membre['name'] ?></td>
-                                
-                                <td><?= $membre['email'] ?></td>
+                            <?php foreach($courses as $course) : ?>
 
-                                <?php if ($membre['confirmed_at']) :?>
-                                <td class="<?php echo 'bg-success' ?> text-white" style="vertical-align: middle;">Confirmé le :
-                                    <?= $membre['confirmed_at'] ?></td>
-                                <?php else : ?>
-                                <td class="<?php echo 'bg-danger' ?> text-white" style="vertical-align: middle;"> Non confirmé</td>
-                                <?php endif; ?>
-                                <td style="vertical-align: middle;" > <a href="suprimermembre.php?id=<?= $membre['id']?>"> <button
-                                            class="btn btn-outline-danger btn-lg pr-4 pl-4"> Suprimmer </button></a></td>
-                                
-                                
-                            </tr>
-                            
-                            <?php endif; ?>
+                                <tr>
+                                    <td class="text-uppercase bg-warning font-weight-bold text-white"><?= $sections[$course['id_section']-1]['nom'] ?></td>
+                                    <td> <?= $course['titre'] ?> </td>
+                                    <td><a href="suprimercours.php?id=<?=$course['id']?>"><button class="btn btn-outline-danger btn-lg"> Supprimer</button></a> </td>
+                                </tr>
 
                             <?php endforeach; ?>
 
                             <tfoot class="thead-dark ">
                                 <tr>
-                                    <th style="vertical-align: middle;">Name </th>
-                                    <th style="vertical-align: middle;">E-mail </th>
-                                    <th style="vertical-align: middle;"> Confirmed At :</th>
-                                    <th style="vertical-align: middle;"> Supprimer le membre </th>
+                                    <th>Section</th>
+                                    <th>Titre </th>
+                                    <th>Supprimer un cours </th>
                                 </tr>
                             </tfoot>
 
                         </table>
 
-                    <?php else : ?>
+                    <?php elseif(empty($courses) && isset($_POST['submit']) ) : ?>
 
                         <br>
 
-                        <div class="text-center bg-danger text-white pb-3 mb-3" style="border-radius:5px;">
+                        <div class="text-center bg-danger text-white pb-3 " style="border-radius:5px;">
                             
-                            <h1 class="display-3 "> <i class="fas fa-exclamation-circle"></i> Aucun membre n'a été trouvé pour la recherche que vous avez effectué </h1>
-                            <a href="suprimermembre.php"> <button class="btn btn-lg btn-outline-light"> Revenir en arriere ? </button></a>
+                            <h1 class="display-3 "> <i class="fas fa-exclamation-circle"></i> Aucun cours n'a été trouvé pour la recherche que vous avez effectué </h1>
+                            <a href="suprimercours.php"> <button class="btn btn-lg btn-outline-light"> Revenir en arriere ? </button></a>
                         </div>
-                    
+
+                    <?php else: ?>
+
+                        <br>
+
+                        <div class="text-center text-warning pb-3 " style="border-radius:5px;">
+                            
+                            <h1 class="display-3 ">  Le site web ne contient aucun cours pour l'instant vous pouvez acceder a l'ajout des cours en cliquant sur le boutton ci-dessous</h1>
+                            <a href="ajoutercours.php"> <button class="btn btn-lg pt-3 pb-3 btn-outline-dark"> Acceder a l'ajout des cours </button></a>
+                        </div>
+                       
+
                     <?php endif; ?>
 
                 </div>
@@ -340,7 +339,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

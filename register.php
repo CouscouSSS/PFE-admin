@@ -204,14 +204,14 @@ else{
                             <legend style="width:auto; letter-spacing: 2px;" class="pr-3 pl-3"> Sign-up </legend>
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="name" id="name" placeholder="Your Name" value="<?php if(isset($name)){
-                                    echo $name;
+                                <input type="text" name="name" id="name" placeholder="Your Name" value="<?php if(isset($_POST['name'])){
+                                    echo $_POST['name'];
                                 } ?>" />
                             </div>
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email" id="email" placeholder="E-mail" value="<?php if(isset($email)){
-                                    echo $email;
+                                <input type="email" name="email" id="email" placeholder="E-mail" value="<?php if(isset($_POST['email'])){
+                                    echo $_POST['email'];
                                 } ?>" />
                             </div>
                             <div class="form-group">

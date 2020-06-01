@@ -74,6 +74,7 @@
                     </div>
                 </li>
             <?php endif; ?>
+            
 
             <?php if($_SESSION['role']=='admin' || $_SESSION['role']=='admin_cours') : ?>
                 <li class="nav-item">
@@ -95,7 +96,6 @@
                 </li>
             <?php endif; ?>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
             <?php if($_SESSION['role']=='admin' || $_SESSION['role']=='admin_cours') : ?>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -110,6 +110,7 @@
                             <a class="collapse-item" href="listecours.php">Liste des cours</a>
                             <a class="collapse-item" href="ajoutercours.php">Ajouter un cours</a>
                             <a class="collapse-item" href="modifiercours.php">Modifier un cours</a>
+                            <a class="collapse-item" href="suprimercours.php">Supprimer un cours</a>
                         </div>
                     </div>
                 </li>
@@ -248,9 +249,9 @@
                         cellspacing="0">
                         <thead class="thead-dark ">
                             <tr>
-                                <th>Nom </th>
-                                <th>Niveau </th>
-                                <th>Objectif</th>
+                                <th style="vertical-align: middle;">Nom </th>
+                                <th style="vertical-align: middle;">Niveau </th>
+                                <th style="vertical-align: middle;">Objectif</th>
                             </tr>
                         </thead>
 
@@ -267,21 +268,22 @@
 
                         <tfoot class="thead-dark ">
                             <tr>
-                                <th>Nom </th>
-                                <th>Niveau </th>
-                                <th>Objectif</th>
+                                <th style="vertical-align: middle;">Nom </th>
+                                <th style="vertical-align: middle;">Niveau </th>
+                                <th style="vertical-align: middle;">Objectif</th>
                             </tr>
                         </tfoot>
 
                     </table>
 
                     <?php else: ?>
-                    <div class="text-center">
-                        <h1 class="display-3 text-dark"> Aucune section n'a été trouvé pour la recherche que vous avez
-                            effectué </h1>
-                        <a href="listecours.php"> <button class="btn btn-lg btn-outline-dark"> Revenir a la liste des
-                                cours ? </button></a>
-                    </div>
+                        <br>
+
+                        <div class="text-center bg-danger text-white pb-3 " style="border-radius:5px;">
+                            
+                            <h1 class="display-3 "> <i class="fas fa-exclamation-circle"></i> Aucune section n'a été trouvé pour la recherche que vous avez effectué </h1>
+                            <a href="listesections.php"> <button class="btn btn-lg btn-outline-light"> Revenir en arriere ?</button></a>
+                        </div>
 
                     <?php endif; ?>
 
@@ -337,12 +339,12 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
     <script src="https://kit.fontawesome.com/6e8ba3d05b.js" crossorigin="anonymous"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
     <script>
-    $(".alert").delay(3000).slideUp(400, function() {
-        $(this).alert('close');
-    });
+        $(".alert").delay(3000).slideUp(400, function() {
+            $(this).alert('close');
+        });
     </script>
 
 </body>

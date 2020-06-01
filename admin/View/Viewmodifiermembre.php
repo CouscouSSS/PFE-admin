@@ -74,6 +74,7 @@
                     </div>
                 </li>
             <?php endif; ?>
+            
 
             <?php if($_SESSION['role']=='admin' || $_SESSION['role']=='admin_cours') : ?>
                 <li class="nav-item">
@@ -95,7 +96,6 @@
                 </li>
             <?php endif; ?>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
             <?php if($_SESSION['role']=='admin' || $_SESSION['role']=='admin_cours') : ?>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -110,6 +110,7 @@
                             <a class="collapse-item" href="listecours.php">Liste des cours</a>
                             <a class="collapse-item" href="ajoutercours.php">Ajouter un cours</a>
                             <a class="collapse-item" href="modifiercours.php">Modifier un cours</a>
+                            <a class="collapse-item" href="suprimercours.php">Supprimer un cours</a>
                         </div>
                     </div>
                 </li>
@@ -247,13 +248,13 @@
                     <?php endif; ?>
 
                     <?php if(!isset($_GET['section'])) : ?>
-                        <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered text-center font-weight-bold" id="dataTable" width="100%" cellspacing="0">
                             <thead class="thead-dark ">
                                 <tr>
-                                    <th>Name </th>
-                                    <th>E-mail </th>
-                                    <th> Confirmed At :</th>
-                                    <th> Modifier le membre</th>
+                                    <th style="vertical-align: middle;">Name </th>
+                                    <th style="vertical-align: middle;">E-mail </th>
+                                    <th style="vertical-align: middle;"> Confirmed At :</th>
+                                    <th style="vertical-align: middle;"> Modifier le membre</th>
                                 </tr>
                             </thead>
 
@@ -261,18 +262,18 @@
                             <?php if($membre['role'] == 'user') :?>
                             
                             <tr>
-                                <td class="text-capitalize"><?= $membre['name'] ?></td>
+                                <td style="vertical-align: middle;" class="text-capitalize"><?= $membre['name'] ?></td>
                                 
-                                <td><?= $membre['email'] ?></td>
+                                <td style="vertical-align: middle;"><?= $membre['email'] ?></td>
 
                                 <?php if ($membre['confirmed_at']) :?>
-                                <td class="<?php echo 'bg-success' ?> text-white">Confirmé le :
+                                <td style="vertical-align: middle;" class="<?php echo 'bg-success' ?> text-white">Confirmé le :
                                     <?= $membre['confirmed_at'] ?></td>
                                 <?php else : ?>
-                                <td class="<?php echo 'bg-danger' ?> text-white"> Non confirmé</td>
+                                <td style="vertical-align: middle;" class="<?php echo 'bg-danger' ?> text-white"> Non confirmé</td>
                                 <?php endif; ?>
-                                <td> <a href="modifiermembre.php?section=edit&id=<?= $membre['id']?>"> <button
-                                            class="btn btn-outline-warning pr-5 pl-5"> Modifer </button></a></td>
+                                <td style="vertical-align: middle;"> <a href="modifiermembre.php?section=edit&id=<?= $membre['id']?>"> <button
+                                            class="btn btn-outline-warning btn-lg pr-5 pl-5"> Modifer </button></a></td>
                                 
                                 
                             </tr>
@@ -386,8 +387,8 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
     <script src="https://kit.fontawesome.com/6e8ba3d05b.js" crossorigin="anonymous"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
     <script>
         $(".alert").delay(3000).slideUp(400, function() {
             $(this).alert('close');
