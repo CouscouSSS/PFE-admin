@@ -232,9 +232,9 @@
                         cellspacing="0">
                         <thead class="thead-dark ">
                             <tr>
-                                <th>Exercice</th>
-                                <th>Cours de l'exercice</th>
-                                <th>Modifier l'exerice</th>
+                                <th style="vertical-align: middle;">Exercice</th>
+                                <th style="vertical-align: middle;">Cours de l'exercice</th>
+                                <th style="vertical-align: middle;">Modifier l'exerice</th>
                             </tr>
                         </thead>
 
@@ -258,9 +258,9 @@
 
                         <tfoot class="thead-dark ">
                             <tr>
-                                <th>Exercice</th>
-                                <th>Cours de l'exercice</th>
-                                <th>Modifier l'exercice</th>
+                                <th style="vertical-align: middle;">Exercice</th>
+                                <th style="vertical-align: middle;">Cours de l'exercice</th>
+                                <th style="vertical-align: middle;">Modifier l'exercice</th>
                             </tr>
                         </tfoot>
 

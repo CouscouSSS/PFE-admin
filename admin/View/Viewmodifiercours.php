@@ -208,14 +208,14 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <?php if(!empty($courses) && !isset($_POST['submit'])) : ?>
+                    
                         <?php if(!isset($_GET['section'])): ?>
                             <div >
                                 <h3 class=" text-center pb-3 font-weight-bold mb-0 text-gray-800"> Voici la liste des cours
                                     disponible maitenant : </h3>
                             </div>
                         <?php endif; ?>
-                    <?php endif; ?>
+                    
 
                     <?php if(isset($_SESSION['flash'])) : ?>
 
@@ -238,18 +238,18 @@
                     <?php endif ?>
                             
                     <?php if(!isset($_GET['section'])) : ?>
-                        <?php if(!empty($courses) && !isset($_POST['submit'])) : ?>
-                            <form method="POST" action="">
-                                <div class="form-row mb-3">
-                                    <div class="col-10">
-                                        <input type="text" name="search_bar" class="form-control" placeholder="Search..." ">
-                                        </div>
-                                        <div class=" col-2">
-                                        <input type="submit" name="submit" class="psm-2 form-control border " value="Search">
-                                    </div>
+                        
+                        <form method="POST" action="">
+                            <div class="form-row mb-3">
+                                <div class="col-10">
+                                    <input type="text" name="search_bar" class="form-control" placeholder="Search..." ">
                                 </div>
-                            </form>
-                        <?php endif; ?>
+                                <div class=" col-2">
+                                    <input type="submit" name="submit" class="psm-2 form-control border " value="Search">
+                                </div>
+                            </div>
+                        </form>
+                        
                    
 
                     <?php if(!empty($courses)) : ?>

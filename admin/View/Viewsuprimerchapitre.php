@@ -208,13 +208,13 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-
-                    <?php if(!empty($chapitres) && !isset($_POST['submit'])) : ?>
                     
                         <h3 class=" text-center pb-3 font-weight-bold mb-0 text-gray-800"> Voici la liste des chapitres disponible maintenant : </h3>
-                    
-                        <h2 class="text-uppercase bg-danger mb-3 text-white text-center"><i class="fas fa-exclamation-circle"></i> Une fois cliquez sur le bouton suprimer le chapitre est suprimer (Il n'ya pas de confirmation)<i class="fas fa-exclamation-circle"></i></h2>
-                    
+
+                        <?php if(!empty($chapitres) && !isset($_POST['submit'])  || !empty($chapitres) && isset($_POST['submit'])) : ?>
+                            <h2 class="text-uppercase bg-danger mb-3 text-white text-center"><i class="fas fa-exclamation-circle"></i> Une fois cliquez sur le bouton suprimer le chapitre est suprimer (Il n'ya pas de confirmation)<i class="fas fa-exclamation-circle"></i></h2>
+                        <?php endif; ?>
+
                         <form class="pb-2" method="POST" action="">
                             <div class="form-row mb-2">
                                 <div class="col-10">
@@ -225,9 +225,7 @@
                                 </div>
                             </div>
                         </form>
-
-                    <?php endif; ?>
-
+                
                     <?php if(!empty($chapitres)) : ?>
 
                         <table class="table  font-weight-bold text-center table-bordered"  id="dtBasicExample" width="100%" cellspacing="0">

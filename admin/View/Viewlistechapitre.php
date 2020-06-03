@@ -209,7 +209,7 @@
 
                     <!-- Page Heading -->
 
-                    <?php if(!empty($chapitres) && !isset($_POST['submit'])) : ?>
+                    
                     <h3 class=" text-center pb-3 font-weight-bold mb-0 text-gray-800"> Voici la liste des chapitres disponible maintenant : </h3>
 
                     <form class="pb-2" method="POST" action="">
@@ -223,7 +223,6 @@
                         </div>
                     </form>
                 
-                    <?php endif; ?>
 
                     <?php if(!empty($chapitres)) : ?>
 
@@ -256,7 +255,7 @@
                                 </tr>
                             </tfoot>
 
-                        </table>
+                        </table> 
 
                     <?php elseif(empty($chapitres) && isset($_POST['submit'])) : ?>
                         

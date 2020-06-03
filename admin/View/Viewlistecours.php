@@ -208,23 +208,23 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <?php if(!empty($courses) && !isset($_POST['submit'])) : ?>
+                    
 
-                        <h3 class=" text-center pb-3 font-weight-bold mb-0 text-gray-800"> Voici la liste des cours
+                    <h3 class=" text-center pb-3 font-weight-bold mb-0 text-gray-800"> Voici la liste des cours
                             disponible maitenant : </h3>
 
-                        <form class="pb-2" method="POST" action="">
-                            <div class="form-row mb-2">
-                                <div class="col-10">
-                                    <input type="text" name="search_bar" class="form-control" placeholder="Search..." ">
-                                </div>
-                                <div class=" col-2">
-                                    <input type="submit" name="submit" class="psm-2 form-control border " value="Search">
-                                </div>
+                    <form class="pb-2" method="POST" action="">
+                        <div class="form-row mb-2">
+                            <div class="col-10">
+                                <input type="text" name="search_bar" class="form-control" placeholder="Search..." ">
                             </div>
-                        </form>
+                            <div class=" col-2">
+                                <input type="submit" name="submit" class="psm-2 form-control border " value="Search">
+                            </div>
+                        </div>
+                    </form>
 
-                    <?php endif; ?>
+                    
 
                     <?php if(!empty($courses)) : ?>
 

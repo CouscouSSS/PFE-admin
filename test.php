@@ -313,7 +313,7 @@ if(isset($_POST['submit'])){
                 
                 <?php $i++; ?>
             
-                <legend class="font-weight-bold text-dark pt-4 pb-4"> <b><?= $i ?> :</b> <?= $question['question'] ?>  </legend>
+                <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b><?= $i ?> :</b> <?= $question['question'] ?>  </legend>
 
                 <?php  $reponse=$question['answer']; ?>
 
@@ -321,14 +321,13 @@ if(isset($_POST['submit'])){
                     <?php if(isset($_POST["a".$i]) && $_POST["a".$i] == "1" ) :  ?>
                         <i class="fas fa-check text-success"></i>
                     <?php endif; ?>
-                <br> 
+                 <br>
 
                 <input type="radio" name="a<?= $i; ?>" value="<?php if($reponse==2) echo 2; else echo 0; ?>"> <b class="font-weight-bold text-secondary "> <?= $question['choix2'] ?> </b>
                     <?php if(isset($_POST["a".$i]) && $_POST["a".$i] == "2" ) : ?>
                         <i class="fas fa-check text-success"></i>
                     <?php endif; ?>
-                <br>
-
+                
 
             <?php endforeach; ?>
 

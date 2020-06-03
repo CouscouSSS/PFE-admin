@@ -210,11 +210,8 @@
                     <!-- Page Heading -->
 
                     <?php if(!isset($_GET['section'])) : ?>
-                        <?php if(!empty($chapitres) && !isset($_POST['submit'])) : ?>
-                        
-                            <h3 class=" text-center pb-3 font-weight-bold mb-0 text-gray-800"> Voici la liste des chapitres disponible maintenant : </h3>
-
-                        <?php endif; ?>
+                                                
+                        <h3 class=" text-center pb-3 font-weight-bold mb-0 text-gray-800"> Voici la liste des chapitres disponible maintenant : </h3>
 
                         <?php if(isset($_SESSION['flash'])) : ?>
 
@@ -236,18 +233,17 @@
 
                         <?php endif; ?>
 
-                        <?php if(!empty($chapitres) && !isset($_POST['submit'])) : ?>
-                            <form class="pb-2" method="POST" action="">
-                                <div class="form-row mb-2">
-                                    <div class="col-10">
-                                        <input type="text" name="search_bar" class="form-control" placeholder="Search..." ">
-                                    </div>
-                                    <div class=" col-2">
-                                        <input type="submit" name="submit" class="psm-2 form-control border " value="Search">
-                                    </div>
+                        
+                        <form class="pb-2" method="POST" action="">
+                            <div class="form-row mb-2">
+                                <div class="col-10">
+                                    <input type="text" name="search_bar" class="form-control" placeholder="Search..." ">
                                 </div>
-                            </form>
-                        <?php endif; ?>
+                                <div class=" col-2">
+                                    <input type="submit" name="submit" class="psm-2 form-control border " value="Search">
+                                </div>
+                            </div>
+                        </form>
 
                         <?php if(!empty($chapitres)) : ?>
 

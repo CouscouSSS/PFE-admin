@@ -208,13 +208,14 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <?php if(!empty($courses) && !isset($_POST['submit'])) : ?>
+                    
 
                         <h3 class=" text-center pb-3 font-weight-bold mb-0 text-gray-800"> Voici la liste des cours disponible maitenant : </h3>
 
+                        <?php if( !empty($courses) && !isset($_POST['submit']) || !empty($courses) && isset($_POST['submit']) ): ?>
                         <h2 class="text-uppercase bg-danger mb-3 text-white text-center"><i class="fas fa-exclamation-circle"></i> Une fois cliquez sur le bouton suprimer le cours est supprimer (Il n'ya pas de confirmation) <i class="fas fa-exclamation-circle"></i></h2>
+                        <?php endif; ?>
                    
-                    <?php endif; ?>
 
                     <?php if(isset($_SESSION['flash'])) : ?>
 
@@ -236,18 +237,18 @@
 
                     <?php endif ?>
 
-                    <?php if(!empty($courses) && !isset($_POST['submit'])) : ?>
-                        <form class="pb-2" method="POST" action="">
-                            <div class="form-row mb-2">
-                                <div class="col-10">
-                                    <input type="text" name="search_bar" class="form-control" placeholder="Search..." ">
-                                </div>
-                                <div class=" col-2">
-                                    <input type="submit" name="submit" class="psm-2 form-control border " value="Search">
-                                </div>
+                   
+                    <form class="pb-2" method="POST" action="">
+                        <div class="form-row mb-2">
+                            <div class="col-10">
+                                <input type="text" name="search_bar" class="form-control" placeholder="Search..." ">
                             </div>
-                        </form>
-                    <?php endif; ?>
+                            <div class=" col-2">
+                                <input type="submit" name="submit" class="psm-2 form-control border " value="Search">
+                            </div>
+                        </div>
+                    </form>
+                   
 
                     <?php if(!empty($courses)) : ?>
 
@@ -263,9 +264,9 @@
                             <?php foreach($courses as $course) : ?>
 
                                 <tr>
-                                    <td class="text-uppercase bg-warning font-weight-bold text-white"><?= $sections[$course['id_section']-1]['nom'] ?></td>
-                                    <td> <?= $course['titre'] ?> </td>
-                                    <td><a href="suprimercours.php?id=<?=$course['id']?>"><button class="btn btn-outline-danger btn-lg"> Supprimer</button></a> </td>
+                                    <td style="vertical-align: middle;" class="text-uppercase bg-warning font-weight-bold text-white"><?= $sections[$course['id_section']-1]['nom'] ?></td>
+                                    <td style="vertical-align: middle;"> <?= $course['titre'] ?> </td>
+                                    <td style="vertical-align: middle;"><a href="suprimercours.php?id=<?=$course['id']?>"><button class="btn btn-outline-danger btn-lg"> Supprimer</button></a> </td>
                                 </tr>
 
                             <?php endforeach; ?>

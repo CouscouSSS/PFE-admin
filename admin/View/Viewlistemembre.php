@@ -208,7 +208,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-
+                    
                     <h3 class=" text-center pb-3 font-weight-bold mb-0 text-gray-800"> Voici la liste des membre inscrit
                         : </h3>
 
