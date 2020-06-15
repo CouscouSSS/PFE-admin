@@ -1,5 +1,12 @@
 <?php
 
+function str_random($lenght){
+
+    $alphabet="0123456789azertyuiopqsdfghjklmwxvbnAZERTYUIOPQSDFGHJKLMWXCVBN";
+
+    return substr(str_shuffle(str_repeat($alphabet,$lenght)),0,$lenght); 
+}
+
 include "../connexion.inc.php";
 session_start();
 
@@ -9,6 +16,7 @@ if($_SESSION['role']!='admin' && $_SESSION['role']!='admin_cours' && $_SESSION['
     header('location: ../index.php');
 
 }
+
 
 $errors=array();
 
@@ -34,16 +42,16 @@ if(isset($_POST['add_admin'])){
         $errors['role']="Le role que vous avez rentré n'est pas valide";
     }
 
-    if(empty($_POST['password']) || !preg_match("/^.{6,}$/",$_POST['password'])){
-        $errors['password']="Veuillez entrez un mot de passe de plus de 6 caractere ou remplire ce champ";
-    }
-  
-    if(empty($_POST['password_confirm']) || ($_POST['password'] != $_POST['password_confirm']) ){
-        $errors['password_confirm']="Les mots de passe ne sont pas identique ou le champ est vide";
-    }
-
     if(empty($errors)){
-        $password=password_hash($_POST['password'],PASSWORD_BCRYPT);
+        $password_admin=str_random(12);
+
+        $to=$_POST['email'];
+        $subject="Identifiant compte administrateur";
+        $message="Bonjour voici le mot de passe de votre compte : ".$password_admin;
+                        
+        mail($to,$subject,$message);
+
+        $password=password_hash($password_admin,PASSWORD_BCRYPT);
         $req=$bdd->prepare("INSERT INTO membre(name,email,password,confirmation_token,confirmed_at,role) VALUES(?,?,?,?,NOW(),?)");
         $req->execute([$_POST['name'],$_POST['email'],$password,NULL,$_POST['role']]);
         $_SESSION['flash']['success']="Votre administrateur a été ajouté avec succées";

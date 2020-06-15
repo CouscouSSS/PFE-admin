@@ -262,17 +262,6 @@
                             <small class="text-danger font-weight-bold">Choix d'administrateur possible : admin_membre ou admin_cours</small>
                         </div>
 
-                        <div class="form-group row">
-                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input type="password" name="password" class="form-control form-control-user"
-                                    placeholder="Entrez le mode de passe de l'administrateur">
-                            </div>
-                            <div class="col-sm-6">
-                                <input type="password" name="password_confirm" class="form-control form-control-user"
-                                    id="exampleRepeatPassword" placeholder="Confirmez le mode de passe de l'administrateur">
-                            </div>
-                        </div>
-
                         <div class="form-group">
                             <button type="submit" name="add_admin" style="border-radius:100px;"
                                 class="btn btn-primary btn-user btn-block"> AJOUTER L'ADMINISTRATEUR </button>
