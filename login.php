@@ -10,9 +10,9 @@ if(!isset($_SESSION['id'])){
         $email=htmlspecialchars($_POST['email']);
         $password= password_hash($_POST['password'],PASSWORD_BCRYPT);
 
-        if(!empty($name) AND !empty($email) AND !empty($password)){
-            $requser = $bdd->prepare("SELECT * FROM membre WHERE name=? AND email=?");
-            $requser->execute(array($name,$email));
+        if(!empty($email) AND !empty($password)){
+            $requser = $bdd->prepare("SELECT * FROM membre WHERE email=?");
+            $requser->execute(array($email));
             $userexist = $requser->rowCount();
             $userinfo = $requser->fetch();
 
@@ -229,13 +229,9 @@ if(!isset($_SESSION['id'])){
                     <a href="register.php" class="signup-image-link btn btn-outline-dark">Create an account</a>
                 </div>
                 <div class="signin-form">
-                    <form method="POST" class="register-form" id="login-form">
+                    <form method="POST" class="register-form pt-3" id="login-form">
                         <fieldset style="border:3px solid black;" class="p-3 border-dark rounded ">
                             <legend style="width:auto; letter-spacing: 1px;" class="pr-3 pl-3 "> Sign-in </legend>
-                            <div class="form-group">
-                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="name" id="name" placeholder="Name" />
-                            </div>
                             <div class="form-group">
                                 <label for="your_mail"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="email" id="your_name" placeholder="E-mail" />
