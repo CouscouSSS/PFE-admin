@@ -207,7 +207,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     
-                    <h2 class="text-center pb-3 font-weight-bold mb-0 text-gray-800"> Ici vous pouvez ajouter un membre: <span class="text-warning">(il serat confirmer automatiquement)</span> </h2>  
+                    <h2 class="text-center pb-3 font-weight-bold mb-0 text-gray-800"> Ici vous pouvez ajouter un membre <span class="text-warning"> <br>(il serat confirmer automatiquement).</span> </h2>  
 
                     <?php if(!empty($errors)) : ?>
                         <div class="alert alert-danger bg-danger ">
@@ -250,19 +250,27 @@
 
                         <div class="form-group">
                             <input type="email" name="email" class="form-control form-control-user"
-                                placeholder="Email Address"
+                                placeholder="Entrer l'adresse email"
                                 value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>" />
                         </div>
 
-                        <div class="form-group row">
-                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input type="password" name="password" class="form-control form-control-user"
-                                    placeholder="Entrez le mode de passe de l'utilisateur">
-                            </div>
-                            <div class="col-sm-6">
-                                <input type="password" name="password_confirm" class="form-control form-control-user"
-                                    id="exampleRepeatPassword" placeholder="Confirmez le mode de passe de l'utilisateur">
-                            </div>
+                        <div class="form-group">
+                            <input type="text" name="date" class="form-control form-control-user"
+                                placeholder="Entrez la date de naissance"
+                                onfocus="(this.type='date')" onblur="(this.type='text')"/>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" name="tel" class="form-control form-control-user"
+                                placeholder="Entrez le numero de telephone"
+                             />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" name="gender" class="form-control form-control-user"
+                                placeholder="Entrez le sexe de l'etudiant"
+                                value="<?php if(isset($_POST['gender'])) echo $_POST['gender']; ?>" />
+                                <small class="text-danger font-weight-bold">*Homme ou Femme </small>
                         </div>
 
                         <div class="form-group">
