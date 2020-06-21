@@ -233,16 +233,16 @@ if(!isset($_SESSION['id'])){
                         <fieldset style="border:3px solid black;" class="p-3 border-dark rounded ">
                             <legend style="width:auto; letter-spacing: 1px;" class="pr-3 pl-3 "> Sign-in </legend>
                             <div class="form-group">
-                                <label for="your_mail"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <label for="your_mail"><i class="fas fa-envelope"></i></label>
                                 <input type="text" name="email" id="your_name" placeholder="E-mail" />
                             </div>
                             <div class="form-group">
-                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                <label for="your_pass"><i class="fas fa-lock"></i></label>
                                 <input type="password" name="password" id="your_pass" placeholder="Password" />
                             </div>
 
                             <div class="text-right">
-                                <a href="recover.php"> Mot de passe oublié ? </a>
+                                <span class="text-primary mb-2"> <i class="fas fa-unlock-alt"></i> </span><a style=" font-family: 'Open Sans', sans-serif; font-size:14px; font-weight:bold;" href="recover.php"> Mot de passe oublié ? </a>
                             </div>
 
                             <?php if(isset($erreur)) : ?>
@@ -250,7 +250,7 @@ if(!isset($_SESSION['id'])){
                             <?php endif; ?>
                             <div class="form-group form-button">
                                 <button class="btn btn-lg btn-outline-dark btn-block" type="submit" name="signin"
-                                    id="signin"><i class="fa fa-sign-in"></i> Login</button>
+                                    id="signin"> Login</button>
                             </div>
                         </fieldset>
                     </form>
@@ -355,6 +355,7 @@ if(!isset($_SESSION['id'])){
     <script src="js/gmaps.min.js"></script>
     <script src="js/theme.js"></script>
     <script src="vendor2/jquery/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/6e8ba3d05b.js" crossorigin="anonymous"></script>
     <script src="js/js-login/main.js"></script>
     <script>
         $(".alert").delay(5000).slideUp(400, function() {
