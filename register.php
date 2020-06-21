@@ -11,45 +11,50 @@ function str_random($lenght){
 
 if(!isset($_SESSION['id'])){
     if(isset($_POST['signup'])){
-        if(!empty($_POST['name']) AND !empty($_POST['email']) AND !empty($_POST['pass']) AND !empty($_POST['re_pass'])){
-            if(isset($_POST['agree-term'])){
-                $email = htmlspecialchars($_POST['email']);
-                $reqmail = $bdd->prepare("SELECT * FROM membre WHERE email=?");
-                $reqmail->execute(array($email));
-                $exist=$reqmail->rowCount();
+        if(!empty($_POST['name']) AND !empty($_POST['email']) AND !empty($_POST['pass']) AND !empty($_POST['re_pass']) AND !empty($_POST['tel'])){
+            if(preg_match("/^(06).+$/",$_POST['tel']) && strlen($_POST['tel'])==10 ){
+                if(isset($_POST['agree-term'])){
+                    $email = htmlspecialchars($_POST['email']);
+                    $reqmail = $bdd->prepare("SELECT * FROM membre WHERE email=?");
+                    $reqmail->execute(array($email));
+                    $exist=$reqmail->rowCount();
+                    
+                    if($exist == 0){
+                        if($_POST['pass'] === $_POST['re_pass']){
+                            $name = htmlspecialchars($_POST['name']);
+                            $pass = password_hash($_POST['pass'],PASSWORD_BCRYPT);
+                            $tel = htmlspecialchars($_POST['tel']);
+                            $token = str_random(60);
+                            $insertmbr = $bdd->prepare("INSERT INTO membre(name,email,phone,password,confirmation_token,role) VALUES(?,?,?,?,?,?)");
 
-                if($exist == 0){
-                    if($_POST['pass'] === $_POST['re_pass']){
-                        $name = htmlspecialchars($_POST['name']);
-                        $pass = password_hash($_POST['pass'],PASSWORD_BCRYPT);
-                        $token = str_random(60);
-                        $insertmbr = $bdd->prepare("INSERT INTO membre(name,email,password,confirmation_token,role) VALUES(?,?,?,?,?)");
+                            $insertmbr->execute(array($name,$email,$tel,$pass,$token,'user'));
+                            $user_id=($bdd->lastInsertId());
 
-                        $insertmbr->execute(array($name,$email,$pass,$token,'user'));
-                        $user_id=($bdd->lastInsertId());
-
-                        $to=$_POST['email'];
-                        $subject="Confirmation de votre compte";
-                        $message="Bonjour afin de confirmer votre compte veuillez cliquez sur le lien suivant http://localhost/pfe-lastversion/confirm.php?id=$user_id&token=$token";
-                        $_SESSION['flash']['success']="Un email de confirmation a été envoyé pour validé votre compte";
-                        
-                        mail($to,$subject,$message);
-                        
-                        header('location:index.php');
-                        exit();
+                            $to=$_POST['email'];
+                            $subject="Confirmation de votre compte";
+                            $message="Bonjour afin de confirmer votre compte veuillez cliquez sur le lien suivant http://localhost/pfe-lastversion/confirm.php?id=$user_id&token=$token";
+                            $_SESSION['flash']['success']="Un email de confirmation a été envoyé pour validé votre compte";
+                            
+                            mail($to,$subject,$message);
+                            
+                            header('location:index.php');
+                            exit();
+                        }
+                        else{
+                            $erreur = "Mots de passes non identiques ";
+                        }
                     }
                     else{
-                        $erreur = "*Mots de passes non identiques ";
+                        $erreur = "Ce Mail a dèja été utilisée ";
                     }
-                }
-                else{
-                    $erreur = "*Ce Mail a dèja été utilisée ";
+                }else{
+                    $erreur ="Veuillez accepter les conditions ";
                 }
             }else{
-            $erreur ="*Veuillez accepter les conditions ";
+                $erreur ="Veuillez entrez un numero de telephone marocain valide ";
             }
         } else {
-            $erreur = "*Tous les champs doivent être complétés ";
+            $erreur = "Tous les champs doivent être complétés ";
         }
     }
 }
@@ -203,35 +208,43 @@ else{
                         <fieldset style="border:3px solid black;" class="p-3 border-dark rounded ">
                             <legend style="width:auto; letter-spacing: 2px;" class="pr-3 pl-3"> Sign-up </legend>
                             <div class="form-group">
-                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="name" id="name" placeholder="Your Name" value="<?php if(isset($_POST['name'])){
+                                <label for="name"><i class="fas fa-user"></i></label>
+                                <input type="text" name="name" id="name" placeholder="Enter your name" value="<?php if(isset($_POST['name'])){
                                     echo $_POST['name'];
                                 } ?>" />
                             </div>
                             <div class="form-group">
-                                <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email" id="email" placeholder="E-mail" value="<?php if(isset($_POST['email'])){
+                                <label for="email"><i class="fas fa-envelope"></i></label>
+                            <input type="email" name="email" id="email" placeholder="Enter your email" value="<?php if(isset($_POST['email'])){
                                     echo $_POST['email'];
                                 } ?>" />
                             </div>
                             <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pass" id="pass" placeholder="Password" />
+                                <label for="tel"><i class="fas fa-phone-alt"></i></label>
+                                <input type="text" name="tel" id="tel" placeholder="Enter your phone number" value="<?php if(isset($_POST['tel'])){
+                                    echo $_POST['tel'];
+                                } ?>" />
                             </div>
                             <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password" />
+                                <label for="pass"><i class="fas fa-lock"></i></label>
+                                <input type="password" name="pass" id="pass" placeholder="Enter your password" />
+                            </div>
+                            <div class="form-group">
+                                <label for="re-pass"><i class="fas fa-lock"></i></label>
+                                <input type="password" name="re_pass" id="re_pass" placeholder="Confirm your password" />
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
                                 <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all
                                     statements in <a href="#" class="term-service">Terms of service</a></label><br>
                                     <?php if(isset($erreur)) : ?>
-                                        <b style="position:relative; top:7px;letter-spacing:1px;" class="text-danger"> <?= $erreur ?> </b>
+                                        <div class="text-center bg-danger mt-3">
+                                        <b style=" font-family: 'Open Sans', sans-serif;" class="text-white  "> <i class="fas fa-exclamation-circle"></i> <?= $erreur ?> <i class="fas fa-exclamation-circle"></i> </b>
+                                        </div>
                                     <?php endif; ?>
                             </div>
                             <div class="form-group form-button">
-                            <button class="btn btn-lg btn-outline-dark btn-block" type="submit" name="signup" id="signup"><i class="fa fa-sign-in"></i> Register </button>
+                            <button class="btn btn-lg btn-outline-dark btn-block" type="submit" name="signup" id="signup"> Register </button>
                             </div>
                     </form>
                 </div>
@@ -338,6 +351,7 @@ else{
     <script src="js/theme.js"></script>
     <script src="vendor2/jquery/jquery.min.js"></script>
     <script src="js/js-login/main.js"></script>
+    <script src="https://kit.fontawesome.com/6e8ba3d05b.js" crossorigin="anonymous"></script>
     <script>
         $(".alert").delay(5000).slideUp(400, function() {
             $(this).alert('close');
