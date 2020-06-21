@@ -224,7 +224,7 @@ img {
 
 figure {
   margin: 0; }
-
+  
 p {
   margin-bottom: 0px;
   font-size: 15px;
@@ -676,6 +676,15 @@ label.valid {
   .social-label {
     margin-right: 0px;
     margin-bottom: 10px; } }
+
+
+    #figure-register {
+      margin:75px;
+    }
+
+    #figure-login {
+      margin:0px;
+    }
 
 
 /*# sourceMappingURL=style.css.map */

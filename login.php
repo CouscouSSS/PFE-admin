@@ -225,7 +225,7 @@ if(!isset($_SESSION['id'])){
         <div class="container-signup" style="margin-bottom:120px;">
             <div class="signin-content">
                 <div class="signin-image">
-                    <figure><img src="img/sign/signin-image.jpg" alt="sing up image"></figure>
+                    <figure id="figure-login"><img src="img/sign/signin-image.jpg" alt="sing up image"></figure>
                     <a href="register.php" class="signup-image-link btn btn-outline-dark">Create an account</a>
                 </div>
                 <div class="signin-form">

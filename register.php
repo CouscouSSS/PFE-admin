@@ -276,7 +276,7 @@ else{
                     </form>
                 </div>
                 <div class="signup-image">
-                    <figure><img src="img/sign/signup-image.jpg" alt="sign up image"></figure>
+                    <figure id="figure-register"><img src="img/sign/signup-image.jpg" alt="sign up image"></figure>
                     <a href="login.php" class="signup-image-link btn btn-outline-dark">I am already member</a>
                 </div>
             </div>
