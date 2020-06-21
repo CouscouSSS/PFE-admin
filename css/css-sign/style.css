@@ -316,6 +316,16 @@ body {
   padding: 75px 0; 
 }
 
+.form-check-inline {
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-left: 0;
+  margin-right: .75rem
+}
+
+
 .signup-form, .signup-image, .signin-form, .signin-image {
   width: 80%;
  }
@@ -632,8 +642,7 @@ label.valid {
   .form-button {
     text-align: center;
   }
-
-
+  
   .signin-form {
     order: 1;
     -moz-order: 1;

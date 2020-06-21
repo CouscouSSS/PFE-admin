@@ -11,7 +11,7 @@ function str_random($lenght){
 
 if(!isset($_SESSION['id'])){
     if(isset($_POST['signup'])){
-        if(!empty($_POST['name']) AND !empty($_POST['email']) AND !empty($_POST['pass']) AND !empty($_POST['re_pass']) AND !empty($_POST['tel'])){
+        if(!empty($_POST['name']) AND !empty($_POST['email']) AND !empty($_POST['pass']) AND !empty($_POST['re_pass']) AND !empty($_POST['tel']) AND !empty($_POST['gender'])){
             if(preg_match("/^(06).+$/",$_POST['tel']) && strlen($_POST['tel'])==10 ){
                 if(isset($_POST['agree-term'])){
                     $email = htmlspecialchars($_POST['email']);
@@ -24,10 +24,11 @@ if(!isset($_SESSION['id'])){
                             $name = htmlspecialchars($_POST['name']);
                             $pass = password_hash($_POST['pass'],PASSWORD_BCRYPT);
                             $tel = htmlspecialchars($_POST['tel']);
+                            $sexe = htmlspecialchars($_POST['gender']);
                             $token = str_random(60);
-                            $insertmbr = $bdd->prepare("INSERT INTO membre(name,email,phone,password,confirmation_token,role) VALUES(?,?,?,?,?,?)");
+                            $insertmbr = $bdd->prepare("INSERT INTO membre(name,email,phone,sexe,password,confirmation_token,role) VALUES(?,?,?,?,?,?,?)");
 
-                            $insertmbr->execute(array($name,$email,$tel,$pass,$token,'user'));
+                            $insertmbr->execute(array($name,$email,$tel,$sexe,$pass,$token,'user'));
                             $user_id=($bdd->lastInsertId());
 
                             $to=$_POST['email'];
@@ -224,6 +225,19 @@ else{
                                 <input type="text" name="tel" id="tel" placeholder="Enter your phone number" value="<?php if(isset($_POST['tel'])){
                                     echo $_POST['tel'];
                                 } ?>" />
+                            </div>
+                            
+                            <div class="form-check-inline mb-3" style="border-bottom: 1px solid #999; width:100%;">
+                                
+                                <span><i class="fas fa-venus-mars"></i></span> 
+                                <div class="mr-3"></div>
+                                <div class="mr-3"></div>
+                                
+                               <input type="radio" name="gender" value="homme" class="form-check-input"> <span style="margin-right:80px;">Homme</span> 
+                               <div class="mr-3"></div>    
+                               <input type="radio" name="gender" value="femme" class="form-check-input"> <span style="margin-right:80px;">Femme</span>    
+                               
+                               
                             </div>
                             <div class="form-group">
                                 <label for="pass"><i class="fas fa-lock"></i></label>
