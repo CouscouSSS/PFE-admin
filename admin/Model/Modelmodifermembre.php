@@ -100,11 +100,20 @@ if(isset($_POST['update_account'])){
             if(!preg_match("/^(06).+$/",$_POST['tel']) || strlen($_POST['tel'])!=10 ){
                 $errors['tel']="Veuillez entrez un numero de telephone marocain valide";
             }else{
-                $tel=htmlentities($_POST['tel']);
-                $req=$bdd->prepare('UPDATE membre SET phone=? WHERE id=?');
-                $req->execute([$tel,$_GET['id']]);
-                $_SESSION['flash']['success']="Votre compte a été modifier avec succes";
-                header('location:modifiermembre.php');
+                $req=$bdd->prepare("SELECT * FROM membre WHERE phone=?");
+                $req->execute([$_POST['tel']]);
+                $ok=$req->rowCount();
+                if(!$ok){
+                    $tel=htmlentities($_POST['tel']);
+                    $req=$bdd->prepare('UPDATE membre SET phone=? WHERE id=?');
+                    $req->execute([$tel,$_GET['id']]);
+                    $_SESSION['flash']['success']="Votre compte a été modifier avec succes";
+                    header('location:modifiermembre.php');
+                }
+                else{
+                    $errors['tel']="Ce numero de telephone apartient un autre etudiant";
+                }
+                
             }
         }
     }
