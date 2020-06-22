@@ -16,9 +16,9 @@ $membres=$req->fetchAll();
 
 if(isset($_POST['submit'])){
     if(!empty($_POST['search_bar'])){
-        $req=$bdd->prepare("SELECT * FROM membre WHERE name LIKE ? or email LIKE ? or confirmed_at LIKE ? ");
+        $req=$bdd->prepare("SELECT * FROM membre WHERE name LIKE ? OR email LIKE ? OR dateofbirth LIKE ? OR sexe LIKE ? or phone LIKE ? or confirmed_at LIKE ? ");
         $searchbar='%'.$_POST['search_bar'].'%'; 
-        $req->execute(array($searchbar,$searchbar,$searchbar));
+        $req->execute(array($searchbar,$searchbar,$searchbar,$searchbar,$searchbar,$searchbar));
         $membres=$req->fetchAll();
     }else{
         $req=$bdd->query("SELECT * FROM membre ");

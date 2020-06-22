@@ -252,6 +252,9 @@
                                 <tr>
                                     <th style="vertical-align: middle;">Name </th>
                                     <th style="vertical-align: middle;">E-mail </th>
+                                    <th style="vertical-align: middle;">Date de naissance </th>
+                                    <th style="vertical-align: middle;">Telephone </th>
+                                    <th style="vertical-align: middle;">Sexe </th>
                                     <th style="vertical-align: middle;"> Confirmed At :</th>
                                     <th style="vertical-align: middle;"> Supprimer le membre </th>
                                 </tr>
@@ -261,18 +264,22 @@
                             <?php if($membre['role'] == 'user') :?>
                             
                             <tr>
-                                <td class="text-capitalize"><?= $membre['name'] ?></td>
-                                
-                                <td><?= $membre['email'] ?></td>
-
+                                <td class="text-capitalize" style="vertical-align: middle;"><?= $membre['name'] ?></td>
+                                <td class="text-capitalize" style="vertical-align: middle;"><?= $membre['email'] ?></td>
+                                <td style="vertical-align: middle;"><?= $membre['dateofbirth'] ?></td>
+                                <td style="vertical-align: middle;"><?= $membre['phone'] ?></td>
+                                <td style="vertical-align: middle;"><?= $membre['sexe'] ?></td>
                                 <?php if ($membre['confirmed_at']) :?>
-                                <td class="<?php echo 'bg-success' ?> text-white" style="vertical-align: middle;">Confirmé le :
+                                <td class="<?php echo 'bg-success'?> text-white " style="vertical-align: middle;">Confirmé le :
                                     <?= $membre['confirmed_at'] ?></td>
                                 <?php else : ?>
                                 <td class="<?php echo 'bg-danger' ?> text-white" style="vertical-align: middle;"> Non confirmé</td>
                                 <?php endif; ?>
-                                <td style="vertical-align: middle;" > <a href="suprimermembre.php?id=<?= $membre['id']?>"> <button
-                                            class="btn btn-outline-danger btn-lg pr-4 pl-4"> Suprimmer </button></a></td>
+                                <td style="vertical-align: middle;" > 
+                                    <a href="suprimermembre.php?id=<?= $membre['id']?>"> 
+                                        <button class="btn btn-outline-danger btn-lg pr-4 pl-4"> Suprimmer </button>
+                                    </a>
+                                </td>
                                 
                                 
                             </tr>
@@ -285,6 +292,9 @@
                                 <tr>
                                     <th style="vertical-align: middle;">Name </th>
                                     <th style="vertical-align: middle;">E-mail </th>
+                                    <th style="vertical-align: middle;">Date de naissance </th>
+                                    <th style="vertical-align: middle;">Telephone </th>
+                                    <th style="vertical-align: middle;">Sexe </th>
                                     <th style="vertical-align: middle;"> Confirmed At :</th>
                                     <th style="vertical-align: middle;"> Supprimer le membre </th>
                                 </tr>
