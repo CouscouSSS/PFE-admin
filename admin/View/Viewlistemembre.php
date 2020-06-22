@@ -258,22 +258,23 @@
                             </thead>
 
                             <?php foreach($membres as $membre) : ?>
-                            <?php if($membre['role'] == 'user') :?>
+                                <?php if($membre['role'] == 'user') :?>
 
-                            <tr>
-                                <td class="text-capitalize" style="vertical-align: middle;"><?= $membre['name'] ?></td>
-                                <td class="text-capitalize" style="vertical-align: middle;"><?= $membre['email'] ?></td>
-                                <td style="vertical-align: middle;"><?= $membre['dateofbirth'] ?></td>
-                                <td style="vertical-align: middle;"><?= $membre['phone'] ?></td>
-                                <td style="vertical-align: middle;"><?= $membre['sexe'] ?></td>
-                                <?php if ($membre['confirmed_at']) :?>
-                                <td class="<?php echo 'bg-success'?> text-white " style="vertical-align: middle;">Confirmé le :
-                                    <?= $membre['confirmed_at'] ?></td>
-                                <?php else : ?>
-                                <td class="<?php echo 'bg-danger' ?> text-white" style="vertical-align: middle;"> Non confirmé</td>
+                                    <tr>
+                                        <td class="text-capitalize" style="vertical-align: middle;"><?= $membre['name'] ?></td>
+                                        <td class="text-capitalize" style="vertical-align: middle;"><?= $membre['email'] ?></td>
+                                        <td style="vertical-align: middle;"><?= $membre['dateofbirth'] ?></td>
+                                        <td style="vertical-align: middle;"><?= $membre['phone'] ?></td>
+                                        <td style="vertical-align: middle;"><?= $membre['sexe'] ?></td>
+                                        <?php if ($membre['confirmed_at']) :?>
+                                        <td class="<?php echo 'bg-success'?> text-white " style="vertical-align: middle;">Confirmé le :
+                                            <?= $membre['confirmed_at'] ?></td>
+                                        <?php else : ?>
+                                        <td class="<?php echo 'bg-danger' ?> text-white" style="vertical-align: middle;"> Non confirmé</td>
+                                        <?php endif; ?>
+                                    </tr>
+
                                 <?php endif; ?>
-                            </tr>
-                            <?php endif; ?>
 
                             <?php endforeach; ?>
 

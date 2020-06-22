@@ -253,41 +253,47 @@
                                 <tr>
                                     <th style="vertical-align: middle;">Name </th>
                                     <th style="vertical-align: middle;">E-mail </th>
-                                    <th style="vertical-align: middle;"> Confirmed At :</th>
-                                    <th style="vertical-align: middle;"> Modifier le membre</th>
+                                    <th style="vertical-align: middle;">Date de naissance </th>
+                                    <th style="vertical-align: middle;">Telephone </th>
+                                    <th style="vertical-align: middle;">Sexe </th>
+                                    <th style="vertical-align: middle;">Confirmed At :</th>
+                                    <th style="vertical-align: middle;">Modifer etudiant</th>
                                 </tr>
                             </thead>
 
                             <?php foreach($membres as $membre) : ?>
-                            <?php if($membre['role'] == 'user') :?>
-                            
-                            <tr>
-                                <td style="vertical-align: middle;" class="text-capitalize"><?= $membre['name'] ?></td>
                                 
-                                <td style="vertical-align: middle;"><?= $membre['email'] ?></td>
-
-                                <?php if ($membre['confirmed_at']) :?>
-                                <td style="vertical-align: middle;" class="<?php echo 'bg-success' ?> text-white">Confirmé le :
-                                    <?= $membre['confirmed_at'] ?></td>
-                                <?php else : ?>
-                                <td style="vertical-align: middle;" class="<?php echo 'bg-danger' ?> text-white"> Non confirmé</td>
+                                <?php if($membre['role'] == 'user') :?>
+                                
+                                    <tr>
+                                        <td class="text-capitalize" style="vertical-align: middle;"><?= $membre['name'] ?></td>
+                                        <td class="text-capitalize" style="vertical-align: middle;"><?= $membre['email'] ?></td>
+                                        <td style="vertical-align: middle;"><?= $membre['dateofbirth'] ?></td>
+                                        <td style="vertical-align: middle;"><?= $membre['phone'] ?></td>
+                                        <td style="vertical-align: middle;"><?= $membre['sexe'] ?></td>
+                                        <?php if ($membre['confirmed_at']) :?>
+                                        <td class="<?php echo 'bg-success'?> text-white " style="vertical-align: middle;">Confirmé le :
+                                            <?= $membre['confirmed_at'] ?></td>
+                                        <?php else : ?>
+                                        <td class="<?php echo 'bg-danger' ?> text-white" style="vertical-align: middle;"> Non confirmé</td>
+                                        <?php endif; ?>
+                                        <td style="vertical-align: middle;"> <a href="modifiermembre.php?section=edit&id=<?= $membre['id']?>"> <button
+                                                class="btn btn-outline-warning btn-lg pr-5 pl-5"> Modifer </button></a></td>
+                                    </tr>
+                                
                                 <?php endif; ?>
-                                <td style="vertical-align: middle;"> <a href="modifiermembre.php?section=edit&id=<?= $membre['id']?>"> <button
-                                            class="btn btn-outline-warning btn-lg pr-5 pl-5"> Modifer </button></a></td>
-                                
-                                
-                            </tr>
-                            
-                            <?php endif; ?>
 
                             <?php endforeach; ?>
 
                             <tfoot class="thead-dark ">
                                 <tr>
-                                    <th>Name </th>
-                                    <th>E-mail </th>
-                                    <th> Confirmed At :</th>
-                                    <th> Modifier le membre</th>
+                                    <th style="vertical-align: middle;">Name </th>
+                                    <th style="vertical-align: middle;">E-mail </th>
+                                    <th style="vertical-align: middle;">Date de naissance </th>
+                                    <th style="vertical-align: middle;">Telephone </th>
+                                    <th style="vertical-align: middle;">Sexe </th>
+                                    <th style="vertical-align: middle;">Confirmed At :</th>
+                                    <th style="vertical-align: middle;">Modifer etudiant</th>
                                 </tr>
                             </tfoot>
 
@@ -300,7 +306,7 @@
                             $req->execute([$user_id]);
                             $userinfo=$req->fetch();
                         ?>
-                        <h2 class="font-weight-bold pb-3 pl-3"> Modification des information personnel de l'utilisateur <b class="text-capitalize text-danger"><?= $userinfo['name'] ?>.</b> : </h2>
+                        <h2 class="font-weight-bold pb-3 pl-3 "> Modification des information personnel de l'utilisateur <b class="text-capitalize text-danger"><?= $userinfo['name'] ?>.</b> : </h2>
                         
                         <?php if(!empty($errors)) : ?>
                             <div class="alert alert-danger bg-danger ">
@@ -315,17 +321,40 @@
                         <?php endif; ?>
 
                         <form action="" method="POST" >
-
-                            <div class="form-group">
-                                <input type="text" name="name" class="form-control form-control-user" placeholder="Modifier le nom de l'etudiant "
-                                    value="<?php if(isset($_POST['name'])) echo $_POST['name']; ?>" />
+                            
+                            <div class="form-group ">
+                                <label for="nom" class="font-weight-bold text-dark"> Nom : </label>
+                                <input type="text" name="name" id="nom" class="form-control form-control-user" placeholder="Modifier le nom de l'etudiant "
+                                    value="<?php echo $userinfo['name']; ?>" />
                             </div>
 
                             <div class="form-group">
-                                <input type="email" name="email" class="form-control form-control-user"
-                                    placeholder="Modifier l'email de l'etudiant"
-                                    value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>" />
+                                <label for="email" class="font-weight-bold text-dark"> Email : </label>
+                                <input type="email" id="email" name="email" class="form-control form-control-user"
+                                    placeholder="Modifier l'email de l'etudiant" value="<?php echo $userinfo['email']; ?>" />
                             </div>
+
+                            <div class="form-group">
+                                <label for="date" class="font-weight-bold text-dark"> Date de naissance : </label>
+                                <input type="date" id="date" name="date" class="form-control form-control-user"
+                                placeholder="Modifier la date de naissance" value="<?php echo $userinfo['dateofbirth']; ?>">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tel" class="font-weight-bold text-dark"> Numero de telephone : </label>
+                            <input type="text" id="tel" name="tel" class="form-control form-control-user"
+                                placeholder="Modifier le numero de telephone"
+                                value="<?php echo $userinfo['phone']; ?>"
+                             />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender" class="font-weight-bold text-dark"> Sexualité de l'étudiant : </label>
+                            <input type="text" id="gender" name="gender" class="form-control form-control-user"
+                                placeholder="Modifier le sexe de l'etudiant"
+                                value="<?php echo $userinfo['sexe']; ?>" />
+                                <small class="text-danger font-weight-bold">*Homme ou Femme </small>
+                        </div>
 
                             <div class="form-group">
                                 <button type="submit" name="update_account" style="border-radius:100px;"
