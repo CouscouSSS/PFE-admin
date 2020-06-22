@@ -98,7 +98,7 @@ if(isset($_POST['update_account'])){
     if(!empty($_POST['tel'])){
         if($_POST['tel']!=$membre['phone']){
             if(!preg_match("/^(06).+$/",$_POST['tel']) || strlen($_POST['tel'])!=10 ){
-                $errors['tel']="Veuillez entrez un numero de telephone marocain valide";
+                $errors['tel']="Veuillez entrez un numero de telephone marocain valide (commencant par 06 et contient 10 chiffre)";
             }else{
                 $req=$bdd->prepare("SELECT * FROM membre WHERE phone=?");
                 $req->execute([$_POST['tel']]);
