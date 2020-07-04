@@ -319,28 +319,25 @@
                             </div>
                         <?php endif; ?>
 
-                        
-
                     <form action="" method="POST">
 
                         <div class="form-group">
                         <h3 class="font-weight-bold font-size my-1 mr-2 text-dark" > Modifier le nom de la section : </h3>
                             <input type="text" name="nom" class="form-control form-control-user"
-                                placeholder="Modifier le nom de la section"
-                                value="<?=$section['nom'];?>" />
+                                placeholder="Modifier le nom de la section" value="<?=$sections['nom']?>" />
                         </div>
 
                         <div class="form-group">
                         <h3 class="font-weight-bold font-size my-1 mr-2 text-dark" > Modifier le niveau de la  section : </h3>
                             <input type="text" name="niveau" class="form-control form-control-user"
                                 placeholder="Modifier le niveau de la section"
-                                value="<?php if(isset($_POST['niveau'])) echo $_POST['niveau']; ?>" />
+                                value="<?=$sections['niveau']?>" />
                         </div>
 
                         <div class="form-group">
                         <h3 class="font-weight-bold font-size my-1 mr-2 text-dark" > Modifier l'objectif de la section : </h3>
                         <textarea name="objectif" class="form-control" id="exampleFormControlTextarea1" rows="3" 
-                        placeholder="Modifier l'objectif de la section" value="<?php if(isset($_POST['objectif'])) echo $_POST['objectif'];?>"></textarea>
+                        placeholder="Modifier l'objectif de la section"><?=$sections['objectif']?></textarea>
                             
                         </div>
 

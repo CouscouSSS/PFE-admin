@@ -28,8 +28,6 @@ if(isset($_POST['submit'])){
 
 $errors=array();
 
-
-
 if(isset($_POST['update_account'])){
 
     $req=$bdd->prepare("SELECT name,email,dateofbirth,phone,sexe FROM membre WHERE id=?");
