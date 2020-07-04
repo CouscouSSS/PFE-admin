@@ -324,21 +324,21 @@
                     <form action="" method="POST">
 
                         <div class="form-group">
-                        <h3 class="font-weight-bold font-size my-1 mr-2 text-dark" for="inlineFormCustomSelectPref"> Modifier le nom de la section : </h3>
+                        <h3 class="font-weight-bold font-size my-1 mr-2 text-dark" > Modifier le nom de la section : </h3>
                             <input type="text" name="nom" class="form-control form-control-user"
                                 placeholder="Modifier le nom de la section"
-                                value="<?php if(isset($_POST['nom'])) echo $_POST['nom']; ?>" />
+                                value="<?=$section['nom'];?>" />
                         </div>
 
                         <div class="form-group">
-                        <h3 class="font-weight-bold font-size my-1 mr-2 text-dark" for="inlineFormCustomSelectPref"> Modifier le niveau de la  section : </h3>
+                        <h3 class="font-weight-bold font-size my-1 mr-2 text-dark" > Modifier le niveau de la  section : </h3>
                             <input type="text" name="niveau" class="form-control form-control-user"
                                 placeholder="Modifier le niveau de la section"
                                 value="<?php if(isset($_POST['niveau'])) echo $_POST['niveau']; ?>" />
                         </div>
 
                         <div class="form-group">
-                        <h3 class="font-weight-bold font-size my-1 mr-2 text-dark" for="inlineFormCustomSelectPref"> Modifier l'objectif de la section : </h3>
+                        <h3 class="font-weight-bold font-size my-1 mr-2 text-dark" > Modifier l'objectif de la section : </h3>
                         <textarea name="objectif" class="form-control" id="exampleFormControlTextarea1" rows="3" 
                         placeholder="Modifier l'objectif de la section" value="<?php if(isset($_POST['objectif'])) echo $_POST['objectif'];?>"></textarea>
                             
