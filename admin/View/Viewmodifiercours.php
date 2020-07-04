@@ -379,19 +379,19 @@
                         <div class="form-group">
                             <input type="text" name="titre" class="form-control form-control-user"
                                 placeholder="Modifier titre du cours"
-                                value="<?php if(isset($_POST['titre'])) echo $_POST['titre']; ?>" />
+                                value="<?= $courses['titre'];?>" />
                         </div>
 
                         <div class="form-group">
                             <input type="text" name="sous_titre" class="form-control form-control-user"
                                 placeholder="Modifier le sous-titre du cours "
-                                value="<?php if(isset($_POST['sous_titre'])) echo $_POST['sous_titre']; ?>" />
+                                value="<?= $courses['sous_titre'];?>" />
                         </div>
 
                         <div class="form-group">
                             <input type="text" name="img" class="form-control form-control-user"
                                 placeholder="Modifier l'image ulistratif du cours "
-                                value="<?php if(isset($_POST['img'])) echo $_POST['img']; ?>" />
+                                value="<?= $courses['img'];?>" />
                         </div>
 
                         <div class="form-group">
