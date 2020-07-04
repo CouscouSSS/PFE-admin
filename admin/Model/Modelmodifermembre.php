@@ -48,7 +48,7 @@ if(isset($_POST['update_account'])){
             if(!preg_match("/^[a-zA-Z]+$/",$_POST['name'])){
                 $errors['name']="Veuillez entrez un nom valide";
             }else{
-                $name=htmlentities( $_POST['name']);
+                $name=htmlentities($_POST['name']);
                 $req=$bdd->prepare("UPDATE membre SET name=? WHERE id=?");
                 $req->execute([$name,$_GET['id']]);
                 $_SESSION['flash']['success']="Votre compte a été modifier avec succes";

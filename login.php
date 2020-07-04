@@ -6,9 +6,9 @@ if(!isset($_SESSION['id'])){
 
     if(isset($_POST['signin'])){
         
-        $name=htmlspecialchars($_POST['name']);
+       
         $email=htmlspecialchars($_POST['email']);
-        $password= password_hash($_POST['password'],PASSWORD_BCRYPT);
+        $password=password_hash($_POST['password'],PASSWORD_BCRYPT);
 
         if(!empty($email) AND !empty($password)){
             $requser = $bdd->prepare("SELECT * FROM membre WHERE email=?");
@@ -110,8 +110,6 @@ if(!isset($_SESSION['id'])){
 </head>
 
 <body>
-
-
 
     <!--================ Start Header Menu Area =================-->
     <header class="header_area">
