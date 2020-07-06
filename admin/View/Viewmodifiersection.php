@@ -305,7 +305,7 @@
                         ?>
 
                         <h3 class="font-weight-bold  text-center pb-3">Vous etes entrain de modier maintenant les
-                        information de la sections : <br> <b class="text-danger"><?= $sections['nom'] ?>.</b></h3>
+                        information de la section : <br> <b class="text-danger"><?= $sections['nom'] ?>.</b></h3>
 
                         <?php if(!empty($errors)) : ?>
                             <div class="alert alert-danger bg-danger ">
