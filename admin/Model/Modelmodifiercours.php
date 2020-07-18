@@ -58,77 +58,71 @@
     
     if(isset($_POST['update_course'])){
         $errors=array();
-        
-        if(empty($_POST['titre']) && empty($_POST['sous_titre']) && empty($_POST['img']) ){
-            $errors['empty']="Il faut au moins modifier un seul champ pour pouvoir modifer un cours";
+
+        $req=$bdd->prepare("SELECT * FROM cours WHERE id =?");
+        $req->execute([$_GET['id']]);
+        $coursinfo=$req->fetch();
+
+        //Verification si un changement a été fait
+        if($_POST['titre']==$coursinfo['titre'] && $_POST['sous_titre']==$coursinfo['sous_titre'] && $_POST['img']==$coursinfo['img']){
+            $errors['nochange']="Il faut au moins modifier un champ pour pouvoir modifier les informations d'une section";
         }
 
+        //modification du titre du cours
         if(!empty($_POST['titre'])){
-            $req=$bdd->prepare("SELECT * FROM cours WHERE titre=?");
-            $req->execute([$_POST['titre']]);
-            $ok=$req->rowCount();
-            if($ok){
-                $errors['titre']="Ce titre de cours existe déja vous ne pouvez pas l'utiliser";
-            }else{
-                $id=htmlentities($_GET['id']); 
-                $req=$bdd->prepare("UPDATE cours SET titre=? WHERE id=?");
-                $req->execute([$_POST['titre'],$id]);
-                $_SESSION['flash']['success']="Le cours a été modifier avec succes";
-                header('location: modifiercours.php');
-                exit();
+            if($_POST['titre']!=$coursinfo['titre']){
+                $req=$bdd->prepare("SELECT * FROM cours WHERE titre=?");
+                $req->execute([$_POST['titre']]);
+                $ok=$req->rowCount();
+                if($ok){
+                    $errors['titre']="Ce titre de cours existe déja vous ne pouvez pas l'utiliser";
+                }else{
+                    $id=htmlentities($_GET['id']); 
+                    $req=$bdd->prepare("UPDATE cours SET titre=? WHERE id=?");
+                    $req->execute([$_POST['titre'],$id]);
+                    $_SESSION['flash']['success']="Le cours a été modifier avec succes";
+                    header('location: modifiercours.php');
+                }
             }
         }
 
+        //Modification du niveau de la section
         if(!empty($_POST['sous_titre'])){
-            $req=$bdd->prepare("SELECT * FROM cours WHERE sous_titre=?");
-            $req->execute([$_POST['sous_titre']]);
-            $ok=$req->rowCount();
-            if($ok){
-                $errors['titre']="Ce sous-titre de cours existe déja vous ne pouvez pas l'utiliser";
-            }else{
-                $id=htmlentities($_GET['id']); 
-                $req=$bdd->prepare("UPDATE cours SET sous_titre=? WHERE id=?");
-                $req->execute([$_POST['sous_titre'],$id]);
-                $_SESSION['flash']['success']="Le cours a été modifier avec succes";
-                header('location: modifiercours.php');
-                exit();
+            if($_POST['sous_titre']!=$coursinfo['sous_titre']){
+                $req=$bdd->prepare("SELECT * FROM cours WHERE sous_titre=?");
+                $req->execute([$_POST['sous_titre']]);
+                $ok=$req->rowCount();
+                if($ok){
+                    $errors['sous_titre']="Ce sous-titre de cours existe déja vous ne pouvez pas l'utiliser";
+                }else{
+                    $id=htmlentities($_GET['id']); 
+                    $req=$bdd->prepare("UPDATE cours SET sous_titre=? WHERE id=?");
+                    $req->execute([$_POST['sous_titre'],$id]);
+                    $_SESSION['flash']['success']="Le cours a été modifier avec succes";
+                    header('location: modifiercours.php');
+                }
             }
         }
 
+        //Modification de l'image ilustratif de cours
         if(!empty($_POST['img'])){
-            $req=$bdd->prepare("SELECT * FROM cours WHERE img=?");
-            $req->execute([$_POST['img']]);
-            $ok=$req->rowCount();
-            if($ok){
-                $errors['sous_titre']="Cette image apartient a un autre cours vous ne pouvez pas l'utiliser";
-            }else{
-                $id=htmlentities($_GET['id']); 
-                $req=$bdd->prepare("UPDATE cours SET img=? WHERE id=?");
-                $req->execute([$_POST['img'],$id]);
-                $_SESSION['flash']['success']="Le cours a été modifier avec succes";
-                header('location: modifiercours.php');
-                exit();
+            if($_POST['img']!=$coursinfo['img']){
+                $req=$bdd->prepare("SELECT * FROM cours WHERE img=?");
+                $req->execute([$_POST['img']]);
+                $ok=$req->rowCount();
+                if($ok){
+                    $errors['img']="Cette image apartient a un autre cours vous ne pouvez pas l'utiliser";
+                }else{
+                    $id=htmlentities($_GET['id']); 
+                    $req=$bdd->prepare("UPDATE cours SET img=? WHERE id=?");
+                    $req->execute([$_POST['img'],$id]);
+                    $_SESSION['flash']['success']="Le cours a été modifier avec succes";
+                    header('location: modifiercours.php');
+                }
             }
         }
 
-    }
 
-    if(isset($_POST['update_soustitre'])){
-        $id=htmlentities($_GET['id']); 
-        $req=$bdd->prepare("UPDATE cours SET sous_titre=? WHERE id=?");
-        $req->execute(['',$id]);
-        $_SESSION['flash']['success']="Le cours a été modifier avec succes";
-        header('location: modifiercours.php');
-        exit();
-    }
-
-    if(isset($_POST['update_img'])){
-        $id=htmlentities($_GET['id']); 
-        $req=$bdd->prepare("UPDATE cours SET img=? WHERE id=?");
-        $req->execute(['',$id]);
-        $_SESSION['flash']['success']="Le cours a été modifier avec succes";
-        header('location: modifiercours.php');
-        exit();
     }
 
 

@@ -377,18 +377,21 @@
                     <form action="" method="POST">
 
                         <div class="form-group">
+                            <h3 class="font-weight-bold font-size my-1 mr-2 text-dark">Modifier le titre du cours :</h3>
                             <input type="text" name="titre" class="form-control form-control-user"
                                 placeholder="Modifier titre du cours"
                                 value="<?= $courses['titre'];?>" />
                         </div>
 
                         <div class="form-group">
+                            <h3 class="font-weight-bold font-size my-1 mr-2 text-dark">Modifier le sous-titre du cours :</h3>
                             <input type="text" name="sous_titre" class="form-control form-control-user"
                                 placeholder="Modifier le sous-titre du cours "
                                 value="<?= $courses['sous_titre'];?>" />
                         </div>
 
                         <div class="form-group">
+                            <h3 class="font-weight-bold font-size my-1 mr-2 text-dark">Modifier l'image ilustratif du cours :</h3>
                             <input type="text" name="img" class="form-control form-control-user"
                                 placeholder="Modifier l'image ulistratif du cours "
                                 value="<?= $courses['img'];?>" />
@@ -397,22 +400,6 @@
                         <div class="form-group">
                             <button type="submit" name="update_course" style="border-radius:100px;"
                                 class="btn btn-primary btn-user btn-block"> Modifier les informations du cours </button>
-                        </div>
-
-
-                        <div class="form-group pt-3">
-                            <h3 class="text-center font-weight-bold"> Cliquez ici si vous voulez enlever le sous titre :
-                            </h3>
-                            <button type="submit" name="update_soustitre" style="border-radius:100px;"
-                                class="btn btn-primary btn-user btn-block"> Suprimer le sous titre du cours </button>
-                        </div>
-
-                        <div class="form-group pt-3">
-                            <h3 class="text-center font-weight-bold"> Cliquez ici si vous voulez enlever l'image
-                                ilustratif :</h3>
-                            <button type="submit" name="update_img" style="border-radius:100px;"
-                                class="btn btn-primary btn-user btn-block"> Suprimer l'image ilustratif du cours
-                            </button>
                         </div>
 
                     </form>

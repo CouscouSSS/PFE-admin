@@ -46,9 +46,10 @@ if(isset($_GET['id'])){
     }
 }
 
-$errors=array();
+
 
 if(isset($_POST['update_section'])){
+    $errors=array();
     
     $req=$bdd->prepare("SELECT * FROM section WHERE id =?");
     $req->execute([$_GET['id']]);
