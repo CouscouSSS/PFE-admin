@@ -338,12 +338,12 @@
                                 <h2 class="text-gray font-weight-bold">Ici vous pouvez modifier le titre du chapitre :</h2>
                                 <input type="text" name="titre" class="form-control form-control-user"
                                     placeholder="Modifier titre du chapitre"
-                                    value="<?php if(isset($_POST['titre'])) echo $_POST['titre']; ?>" />
+                                    value="<?=$chapitre['titre']?>" />
                             </div>
 
                             <div class="form-group">
                                 <h2 class="text-gray font-weight-bold">Ici vous pouvez modifier le contenue du chapitre:</h2>
-                                <textarea name="contenue" class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Ajouter ici le nouveau contenue du chapitre "></textarea>
+                                <textarea name="contenue" class="form-control" id="exampleFormControlTextarea1" rows="15" placeholder="Ajouter ici le nouveau contenue du chapitre"><?=$chapitre['contenue']?></textarea>
                             </div>
 
                             <div class="form-group">

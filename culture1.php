@@ -122,11 +122,6 @@ if($score == 10){
     </style>
 
 
-
-
-
-
-
 </head>
 
 <body>
@@ -134,6 +129,7 @@ if($score == 10){
     <?php if(isset($_SESSION['flash'])) : ?>
 
     <?php foreach($_SESSION['flash'] as $type => $message):?>
+    
 
         <div class="alert fade show alert-<?= $type ?>">
             <div style="font-family:Rubik,sans-serif;"
