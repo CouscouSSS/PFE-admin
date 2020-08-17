@@ -123,7 +123,10 @@ session_start();
     <!--================End Home Banner Area =================-->
 
     <!--================Contact Area =================-->
-    <section class="contact_area section_gap">
+    <section class="contact_area">
+        <br>
+        <h1 class="text-center">Contact Us</h1>
+        <br>
         <div class="container">
             <div id="mapBox" class="mapBox" data-lat="34.001438" data-lon="-6.847849" data-zoom="13"
                 data-info="PO Box CT16122 Collins Street West, Victoria 8007, Australia." data-mlat="34.001438"
