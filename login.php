@@ -47,6 +47,9 @@ if(!isset($_SESSION['id'])){
                     $_SESSION['id'] = $userinfo['id'];
                     $_SESSION['email'] = $userinfo['email'];
                     $_SESSION['name'] = $userinfo['name'];
+                    $_SESSION['birth'] = $userinfo['dateofbirth'];
+                    $_SESSION['phone'] = $userinfo['phone'];
+                    $_SESSION['sexe'] = $userinfo['sexe'];
                     $_SESSION['flash']['success']="Vous etes maintenant connecté";
                     header('location:index.php?id='.$_SESSION['id']);
                     exit();    

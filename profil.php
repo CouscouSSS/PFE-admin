@@ -330,6 +330,18 @@ if(isset($_POST['annuler'])){
                         <h4 class="text-warning font-weight-bold"> Your email : <b class="text-dark text-uppercase">
                                 <?= $_SESSION['email']; ?> </b> 
                         </h4>
+
+                        <h4 class="text-warning font-weight-bold"> Your birthday : <b class="text-dark text-uppercase">
+                                <?= $_SESSION['birth']; ?> </b> 
+                        </h4>
+
+                        <h4 class="text-warning font-weight-bold"> Your phone : <b class="text-dark text-uppercase">
+                                <?= $_SESSION['phone']; ?> </b> 
+                        </h4>
+
+                        <h4 class="text-warning font-weight-bold"> Your sex : <b class="text-dark text-uppercase">
+                                <?= $_SESSION['sexe']; ?> </b> 
+                        </h4>
                     
                         <div>
                             <h1 class="mt-4 text-center">Advancement in courses : </h1>
