@@ -3,6 +3,13 @@ session_start();
 
 include "connexion.inc.php";
 
+if(isset($_SESSION['role'])){
+    if($_SESSION['role']=="admin" || $_SESSION['role']=="admin_cours"){
+        header('Location:admin/index.php');
+        $_SESSION['flash']['danger']="Vous ne pouvez pas accéder au site avec votre compte administrateur";
+        exit();
+    }
+}
 
 if (!isset($_SESSION['id'])) {
   $_SESSION['flash']['danger']="Pour accéder au exercices veuillez vous connecter";
@@ -174,6 +181,13 @@ if($score == 10){
                         <span class="icon-bar"></span>
                     </button>
                     <!-- Collect the nav links, forms, and other content for toggling -->
+                    <?php if (isset($_SESSION['id'])) : ?>
+                        <?php if($_SESSION['sexe']=="homme") : ?> 
+                            <b style="font-family:Rubik; color: #FCC632;" class=" visible lead"> Bienvenue Monsieur : <?= $_SESSION['name'] ?> </b>
+                        <?php else : ?>
+                            <b style="font-family:Rubik; color: #FCC632;" class=" visible lead"> Bienvenue Madame : <?= $_SESSION['name'] ?> </b>
+                        <?php endif ?>
+                    <?php endif; ?>
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
                             <li class="nav-item">

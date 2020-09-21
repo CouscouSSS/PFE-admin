@@ -2,6 +2,14 @@
 session_start();
 include "connexion.inc.php";
 
+if(isset($_SESSION['role'])){
+    if($_SESSION['role']=="admin" || $_SESSION['role']=="admin_cours"){
+        header('Location:admin/index.php');
+        $_SESSION['flash']['danger']="Vous ne pouvez pas accéder au site avec votre compte administrateur";
+        exit();
+    }
+}
+
 function str_random($lenght){
 
     $alphabet="0123456789azertyuiopqsdfghjklmwxvbnAZERTYUIOPQSDFGHJKLMWXCVBN";

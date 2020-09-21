@@ -24,7 +24,7 @@ if (!isset($_SESSION['id'])) {
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="icon" href="img/favicon.png" type="image/png" />
+    <link rel="icon" href="../img/favicon.png" type="image/png" />
     <title>Calendar</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../css/bootstrap.css" />
@@ -104,7 +104,7 @@ if (!isset($_SESSION['id'])) {
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 
                     <ul class="nav navbar-nav menu_nav ml-auto">
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link" href="../index.php">Home</a>
                             </li>
                             <li class="nav-item">
@@ -123,7 +123,7 @@ if (!isset($_SESSION['id'])) {
                                     </li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item active">
                             <?php if (isset($_SESSION['id'])) : ?>
                                 <a class="nav-link" href="3a-calendar.php">Calendrier</a>
                             <?php endif; ?>
@@ -131,6 +131,11 @@ if (!isset($_SESSION['id'])) {
 
                             <li class="nav-item">
                                 <a class="nav-link" href="../contact.php">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <?php if (isset($_SESSION['id'])) : ?>
+                                <a class="nav-link" href="../profil.php">Profil</a>
+                                <?php endif; ?>
                             </li>
                             <li class="nav-item">
                                 <?php if(isset($_SESSION['id'])) : ?>

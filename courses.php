@@ -7,6 +7,14 @@ $req=$bdd->prepare("SELECT * from section");
 $req->execute();
 $sections=$req->fetchAll();
 
+if(isset($_SESSION['role'])){
+    if($_SESSION['role']=="admin" || $_SESSION['role']=="admin_cours"){
+        header('Location:admin/index.php');
+        $_SESSION['flash']['danger']="Vous ne pouvez pas accéder au site avec votre compte administrateur";
+        exit();
+    }
+}
+
 ?>
 
 
@@ -56,8 +64,11 @@ $sections=$req->fetchAll();
                     </button>
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <?php if (isset($_SESSION['id'])) : ?>
-                    <b style="font-family:Rubik; color: #FCC632;" class=" visible lead"> Bienvenue Monsieur :
-                        <?= $_SESSION['name'] ?> </b>
+                        <?php if($_SESSION['sexe']=="homme") : ?> 
+                            <b style="font-family:Rubik; color: #FCC632;" class=" visible lead"> Bienvenue Monsieur : <?= $_SESSION['name'] ?> </b>
+                        <?php else : ?>
+                            <b style="font-family:Rubik; color: #FCC632;" class=" visible lead"> Bienvenue Madame : <?= $_SESSION['name'] ?> </b>
+                        <?php endif ?>
                     <?php endif; ?>
 
 

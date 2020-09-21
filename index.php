@@ -3,12 +3,12 @@ session_start();
 
 include "connexion.inc.php";
 
-if(isset($_GET['id']) AND $_GET['id'] > 0) {
-   $getid = intval($_GET['id']);
-   $requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
-   $requser->execute(array($getid));
-   $userinfo = $requser->fetch();
-   
+if(isset($_SESSION['role'])){
+    if($_SESSION['role']=="admin" || $_SESSION['role']=="admin_cours"){
+        header('Location:admin/index.php');
+        $_SESSION['flash']['danger']="Vous ne pouvez pas accéder au site avec votre compte admin";
+        exit();
+    }
 }
 
 $req=$bdd->prepare("SELECT * from section");

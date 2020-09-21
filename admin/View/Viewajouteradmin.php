@@ -259,7 +259,7 @@
                             <input type="text" name="role" class="form-control form-control-user"
                                 placeholder="Entrez le role de l'administrateur"
                                  />
-                            <small class="text-danger font-weight-bold">Choix d'administrateur possible : admin_membre ou admin_cours</small>
+                            <small class="text-danger font-weight-bold">Choix d'administrateur possible : admin_cours (professeur)</small>
                         </div>
 
                         <div class="form-group">

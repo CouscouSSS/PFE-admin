@@ -2,6 +2,14 @@
 session_start();  
 include "connexion.inc.php";
 
+if(isset($_SESSION['role'])){
+    if($_SESSION['role']=="admin" || $_SESSION['role']=="admin_cours"){
+        header('Location:admin/index.php');
+        $_SESSION['flash']['danger']="Vous ne pouvez pas accéder au site avec votre compte administrateur";
+        exit();
+    }
+}
+
 function str_random($lenght){
 
     $alphabet="0123456789azertyuiopqsdfghjklmwxvbnAZERTYUIOPQSDFGHJKLMWXCVBN";
@@ -135,8 +143,7 @@ else{
     <link rel="stylesheet" href="css/themify-icons.css" />
     <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css" />
     <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css" />
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   
     <!-- main css -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="./css/css-sign/style.css">

@@ -36,7 +36,7 @@ if(isset($_POST['add_admin'])){
         }
     }
 
-    $ok_admin=array('admin_cours','admin_membre');
+    $ok_admin=array('admin_cours');
 
     if(empty($_POST['role']) || !in_array($_POST['role'],$ok_admin)){
         $errors['role']="Le role que vous avez rentré n'est pas valide";

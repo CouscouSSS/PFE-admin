@@ -9,6 +9,13 @@ if (!isset($_SESSION['id'])) {
     exit();
 }
 
+if(isset($_SESSION['role'])){
+    if($_SESSION['role']=="admin" || $_SESSION['role']=="admin_cours"){
+        header('Location:admin/index.php');
+        $_SESSION['flash']['danger']="Vous ne pouvez pas accéder au site avec votre compte administrateur";
+        exit();
+    }
+}
 
 $req=$bdd->query("SELECT * FROM section");
 $sections=$req->fetchAll();
@@ -242,11 +249,8 @@ if(isset($_POST['annuler'])){
 
                     </button>
 
-                    <?php if (isset($_SESSION['id'])) : ?>
-                    <b class="lead">Bienvenue Monsieur : <?= $_SESSION['name'] ?> </b>
-                    <?php endif; ?>
-
                     <!-- Collect the nav links, forms, and other content for toggling -->
+                    
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 
                         <ul class="nav navbar-nav menu_nav ml-auto">

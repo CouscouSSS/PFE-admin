@@ -1,5 +1,14 @@
 <?php
 session_start();
+
+if(isset($_SESSION['role'])){
+    if($_SESSION['role']=="admin" || $_SESSION['role']=="admin_cours"){
+        header('Location:admin/index.php');
+        $_SESSION['flash']['danger']="Vous ne pouvez pas accéder au site avec votre compte administrateur";
+        exit();
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -47,8 +56,11 @@ session_start();
                     </button>
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <?php if (isset($_SESSION['id'])) : ?>
-                    <b style="font-family:Rubik; color: #FCC632;" class="lead "> Bienvenue Monsieur :
-                        <?= $_SESSION['name'] ?> </b>
+                        <?php if($_SESSION['sexe']=="homme") : ?> 
+                            <b style="font-family:Rubik; color: #FCC632;" class=" visible lead"> Bienvenue Monsieur : <?= $_SESSION['name'] ?> </b>
+                        <?php else : ?>
+                            <b style="font-family:Rubik; color: #FCC632;" class=" visible lead"> Bienvenue Madame : <?= $_SESSION['name'] ?> </b>
+                        <?php endif ?>
                     <?php endif; ?>
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
@@ -128,16 +140,15 @@ session_start();
         <h1 class="text-center">Contact Us</h1>
         <br>
         <div class="container">
-            <div id="mapBox" class="mapBox" data-lat="34.001438" data-lon="-6.847849" data-zoom="13"
-                data-info="PO Box CT16122 Collins Street West, Victoria 8007, Australia." data-mlat="34.001438"
-                data-mlon="-6.847849"></div>
+            <div class="text-center pb-3"> <img src="https://images.unsplash.com/uploads/141103282695035fa1380/95cdfeef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=974&q=80" alt="image for contact"> </div>
+            
             <div class="row">
                 <div class="col-lg-3">
                     <div class="contact_info">
                         <div class="info_item">
                             <i class="ti-home"></i>
                             <h6>Rabat-MOROCCO</h6>
-                            <p>Faculeté des sciences</p>
+                            <p></p>
                         </div>
                         <div class="info_item">
                             <i class="ti-headphone"></i>
@@ -179,7 +190,7 @@ session_start();
                             </div>
                         </div>
                         <div class="col-md-12 text-right">
-                            <button type="submit" value="submit" class="btn primary-btn">
+                            <button type="submit" value="submit" class="btn primary-btn mb-4">
                                 Send Message
                             </button>
                         </div>
