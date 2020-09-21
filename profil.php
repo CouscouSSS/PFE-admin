@@ -119,7 +119,7 @@ if(isset($_POST['deleteaccount'])){
     $req=$bdd->prepare("DELETE FROM resultat WHERE id_user = ?");
     $req=$req->execute([$_SESSION['id']]);
 
-    $req=$bdd->prepare("DELETE FROM events WHERE id_user     = ?");
+    $req=$bdd->prepare("DELETE FROM events WHERE id_user = ?");
     $req=$req->execute([$_SESSION['id']]);
 
     $req=$bdd->prepare("DELETE FROM recover WHERE email = ?");
@@ -129,7 +129,7 @@ if(isset($_POST['deleteaccount'])){
     $req=$req->execute([$_SESSION['id']]);
 
     unset($_SESSION['id'],$_SESSION['email'],$_SESSION['name']);    
-    $_SESSION['flash']['success']="Votre compte a été suprimer avec success";
+    $_SESSION['flash']['success']="Votre compte a été suprimer avec succée";
     header('location:index.php');
     exit();
 
@@ -339,7 +339,7 @@ if(isset($_POST['annuler'])){
                                 <?= $_SESSION['phone']; ?> </b> 
                         </h4>
 
-                        <h4 class="text-warning font-weight-bold"> Your sex : <b class="text-dark text-uppercase">
+                        <h4 class="text-warning font-weight-bold"> Your gender : <b class="text-dark text-uppercase">
                                 <?= $_SESSION['sexe']; ?> </b> 
                         </h4>
                     
@@ -418,8 +418,7 @@ if(isset($_POST['annuler'])){
                         <?php endif; ?>
 
                         <?php if(isset($_GET['section']) && isset($_GET['option']) && $_GET['section']=='setting' && $_GET['option']=='changepwd') :  ?>
-                        <h2 class="lead text-dark display-4">Bienvenue a l'interface vous permettant de changer votre
-                            mot de passe </h2>
+                        
                         <form action="" method="POST">
                             <fieldset style="border:3px solid black;" class="p-3 border-dark rounded ">
                                 <legend style="width:auto; letter-spacing: 2px;" class="pr-3 pl-3"> Change password
@@ -449,8 +448,7 @@ if(isset($_POST['annuler'])){
                         <?php endif; ?>
 
                         <?php if(isset($_GET['section']) && isset($_GET['option']) && $_GET['section']=="setting" && $_GET['option']=='changemail') :  ?>
-                        <h2 class="lead text-dark display-4">Bienvenue a l'interface vous permettant de changer votre
-                            email </h2>
+                        
                         <form action="" method="POST">
                             <fieldset style="border:3px solid black;" class="p-3 border-dark rounded ">
                                 <legend style="width:auto; letter-spacing: 2px;" class="pr-3 pl-3"> Change email

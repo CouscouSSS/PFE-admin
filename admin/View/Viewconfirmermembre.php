@@ -267,6 +267,8 @@
                     <?php endif; ?>
                         
                     <?php if(!empty($membres)) : ?>
+
+                        <h1 class="display-4 text-warning text-center font-weight-bold">  Voici la liste des membres non confirmé : </h1>
                         <table class="table table-bordered text-center font-weight-bold " id="dataTable" width="100%" cellspacing="0">
                             
                             <thead class="thead-dark ">

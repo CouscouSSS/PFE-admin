@@ -8,12 +8,12 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
    $requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
    $requser->execute(array($getid));
    $userinfo = $requser->fetch();
+   
 }
 
 $req=$bdd->prepare("SELECT * from section");
 $req->execute();
 $sections=$req->fetchAll();
-
 
 ?>
 
@@ -180,7 +180,7 @@ $sections=$req->fetchAll();
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="banner_content text-center">
+                        <div class="banner_content text-center pb-5">
                             <p class="text-uppercase mt-2 ">
                                 Best online education service In Morocco
                             </p>
@@ -194,8 +194,17 @@ $sections=$req->fetchAll();
                             </div>
                             
                             <?php else : ?> 
-                                <div style="font-family:Rubik,sans-serif;" class="display-2 text-warning "> Bienvenue Mr:
-                                <span class="text-capitalize"><?= $_SESSION['name']?></span> </div>
+                                <?php if($_SESSION['sexe']=="homme") : ?> 
+                                
+                                    <div style="font-family:Rubik,sans-serif;" class="display-2 text-warning mb-5"> Bienvenue Mr:
+                                    <span class="text-capitalize "><?= $_SESSION['name']?></span> </div>
+                                
+                                <?php else : ?>
+                                    <div style="font-family:Rubik,sans-serif;" class="display-2 text-warning mb-5"> Bienvenue Mme:
+                                <span class="text-capitalize "><?= $_SESSION['name']?></span> </div>
+                                
+                                <?php endif; ?>
+
                             <?php endif; ?>
                         </div>
                     </div>

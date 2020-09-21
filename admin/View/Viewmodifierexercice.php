@@ -385,25 +385,31 @@
                         
                         <form method="POST">
 
+                            <?php  
+                                $req=$bdd->prepare("SELECT * FROM question WHERE id=?"); 
+                                $req->execute([$_GET['id']]);
+                                $question=$req->fetch();
+                            ?>
+
                             <div class="form-group">
                                 <h3 class="font-weight-bold font-size my-1 mr-2 text-dark" for="inlineFormCustomSelectPref"> Modifier la question : </h3>
-                                <input type="text" name="question" class="form-control"  placeholder="Veuillez saisir la nouvelle question" <?php if(isset($_POST['question'])) : ?> value="<?=$_POST['question']?>" <?php endif;?>>
+                                <input type="text" name="question" class="form-control"  placeholder="Veuillez saisir la nouvelle question" value="<?=$question['question']?>">
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                 <h3 class="font-weight-bold font-size my-1 mr-2 text-dark" for="inlineFormCustomSelectPref"> Modifier le premier choix: </h3>
-                                <input type="text" name="choix1" class="form-control" placeholder="Veuillez entrez la nouvelle valeur du premier choix" <?php if(isset($_POST['choix1'])) : ?> value="<?=$_POST['choix1']?>" <?php endif;?>>
+                                <input type="text" name="choix1" class="form-control" placeholder="Veuillez entrez la nouvelle valeur du premier choix" value="<?=$question['choix1']?>">
                                 </div>
                                 <div class="form-group col-md-6">
                                 <h3 class="font-weight-bold font-size my-1 mr-2 text-dark" for="inlineFormCustomSelectPref"> Modifier le deuxieme choix: </h3>
-                                <input type="text" name="choix2" class="form-control" placeholder="Veuillez entrez la nouvelle valeur du deuxieme choix" <?php if(isset($_POST['choix2'])) : ?> value="<?=$_POST['choix2']?>" <?php endif;?>>
+                                <input type="text" name="choix2" class="form-control" placeholder="Veuillez entrez la nouvelle valeur du deuxieme choix" value="<?=$question['choix2']?>">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <h3 class="font-weight-bold font-size my-1 mr-2 text-dark" for="inlineFormCustomSelectPref"> Numero du bon choix : </h3>
-                                <input type="text" name="reponse" class="form-control" placeholder="Veuillez saisir le numero du bon choix" <?php if(isset($_POST['reponse'])) : ?> value="<?=$_POST['reponse']?>" <?php endif;?>>
+                                <input type="text" name="reponse" class="form-control" placeholder="Veuillez saisir le numero du bon choix" value="<?=$question['answer']?>" >
                             </div>
 
                             <div class="form-group ">
