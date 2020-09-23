@@ -269,12 +269,12 @@
                         <?php for($i=1;$i<6;$i++) : ?>
                             <div class="form-row">
 
-                                <div class="form-group col-md-6">
-                                    <label for="inputCity" class="font-weight-bold text-success lead">Question numero <?= $i;?> :</label>
+                                <div class="form-group col-md-2">
+                                    <label for="inputCity" class="font-weight-bold text-success lead">Question<?= $i;?> :</label>
                                     <input type="text" name="q<?=$i;?>" class="form-control" id="inputCity" 
                                     placeholder="Veuillez entrez ici la question" <?php if (isset($_POST['q'.$i])) : ?> value="<?=$_POST['q'.$i];?>" <?php endif; ?>>
                                 </div>
-
+                                            
                                 <div class="form-group col-md-2">   
                                     <label for="inputState" class="pt-4"></label>
                                     <input type="text" name="c1q<?=$i?>" class="form-control" id="inputCity" 
@@ -286,13 +286,26 @@
                                     <input type="text" name="c2q<?=$i?>" class="form-control" id="inputCity" 
                                     placeholder="Deuxieme choix" <?php if(isset($_POST["c2q".$i])) : ?> value="<?=$_POST['c2q'.$i]?>" <?php endif;?> >
                                 </div>
+                                
+                                <div class="form-group col-md-2">   
+                                    <label for="inputState" class="pt-4"></label>
+                                    <input type="text" name="c3q<?=$i?>" class="form-control" id="inputCity" 
+                                    placeholder="Troisieme choix" <?php if(isset($_POST["c3q".$i])) : ?> value="<?=$_POST['c3q'.$i]?>" <?php endif;?> >
+                                </div>
+
+                                
+                                <div class="form-group col-md-2">   
+                                    <label for="inputState" class="pt-4"></label>
+                                    <input type="text" name="c4q<?=$i?>" class="form-control" id="inputCity" 
+                                    placeholder="Quatrieme choix" <?php if(isset($_POST["c4q".$i])) : ?> value="<?=$_POST['c4q'.$i]?>" <?php endif;?> >
+                                </div>
 
 
                                 <div class="form-group col-md-2 text-center">
                                     <label for="inputZip" class="pt-4"></label>
                                     <input type="text" name="r<?=$i;?>" class="form-control" id="inputZip"
                                 placeholder="Numero la reponse" <?php if(isset($_POST['r'.$i])) : ?> value="<?=$_POST['r'.$i]?>" <?php endif;?> >
-                                    <small class="text-danger font-weight-bold" style="font-size:12.45px;">*Numero du bon choix: 1 ou 2</small>
+                                    <small class="text-danger font-weight-bold" style="font-size:12.45px;">*choix possible: 1,2,3 ou 4</small>
                                 </div>
 
                             </div>

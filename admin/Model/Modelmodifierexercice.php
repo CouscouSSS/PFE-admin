@@ -79,18 +79,18 @@ if(isset($_GET['section'],$_GET['id']) && $_GET['section']==="editq"){
             }
         }
 
-        if(!empty($_POST['choix1']) && !empty($_POST['choix2'])){
+        if(!empty($_POST['choix1']) && !empty($_POST['choix2']) &&  !empty($_POST['choix3']) && !empty($_POST['choix2']) ){
 
             if(empty($_POST['reponse'])){
                 $errors['reponse']="Quand vous modifier une question il faut réentrez la valeur de la bonne reponse";
             }
             else{
 
-                if($_POST['reponse']!=1 && $_POST['reponse']!=2){
-                    $errors['reponse']="Pour la réponse vous ne pouvez entrez que 1 ou bien 2 (le numero du bon choix)";
+                if($_POST['reponse']!=1 && $_POST['reponse']!=2 && $_POST['reponse']!=3 && $_POST['reponse']!=4 ){
+                    $errors['reponse']="Pour la réponse vous ne pouvez entrez que 1,2,3 ou bien 4 (le numero du bon choix)";
                 }else{
-                    $req=$bdd->prepare("UPDATE question SET choix1=?,choix2=?,answer=? WHERE id=?");
-                    $req->execute(array($_POST['choix1'],$_POST['choix2'],$_POST['reponse'],$_GET['id']));
+                    $req=$bdd->prepare("UPDATE question SET choix1=?,choix2=?,choix3=?,choix4=?,answer=? WHERE id=?");
+                    $req->execute(array($_POST['choix1'],$_POST['choix2'],$_POST['choix3'],$_POST['choix4'],$_POST['reponse'],$_GET['id']));
                     $_SESSION['flash']['success']="Votre question a été modifier avec succés";
                     header("location:modifierexercice.php?section=edit&id_exo=".$_SESSION['id_exo']);
                     unset($_SESSION['id_exo']);
@@ -107,8 +107,8 @@ if(isset($_GET['section'],$_GET['id']) && $_GET['section']==="editq"){
             }
             else{
 
-                if($_POST['reponse']!=1 && $_POST['reponse']!=2){
-                    $errors['reponse']="Pour la réponse vous ne pouvez entrez que 1 ou bien 2 (le numero du bon choix)";
+                if($_POST['reponse']!=1 && $_POST['reponse']!=2 && $_POST['reponse']!=3 && $_POST['reponse']!=4){
+                    $errors['reponse']="Pour la réponse vous ne pouvez entrez que 1,2,3 ou bien 4 (le numero du bon choix)";
                 }else{
                     $req=$bdd->prepare("UPDATE question SET choix1=?,answer=? WHERE id=?");
                     $req->execute(array($_POST['choix1'],$_POST['reponse'],$_GET['id']));
@@ -128,8 +128,8 @@ if(isset($_GET['section'],$_GET['id']) && $_GET['section']==="editq"){
             }
             else{
 
-                if($_POST['reponse']!=1 && $_POST['reponse']!=2){
-                    $errors['reponse']="Pour la réponse vous ne pouvez entrez que 1 ou bien 2 (le numero du bon choix)";
+                if($_POST['reponse']!=1 && $_POST['reponse']!=2 && $_POST['reponse']!=3 && $_POST['reponse']!=4 ){
+                    $errors['reponse']="Pour la réponse vous ne pouvez entrez que 1,2,3 ou bien 4 (le numero du bon choix)";
                 }else{
                     $req=$bdd->prepare("UPDATE question SET choix2=?,answer=? WHERE id=?");
                     $req->execute(array($_POST['choix2'],$_POST['reponse'],$_GET['id']));
@@ -142,9 +142,51 @@ if(isset($_GET['section'],$_GET['id']) && $_GET['section']==="editq"){
 
         }
 
+        if(!empty($_POST['choix3'])){
+            die('lol');
+            if(empty($_POST['reponse'])){
+                $errors['reponse']="Quand vous modifier une question il faut réentrez la valeur de la bonne reponse";
+            }
+            else{
+                if($_POST['reponse']!=1 && $_POST['reponse']!=2 && $_POST['reponse']!=3 && $_POST['reponse']!=4 ){
+                    $errors['reponse']="Pour la réponse vous ne pouvez entrez que 1,2,3 ou bien 4 (le numero du bon choix)";
+                }else{
+                    
+                    $req=$bdd->prepare("UPDATE question SET choix3=?,answer=? WHERE id=?");
+                    $req->execute(array($_POST['choix3'],$_POST['reponse'],$_GET['id']));
+                    $_SESSION['flash']['success']="Votre question a été modifier avec succés";
+                    header("location:modifierexercice.php?section=edit&id_exo=".$_SESSION['id_exo']);
+                    unset($_SESSION['id_exo']);
+                    exit();
+                }  
+            }
+
+        }
+
+        if(!empty($_POST['choix4'])){
+
+            if(empty($_POST['reponse'])){
+                $errors['reponse']="Quand vous modifier une question il faut réentrez la valeur de la bonne reponse";
+            }
+            else{
+
+                if($_POST['reponse']!=1 && $_POST['reponse']!=2 && $_POST['reponse']!=3 && $_POST['reponse']!=4 ){
+                    $errors['reponse']="Pour la réponse vous ne pouvez entrez que 1,2,3 ou bien 4 (le numero du bon choix)";
+                }else{
+                    $req=$bdd->prepare("UPDATE question SET choix4=?,answer=? WHERE id=?");
+                    $req->execute(array($_POST['choix4'],$_POST['reponse'],$_GET['id']));
+                    $_SESSION['flash']['success']="Votre question a été modifier avec succés";
+                    header("location:modifierexercice.php?section=edit&id_exo=".$_SESSION['id_exo']);
+                    unset($_SESSION['id_exo']);
+                    exit();
+                }  
+            }
+
+        }
+
         if(!empty($_POST['reponse'])){
-            if($_POST['reponse']!=1 && $_POST['reponse']!=2){
-                $errors['reponse']="Pour la réponse vous ne pouvez entrez que 1 ou bien 2 (le numero du bon choix)";
+            if($_POST['reponse']!=1 && $_POST['reponse']!=2 && $_POST['reponse']!=3 && $_POST['reponse']!=4 ){
+                $errors['reponse']="Pour la réponse vous ne pouvez entrez que 1,2,3 ou bien 4 (le numero du bon choix)";
             }else{
                 $req=$bdd->prepare("UPDATE question SET answer=? WHERE id=?");
                 $req->execute(array($_POST['reponse'],$_GET['id']));

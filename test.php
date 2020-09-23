@@ -89,27 +89,22 @@ if($test_info['position']!=1){
 //traitement des reponse de l'utilisateur
 $score = 0;
 if(isset($_POST['submit'])){
-    if(isset($_POST['a1'])  AND $_POST['a1'] != 0){
+    if(isset($_POST['a1']) AND $_POST['a1'] != 0){
         $score++;
     }    
-    if(isset($_POST['a2'])  AND $_POST['a2'] != 0){
+    if(isset($_POST['a2']) AND $_POST['a2'] != 0){
         $score++;
     }
-    if(isset($_POST['a3'])  AND $_POST['a3'] != 0){
+    if(isset($_POST['a3']) AND $_POST['a3'] != 0){
         $score++;
     }
-    if(isset($_POST['a4'])  AND $_POST['a4'] != 0){
+    if(isset($_POST['a4']) AND $_POST['a4'] != 0){
         $score++;
     }
-    if(isset($_POST['a5'])  AND $_POST['a5'] != 0){
+    if(isset($_POST['a5']) AND $_POST['a5'] != 0){
         $score++;
     }
-    if(isset($_POST['a6'])  AND $_POST['a6'] != 0){
-        $score++;
-    }
-    if(isset($_POST['a7'])  AND $_POST['a7'] != 0){
-        $score++;
-    }
+
    
     $resultat = "Votre score est de ".$score." /5";
 
@@ -323,7 +318,7 @@ if(isset($_POST['submit'])){
             
                 <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b><?= $i ?> :</b> <?= $question['question'] ?>  </legend>
 
-                <?php  $reponse=$question['answer']; ?>
+                <?php $reponse=$question['answer']; ?>
 
                 <input type="radio" name="a<?=$i;?>" value="<?php if($reponse==1) echo 1; else echo 0; ?>"> <b class="font-weight-bold text-secondary "> <?= $question['choix1'] ?> </b>
                     <?php if(isset($_POST["a".$i]) && $_POST["a".$i] == "1" ) :  ?>
@@ -335,8 +330,20 @@ if(isset($_POST['submit'])){
                     <?php if(isset($_POST["a".$i]) && $_POST["a".$i] == "2" ) : ?>
                         <i class="fas fa-check text-success"></i>
                     <?php endif; ?>
+                    <br>
                 
-
+                <input type="radio" name="a<?= $i; ?>" value="<?php if($reponse==3) echo 3; else echo 0; ?>"> <b class="font-weight-bold text-secondary "> <?= $question['choix3'] ?> </b>
+                    <?php if(isset($_POST["a".$i]) && $_POST["a".$i] == "3" ) : ?>
+                        <i class="fas fa-check text-success"></i>
+                    <?php endif; ?>
+                    <br>
+                
+                <input type="radio" name="a<?= $i; ?>" value="<?php if($reponse==4) echo 4; else echo 0; ?>"> <b class="font-weight-bold text-secondary "> <?= $question['choix4'] ?> </b>
+                    <?php if(isset($_POST["a".$i]) && $_POST["a".$i] == "4" ) : ?>
+                        <i class="fas fa-check text-success"></i>
+                    <?php endif; ?>
+                    <br>
+                
             <?php endforeach; ?>
 
             <div class="pt-4 pb-4">

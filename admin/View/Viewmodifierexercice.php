@@ -326,10 +326,12 @@
                         cellspacing="0">
                         <thead class="thead-dark ">
                             <tr>
-                                <th>Question</th>
+                                <th style="vertical-align: middle;">Question</th>
                                 <th>Choix 1</th>
                                 <th>Choix 2</th>
-                                <th>Reponse</th>
+                                <th>Choix 3</th>
+                                <th>Choix 4</th>
+                                <th style="vertical-align: middle;" >Reponse</th>
                                 <th>Modifier les infomations</th>
                             </tr>
                         </thead>
@@ -341,6 +343,8 @@
                                 <?=$question['question']?></td>
                             <td style="vertical-align: middle;" class="text-dark"><?=$question['choix1']?></td>
                             <td style="vertical-align: middle;" class="text-dark"><?=$question['choix2']?></td>
+                            <td style="vertical-align: middle;" class="text-dark"><?=$question['choix3']?></td>
+                            <td style="vertical-align: middle;" class="text-dark"><?=$question['choix4']?></td>
                             <td style="vertical-align: middle;" class="text-dark"><?=$question['answer']?></td>
                             <td style="vertical-align: middle;" class="text-dark"><a
                                     href="modifierexercice.php?section=editq&id=<?=$question['id']?>"><button
@@ -351,10 +355,12 @@
 
                         <tfoot class="thead-dark ">
                             <tr>
-                                <th>Question</th>
+                                <th style="vertical-align: middle;">Question</th>
                                 <th>Choix 1</th>
                                 <th>Choix 2</th>
-                                <th>Reponse</th>
+                                <th>Choix 3</th>
+                                <th>Choix 4</th>
+                                <th style="vertical-align: middle;">Reponse</th>
                                 <th>Modifier les infomations</th>
                             </tr>
                         </tfoot>
@@ -404,6 +410,14 @@
                                 <div class="form-group col-md-6">
                                 <h3 class="font-weight-bold font-size my-1 mr-2 text-dark" for="inlineFormCustomSelectPref"> Modifier le deuxieme choix: </h3>
                                 <input type="text" name="choix2" class="form-control" placeholder="Veuillez entrez la nouvelle valeur du deuxieme choix" value="<?=$question['choix2']?>">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <h3 class="font-weight-bold font-size my-1 mr-2 text-dark" for="inlineFormCustomSelectPref"> Modifier le troisieme choix: </h3>
+                                <input type="text" name="choix3" class="form-control" placeholder="Veuillez entrez la nouvelle valeur du troisieme choix" value="<?=$question['choix3']?>">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <h3 class="font-weight-bold font-size my-1 mr-2 text-dark" for="inlineFormCustomSelectPref"> Modifier le quatrieme choix: </h3>
+                                <input type="text" name="choix4" class="form-control" placeholder="Veuillez entrez la nouvelle valeur du quatrieme choix" value="<?=$question['choix4']?>">
                                 </div>
                             </div>
 

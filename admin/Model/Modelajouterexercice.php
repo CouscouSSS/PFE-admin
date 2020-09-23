@@ -10,8 +10,6 @@ if($_SESSION['role']!='admin' && $_SESSION['role']!='admin_cours' && $_SESSION['
 
 }
 
-
-
 $req=$bdd->query("SELECT * FROM cours");
 $courses = $req->fetchAll();
 
@@ -47,13 +45,13 @@ if(isset($_POST['add_quizz'])){
 
     //verification de l'ajout de tout les question
     for($i=1;$i<6;$i++){
-        if(empty($_POST['q'.$i]) || empty($_POST['c1q'.$i]) || empty($_POST['c1q'.$i]) || empty($_POST['r'.$i])){
+        if(empty($_POST['q'.$i]) || empty($_POST['c1q'.$i]) || empty($_POST['c2q'.$i]) || empty($_POST['c3q'.$i]) ||  empty($_POST['c4q'.$i]) ||empty($_POST['r'.$i])){
             $errors['question']="Verifié que vous avez bien saisi tout les champ des 5 question.";
             break;
         }
 
-        if($_POST['r'.$i]!=1 && $_POST['r'.$i]!=2){
-            $errors['reponse']="Vous ne pouvez rentré que le numero du bon choix dans la réponse (1 pour le choix numero1 et 2 pour le choix numero 2)";
+        if($_POST['r'.$i]!=1 && $_POST['r'.$i]!=2 && $_POST['r'.$i]!=3 && $_POST['r'.$i]!=4){
+            $errors['reponse']="Vous ne pouvez rentré que le numero du bon choix dans la réponse (1 pour le choix numero1 et 2 pour le choix numero 2 ,3 pour le choix numero 3, 4 pour le choix numero 4)";
             break;
         }
     }
@@ -64,8 +62,8 @@ if(isset($_POST['add_quizz'])){
         $req->execute([$_POST['cours'],$_POST['titre']]);
         $test_id=$bdd->lastInsertId();
         for($i=1;$i<6;$i++){
-            $req=$bdd->prepare("INSERT INTO question(id_test,question,choix1,choix2,answer) VALUES(?,?,?,?,?)");
-            $req->execute(array($test_id,$_POST['q'.$i],$_POST['c1q'.$i],$_POST['c2q'.$i],$_POST['r'.$i]));
+            $req=$bdd->prepare("INSERT INTO question(id_test,question,choix1,choix2,choix3,choix4,answer) VALUES(?,?,?,?,?,?,?)");
+            $req->execute(array($test_id,$_POST['q'.$i],$_POST['c1q'.$i],$_POST['c2q'.$i],$_POST['c3q'.$i],$_POST['c4q'.$i],$_POST['r'.$i]));
         }
         $_SESSION['flash']['success']="Votre exercice a été ajouté avec succes";
         header('Location:ajouterexercice.php');
