@@ -314,6 +314,8 @@
                                     <th>Question</th>
                                     <th>Choix 1</th>
                                     <th>Choix 2</th>
+                                    <th>Choix 3</th>
+                                    <th>Choix 4</th>
                                     <th>Reponse</th>
                                     
                                 </tr>
@@ -325,6 +327,8 @@
                                 <td style="vertical-align: middle;" class="bg-warning text-white text-capitalize"><?=$question['question']?></td>
                                 <td style="vertical-align: middle;" class="text-dark"><?=$question['choix1']?></td>
                                 <td style="vertical-align: middle;" class="text-dark"><?=$question['choix2']?></td>
+                                <td style="vertical-align: middle;" class="text-dark"><?=$question['choix3']?></td>
+                                <td style="vertical-align: middle;" class="text-dark"><?=$question['choix4']?></td>
                                 <td style="vertical-align: middle;" class="text-dark"><?=$question['answer']?></td>
                             </tr>
 
@@ -335,6 +339,8 @@
                                     <th>Question</th>
                                     <th>Choix 1</th>
                                     <th>Choix 2</th>
+                                    <th>Choix 3</th>
+                                    <th>Choix 4</th>
                                     <th>Reponse</th>
                                 </tr>
                             </tfoot>
