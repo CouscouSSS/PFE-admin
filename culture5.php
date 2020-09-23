@@ -263,17 +263,14 @@ if($score == 10){
     <!--================End Home Banner Area =================-->
 
     <!--================ Start Course Details Area =================-->
-    <section class="course_details_area section_gap bg-light text-center">
-
-        <h2> Test 2 </h2>
-
+    <section class="course_details_area bg-light text-center">
+        <br>
+        <h2 class="text-capitalize text-success display-4 font-weight-bold "><i class="fas fa-feather-alt" style="transform:rotateZ(180deg);"></i> Quizz 2 - Intermediar level <i class="fas fa-feather-alt" style="transform: rotate(180deg) rotateY(180deg);"></i></h2>
         <form method="POST">
-            <br>
-            <h4>Choose the correct response :</h4>
             <br>
             <img src="https://cdn-media.rtl.fr/cache/KTMnHr5lldVyrDpz946OrQ/2000v1203-0/online/image/2019/0412/7797412777_disney.jpg" height="400" width="800">
             <br>
-            <legend> #1 Quel est le premier long métrage d’animation des studios Walt Disney ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 1 -</b> Quel est le premier long métrage d’animation des studios Walt Disney ?</legend>
             <input type="radio" name="x1" value="1"> Blanche neige et les sept nains <?php if(isset($_POST['x1']) AND $_POST['x1'] == "1"){
                 
                             echo "<font color='green'>  ✔  </font>";} ?>
@@ -296,7 +293,7 @@ if($score == 10){
                            <br>
 
                            <img src="https://lh6.googleusercontent.com/caVjTeK9iwZOOV99g4Auf-DPs3Vz1JhT7O0x_iGNKBTnNG8g-3ixOiv4TuyMyr-jBH9m9SRaMPhLflqIgE9gca5skTMNdEzhysrRNc725ylULxeS04xXO1g5j7O0l-nOydLPVDGH9fI" width="800" height="400">
-            <legend> #2 Quelle invention doit-on à Gabriel Fahrenheit ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 2 -</b> Quelle invention doit-on à Gabriel Fahrenheit ?</legend>
             <input type="radio" name="x2" value="1"> Le microscope <?php if(isset($_POST['x2']) AND $_POST['x2'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?>
 <br>
@@ -309,7 +306,7 @@ if($score == 10){
             <br>
 
             <img src="https://www.challenges.fr/assets/img/2015/09/16/cover-r4x3w1000-578f00a3d69de-animaux-marins.jpg" width="800" height="400">
-            <legend> #3 Parmi les les animaux marins suivants, lequel est considéré comme l’un des plus rapides du monde ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 3 -</b> Parmi les les animaux marins suivants, lequel est considéré comme l’un des plus rapides du monde ?</legend>
             <input type="radio" name="x3" value="1"> La sole megasus <?php if(isset($_POST['x3']) AND $_POST['x3'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x3" value="2"> La baleine <?php if(isset($_POST['x3']) AND $_POST['x3'] == "2"){
@@ -326,7 +323,7 @@ if($score == 10){
                            } ?> <br>
             <br>
             <img src="https://3.bp.blogspot.com/-N1qu2RguMTo/V7bCU-FALtI/AAAAAAAAAUk/OA0hYKeucTINONO1q9-vCCyMCDsv3hnlwCPcB/s1600/Logo%2BMala%2BVida.jpg" height="400" width="800">
-            <legend>  #4 Avec quel groupe Manu Chao chantait-il « Mala Vida » en 1988 ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 ">  <b> 4 -</b> Avec quel groupe Manu Chao chantait-il « Mala Vida » en 1988 ?</legend>
             <input type="radio" name="x4" value="1"> Béruier noir <?php if(isset($_POST['x4']) AND $_POST['x4'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?>
 <br>
@@ -344,7 +341,7 @@ if($score == 10){
                            } ?><br>
             <br>
              <img src="https://paris-jetequitte.com/wp-content/uploads/2018/08/trouver-emploi-saint-malo-©-GERARD-CAZADE-034.jpg" width="800" height="400">
-            <legend> #5 Parmi les écrivains suivants, lequel repose à Saint-Malo ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 5 -</b> Parmi les écrivains suivants, lequel repose à Saint-Malo ?</legend>
             <input type="radio" name="x5" value="1"> Dumas <?php if(isset($_POST['x5']) AND $_POST['x5'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x5" value="2"> Barrès <?php if(isset($_POST['x5']) AND $_POST['x5'] == "2"){
@@ -359,7 +356,7 @@ if($score == 10){
             <br>
 
             <img src="https://www.etudesrobespierristes.com/wp-content/uploads/2019/03/capture_d_e_cran_2019-03-12_a_07.18.41.png" width="650" height="400">
-            <legend> #6 À la veille de quelle révolution Lamartine a-t-il déclaré : « La France s’ennuie » ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 6 -</b> À la veille de quelle révolution Lamartine a-t-il déclaré : « La France s’ennuie » ?</legend>
             <input type="radio" name="x6" value="1"> Celle de 1870 <?php if(isset($_POST['x6']) AND $_POST['x6'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x6" value="2"> Celle de 1830 t <?php if(isset($_POST['x6']) AND $_POST['x6'] == "2"){
@@ -373,7 +370,7 @@ if($score == 10){
             <br>
             <br>
             <img src="https://leshorizons.net/wp-content/uploads/2019/04/Ljubljana_ville_verte-4-1020x512.jpeg" width="800" height="400">
-            <legend> #7 Quel État a pour capitale Ljubljana ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 7 -</b> Quel État a pour capitale Ljubljana ?</legend>
             <input type="radio" name="x7" value="1"> La Croitie <?php if(isset($_POST['x7']) AND $_POST['x7'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x7" value="2"> La Slovaquie <?php if(isset($_POST['x7']) AND $_POST['x7'] == "2"){
@@ -387,7 +384,7 @@ if($score == 10){
             <br>
             <br>
 <img src="http://www.activassistante.com/wp-content/uploads/2018/05/ORTHOGRAPHE-test-le-robert-correcteur.jpg" width="800" height="400">
-            <legend> #8 On écrit des…</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 8 -</b> On écrit des…</legend>
             <input type="radio" name="x8" value="1"> savoirs-vivres <?php if(isset($_POST['x8']) AND $_POST['x8'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x8" value="2"> savoir-vivre <?php if(isset($_POST['x8'])  AND $_POST['x8'] == "2"){
@@ -401,7 +398,7 @@ if($score == 10){
             <br>
             <br>
             <img src="https://www.moroccojewishtimes.com/wp-content/uploads/2019/07/Hassan-II-AFP-678x381.jpg" width="800" height="400">
-            <legend> #9 Quel roi a succédé à Hassan II au Maroc ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 9 -</b> Quel roi a succédé à Hassan II au Maroc ?</legend>
             <input type="radio" name="x9" value="1"> Mohammed VI  <?php if(isset($_POST['x9'])  AND $_POST['x9'] == "1"){
                             echo "<font color='green'>  ✔  </font>"; } ?><br>
             <input type="radio" name="x9" value="2"> Moulay Youssef  <?php if(isset($_POST['x9'])  AND $_POST['x9'] == "2"){
@@ -415,7 +412,7 @@ if($score == 10){
             <br>
             <br>
             <img src="https://www.ivoirebusiness.net/sites/default/files/styles/sliding_articles/public/pape-1.jpg?itok=FCa4yYUq" width="800" height="400">
-            <legend> #10 En 1305, dans quelle ville le Pape part-il s’installer au détriment de Rome ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 10 -</b> En 1305, dans quelle ville le Pape part-il s’installer au détriment de Rome ?</legend>
             <input type="radio" name="x10" value="1"> Avignon<?php if(isset($_POST['x10'])  AND $_POST['x10'] == "1"){
                             echo "<font color='green'>  ✔  </font>"; } ?><br>
             <input type="radio" name="x10" value="2"> Paris  <?php if(isset($_POST['x10'])  AND $_POST['x10'] == "2"){
@@ -527,6 +524,7 @@ if($score == 10){
     <script src="js/mail-script.js"></script>
     <!--gmaps Js-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+    <script src="https://kit.fontawesome.com/6e8ba3d05b.js" crossorigin="anonymous"></script>
     <script src="js/gmaps.min.js"></script>
     <script src="js/theme.js"></script>
     <script>

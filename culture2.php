@@ -263,17 +263,15 @@ if($score == 10){
     <!--================End Home Banner Area =================-->
 
     <!--================ Start Course Details Area =================-->
-     <section class="course_details_area section_gap bg-light text-center">
-
-        <h2> Test 3 </h2>
+     <section class="course_details_area bg-light text-center">
+     <br>
+     <h2 class="text-capitalize text-success display-4 font-weight-bold "><i class="fas fa-feather-alt" style="transform:rotateZ(180deg);"></i> Quizz 2 - Beginner level <i class="fas fa-feather-alt" style="transform: rotate(180deg) rotateY(180deg);"></i></h2>
 
         <form method="POST">
             <br>
-            <h4>Choose the correct response :</h4>
-            <br>
             <img src="https://previews.123rf.com/images/olegdudko/olegdudko1802/olegdudko180203717/95725544-student-studying-hard-exam-and-sleeping-on-books-tired-girl-read-difficult-book-in-library.jpg" width="800" height="400">
             <br>
-            <legend> #1 Quel est l’impératif du verbe feindre à la première personne du pluriel ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 1 -</b> Quel est l’impératif du verbe feindre à la première personne du pluriel ?</legend>
             <input type="radio" name="x1" value="1"> Feignons !  <?php if(isset($_POST['x1']) AND $_POST['x1'] == "1"){
                 
                             echo "<font color='green'>  ✔  </font>"; } ?>
@@ -296,7 +294,7 @@ if($score == 10){
                            <br>
 
                            <img src="https://static.lpnt.fr/images/2013/07/27/revocation-edit-nantes-1692082-jpg_1603185_660x281.JPG" width="800" height="400">
-            <legend> #2 Quel roi de France proclama l’Édit de Nantes ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 2 -</b> Quel roi de France proclama l’Édit de Nantes ?</legend>
             <input type="radio" name="x2" value="1"> Louis XIV <?php if(isset($_POST['x2']) AND $_POST['x2'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?>
 <br>
@@ -309,7 +307,7 @@ if($score == 10){
             <br>
 
             <img src="https://us.123rf.com/450wm/rouslan/rouslan1802/rouslan180200086/95565339-ancien-buste-du-dieu-du-nil.jpg?ver=6" width="800" height="400">
-            <legend> #3 À quel écrivain attribue-t-on la rédaction de l’Illiade et l’Odyssée ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 3 -</b> À quel écrivain attribue-t-on la rédaction de l’Illiade et l’Odyssée ?</legend>
             <input type="radio" name="x3" value="1"> Virgile <?php if(isset($_POST['x3']) AND $_POST['x3'] == "1") {
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x3" value="2"> Homère <?php if(isset($_POST['x3']) AND $_POST['x3'] == "2"){
@@ -326,7 +324,7 @@ if($score == 10){
                            } ?> <br>
             <br>
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/1280px-Flag_of_France.svg.png" width="800" height="400">
-            <legend>  #4 Qui s’est déclaré « premier flic de France » ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 ">  <b> 4 -</b> Qui s’est déclaré « premier flic de France » ?</legend>
             <input type="radio" name="x4" value="1"> Léon Blum <?php if(isset($_POST['x4']) AND $_POST['x4'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?>
 <br>
@@ -344,7 +342,7 @@ if($score == 10){
                            } ?><br>
             <br>
              <img src="https://aws.vdkimg.com/film/9/0/7/7/907764_backdrop_scale_1280xauto.jpg" width="800" height="400">
-            <legend> #5 Quel acteur américain incarne le héros du film de Christopher Nolan de 2014 « Interstellar » ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 5 -</b> Quel acteur américain incarne le héros du film de Christopher Nolan de 2014 « Interstellar » ?</legend>
             <input type="radio" name="x5" value="1"> Léonardo DiCaprio <?php if(isset($_POST['x5']) AND $_POST['x5'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x5" value="2"> Brad Pitt <?php if(isset($_POST['x5']) AND $_POST['x5'] == "2"){
@@ -358,7 +356,8 @@ if($score == 10){
             <br>
             <br>
 
-            <img src="https://img.maxisciences.com/article/1024/riviere/fleuve_ca55317de9bec178208d30f0081527006c36fa4a.jpg" width="800" height="400">            <legend> #6 Quel est le plus long fleuve coulant sur le territoire de la France ?</legend>
+            <img src="https://img.maxisciences.com/article/1024/riviere/fleuve_ca55317de9bec178208d30f0081527006c36fa4a.jpg" width="800" height="400">            
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 6 -</b> Quel est le plus long fleuve coulant sur le territoire de la France ?</legend>
             <input type="radio" name="x6" value="1"> Le Rhône  <?php if(isset($_POST['x6']) AND $_POST['x6'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x6" value="2"> La Loire <?php if(isset($_POST['x6']) AND $_POST['x6'] == "2"){
@@ -372,7 +371,7 @@ if($score == 10){
             <br>
             <br>
             <img src="https://www.costacruises.eu/content/dam/costa/inventory-assets/ports/PIE/pie-san-pietroburgo-port-1.jpg.image.1480.1110.high.jpg" width="800" height="400">
-            <legend> #7 Le drapeau russe est blanc, bleu et…?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 7 -</b> Le drapeau russe est blanc, bleu et…?</legend>
             <input type="radio" name="x7" value="1"> Rouge <?php if(isset($_POST['x7']) AND $_POST['x7'] == "1"){
                             echo "<font color='green'>  ✔  </font>"; } ?><br>
             <input type="radio" name="x7" value="2"> Jaune <?php if(isset($_POST['x7']) AND $_POST['x7'] == "2"){
@@ -386,7 +385,7 @@ if($score == 10){
             <br>
             <br>
 <img src="http://clemi.ac-dijon.fr/wp-content/uploads/2016/09/Papier_Journal_papillon-1038x576.jpg" width="800" height="400">
-            <legend> #8 Quel journal a été attaqué par des terroristes islamistes en janvier 2015 ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 8 -</b> Quel journal a été attaqué par des terroristes islamistes en janvier 2015 ?</legend>
             <input type="radio" name="x8" value="1"> La libération <?php if(isset($_POST['x8']) AND $_POST['x8'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x8" value="2"> Le Monde <?php if(isset($_POST['x8']) AND $_POST['x8'] == "2"){
@@ -400,7 +399,7 @@ if($score == 10){
             <br>
             <br>
             <img src="https://www.sudradio.fr/wp-content/uploads/2017/02/laine-merinos-australie_5775795.jpeg" width="800" height="400">
-            <legend> #9 Quel animal andin de la famille des camélidés est élevé pour sa laine ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 9 -</b> Quel animal andin de la famille des camélidés est élevé pour sa laine ?</legend>
             <input type="radio" name="x9" value="1"> Le lama  <?php if(isset($_POST['x9']) AND $_POST['x9'] == "1"){
                             echo "<font color='green'>  ✔  </font>"; } ?><br>
             <input type="radio" name="x9"  value="2"> Le yak  <?php if(isset($_POST['x9']) AND $_POST['x9'] == "2"){
@@ -414,7 +413,7 @@ if($score == 10){
             <br>
             <br>
             <img src="https://www.sky.com/assets2/berlioz-symphonie-fantastique-panel-9e4f1be3jpg" width="800" height="400">
-            <legend> #10 À quel compositeur doit-on les bandes-son de films comme « Il était une fois en Amérique »,<br> « Pour une poignée de dollars », ou le « Le clan des Siciliens » ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 10 -</b> À quel compositeur doit-on les bandes-son de films comme « Il était une fois en Amérique »,<br> « Pour une poignée de dollars », ou le « Le clan des Siciliens » ?</legend>
             <input type="radio" name="x10" value="1"> John Barry<?php if(isset($_POST['x10']) AND $_POST['x10'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x10" value="2"> Vladimir Cosma  <?php if(isset($_POST['x10']) AND $_POST['x10'] == "2"){
@@ -526,6 +525,7 @@ if($score == 10){
     <script src="js/mail-script.js"></script>
     <!--gmaps Js-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+    <script src="https://kit.fontawesome.com/6e8ba3d05b.js" crossorigin="anonymous"></script>
     <script src="js/gmaps.min.js"></script>
     <script src="js/theme.js"></script>
     <script>

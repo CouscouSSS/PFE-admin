@@ -263,17 +263,14 @@ if($score == 10){
     <!--================End Home Banner Area =================-->
 
     <!--================ Start Course Details Area =================-->
-   <section class="course_details_area section_gap bg-light text-center">
-
-        <h2> Test 1 </h2>
-
+   <section class="course_details_area bg-light text-center">
+        <br>
+        <h2 class="text-capitalize text-success display-4 font-weight-bold "><i class="fas fa-feather-alt" style="transform:rotateZ(180deg);"></i> Quizz 3 - Expert level <i class="fas fa-feather-alt" style="transform: rotate(180deg) rotateY(180deg);"></i></h2>
         <form method="POST">
-            <br>
-            <h4>Choose the correct response :</h4>
             <br>
             <img src="https://i2.wp.com/cms.babbel.news/wp-content/uploads/2017/11/Nouveaux-Mots-Dictionnaire-Header.jpg?h=9999&quality=100&w=993" width="800" height="400">
             <br>
-            <legend> #1 Choisissez la bonne forme : Jean-Mi n’arrête pas de … Gisèle. </legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 1 -</b> Choisissez la bonne forme : Jean-Mi n’arrête pas de … Gisèle. </legend>
             <input type="radio" name="x1" value="1" > déblatérer sur  <?php if(isset($_POST['x1']) AND $_POST['x1'] == "1"){
                 
                             echo "<font color='red'>  x  </font>"; } ?>
@@ -292,7 +289,7 @@ if($score == 10){
                            <br>
 
                            <img src="https://previews.123rf.com/images/argus456/argus4561702/argus456170219463/72130958-grunge-old-afghanistan-flag.jpg" width="800" height="400">
-            <legend> #2 Quelles sont les langues officielles de l’Afghanistan ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 2 -</b> Quelles sont les langues officielles de l’Afghanistan ?</legend>
             <input type="radio" name="x2" value="1"> Persan et pashtou .<?php if(isset($_POST['x2']) AND $_POST['x2'] == "1"){
                             echo "<font color='green'>  ✔  </font>"; } ?>
 <br>
@@ -305,7 +302,7 @@ if($score == 10){
             <br>
 
             <img src="https://s.rfi.fr/media/display/f29c7986-16cd-11ea-991e-005056bf7c53/w:1240/p:16x9/sykes-picot_0.webp" width="800" height="400">
-            <legend> #3 Que décident les accords de Sykes-Picot de 1916 ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 3 -</b> Que décident les accords de Sykes-Picot de 1916 ?</legend>
             <input type="radio" name="x3" value="1"> Le décombrement de l'empire allemand . <?php if(isset($_POST['x3']) AND $_POST['x3'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x3" value="2"> La division du Proche-Orient entre Français et Anglais . <?php if(isset($_POST['x3']) AND $_POST['x3'] == "2"){
@@ -322,7 +319,7 @@ if($score == 10){
                            } ?> <br>
             <br>
             <img src="https://www.woimacorporation.com/wp-content/uploads/2019/01/Beirut-Libanon-Landscape-Drowning-in-Waste-WOIMA-Corporation.jpg" width="800" height="400">
-            <legend>  #4 À quel type d’œuvre est consacré le festival de Bayreuth ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 ">  <b> 4 -</b> À quel type d’œuvre est consacré le festival de Bayreuth ?</legend>
             <input type="radio" name="x4" value="1"> À la musique de chambre . <?php if(isset($_POST['x4']) AND $_POST['x4'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?>
 <br>
@@ -340,7 +337,7 @@ if($score == 10){
                            } ?><br>
             <br>
              <img src="https://www.babelio.com/users/QUIZ_Qui-a-dit--La-nature_2110.jpeg" width="800" height="400">
-            <legend> #5 « Peu importe si le chat est blanc ou noir du moment qu’il attrape les souris. » À qui doit-on cette sentence ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 5 -</b> « Peu importe si le chat est blanc ou noir du moment qu’il attrape les souris. » À qui doit-on cette sentence ?</legend>
             <input type="radio" name="x5" value="1"> François Mitterand <?php if(isset($_POST['x5']) AND $_POST['x5'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x5" value="2"> Deng Xiao Ping <?php if(isset($_POST['x5']) AND $_POST['x5'] == "2"){
@@ -355,7 +352,7 @@ if($score == 10){
             <br>
 
             <img src="https://geeko.lesoir.be/wp-content/uploads/sites/58/2018/12/expo-Vermeer.jpg" width="800" height="400">
-            <legend> #6 Qui a peint ce tableau ? </legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 6 -</b> Qui a peint ce tableau ? </legend>
             <input type="radio" name="x6" value="1"> Vermeer  <?php if(isset($_POST['x6']) AND $_POST['x6'] == "1"){
                             echo "<font color='green'>  ✔  </font>"; } ?><br>
             <input type="radio" name="x6" value="2"> Rembrandt  <?php if(isset($_POST['x6']) AND $_POST['x6'] == "2"){
@@ -369,7 +366,7 @@ if($score == 10){
             <br>
             <br>
             <img src="https://www.actualitte.com/images/actualites/images/Les%20ensables/les-dieux-ont-soif-anatole-france.jpg" width="800" height="400">
-            <legend> #7 De quel épisode historique traite « Les Dieux ont soif » d’Anatole France ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 7 -</b> De quel épisode historique traite « Les Dieux ont soif » d’Anatole France ?</legend>
             <input type="radio" name="x7" value="1"> De la Fronde . <?php if(isset($_POST['x7']) AND $_POST['x7'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x7" value="2"> Du massacre de la Saint-Barthélemy . <?php if(isset($_POST['x7']) AND $_POST['x7'] == "2"){
@@ -383,7 +380,7 @@ if($score == 10){
             <br>
             <br>
 <img src="https://lnt.ma/wp-content/uploads/2018/11/chapo-925x430.jpg" width="800" height="400">
-            <legend> #8 Quel cartel « El Chapo » dirige-t-il ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 8 -</b> Quel cartel « El Chapo » dirige-t-il ?</legend>
             <input type="radio" name="x8" value="1"> Le cartel de Tijuana . <?php if(isset($_POST['x8']) AND $_POST['x8'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x8" value="2"> Le cartel de Sinaloa . <?php if(isset($_POST['x8']) AND $_POST['x8'] == "2"){
@@ -397,7 +394,7 @@ if($score == 10){
             <br>
             <br>
             <img src="https://jeunes-ihedn.org/wp-content/uploads/2019/11/thumb2-democratic-republic-of-the-congo-flag-4k-grunge-flag-of-democratic-republic-of-congo-africa.jpg.png" width="800" height="400">
-            <legend> #9 Quel animal endémique ne trouve-t-on qu’en République démocratique du Congo ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 9 -</b> Quel animal endémique ne trouve-t-on qu’en République démocratique du Congo ?</legend>
             <input type="radio" name="x9" value="1"> L'oryx <?php if(isset($_POST['x9']) AND $_POST['x9'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x9" value="2"> L'okapi <?php if(isset($_POST['x9']) AND $_POST['x9'] == "2"){
@@ -412,7 +409,7 @@ if($score == 10){
                 ?>            <br>
             <br>
             <img src="https://cache.marieclaire.fr/data/photo/w1000_ci/4x/jodie-foster.jpg" width="800" height="400">
-            <legend> #10 Quel film révèle Jodie Foster au grand public ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 10 -</b> Quel film révèle Jodie Foster au grand public ?</legend>
             <input type="radio" name="x10" value="1"> Ragging bull <?php if(isset($_POST['x10']) AND $_POST['x10'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x10" value="2"> Taxi driver <?php if(isset($_POST['x10']) AND $_POST['x10'] == "2"){
@@ -525,6 +522,7 @@ if($score == 10){
     <!--gmaps Js-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
     <script src="js/gmaps.min.js"></script>
+    <script src="https://kit.fontawesome.com/6e8ba3d05b.js" crossorigin="anonymous"></script>
     <script src="js/theme.js"></script>
     <script>
         $(".alert").delay(5000).slideUp(400, function() {

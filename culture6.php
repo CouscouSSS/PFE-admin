@@ -265,17 +265,16 @@ if($score == 10){
     <!--================End Home Banner Area =================-->
 
     <!--================ Start Course Details Area =================-->
-    <section class="course_details_area section_gap bg-light text-center">
-
-        <h2> Test 2 </h2>
+    <section class="course_details_area bg-light text-center">
+        <br>
+        <h2 class="text-capitalize text-success display-4 font-weight-bold "><i class="fas fa-feather-alt" style="transform:rotateZ(180deg);"></i> Quizz 3 - Intermediar level <i class="fas fa-feather-alt" style="transform: rotate(180deg) rotateY(180deg);"></i></h2>
+        
 
         <form method="POST">
             <br>
-            <h4>Choose the correct response :</h4>
-            <br>
             <img src="https://semelazic.files.wordpress.com/2019/03/jimmy-page-led-zeppelin-750x400.jpg" height="400" width="800">
             <br>
-            <legend> #1 De quel groupe Jimmy Page était-il le leader ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 1 -</b> De quel groupe Jimmy Page était-il le leader ?</legend>
             <input type="radio" name="x1" value="1"> Pink Floyd <?php if(isset($_POST['x1']) AND $_POST['x1'] == "1"){
                 
                             echo "<font color='red'>  x  </font>";} ?>
@@ -298,7 +297,7 @@ if($score == 10){
                            <br>
 
                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSGza78VRfwUdnuxHrORzVhYfppvuNa1QXjoGX05B7RQTU_SXhi&usqp=CAU" width="800" height="400">
-            <legend> #2 Par quelles initiales désigne-t-on l’Allemagne de l’Est jusqu’en 1990 ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 2 -</b> Par quelles initiales désigne-t-on l’Allemagne de l’Est jusqu’en 1990 ?</legend>
             <input type="radio" name="x2" value="1"> URSS <?php if(isset($_POST['x2']) AND $_POST['x2'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?>
 <br>
@@ -311,7 +310,7 @@ if($score == 10){
             <br>
 
             <img src="https://resize-parismatch.lanmedia.fr/r/625,417,forcex,center-middle/img/var/news/storage/images/paris-match/royal-blog/royaume-uni/richard-iii-identifie-grace-a-son-adn-plus-de-500-ans-apres-sa-mort-1203302/20390645-1-fre-FR/Richard-III-identifie-grace-a-son-ADN-plus-de-500-ans-apres-sa-mort.jpg" width="800" height="400">
-            <legend> #3 Dans quelle oeuvre de Shakespeare trouve-t-on la réplique : « Un cheval ! Un cheval ! Mon royaume pour un cheval ! »</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 3 -</b> Dans quelle oeuvre de Shakespeare trouve-t-on la réplique : « Un cheval ! Un cheval ! Mon royaume pour un cheval ! »</legend>
             <input type="radio" name="x3" value="1"> Hamlet <?php if(isset($_POST['x3']) AND $_POST['x3'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x3" value="2"> Le Roi Lear <?php if(isset($_POST['x3']) AND $_POST['x3'] == "2"){
@@ -328,7 +327,7 @@ if($score == 10){
                            } ?> <br>
             <br>
             <img src="https://media.routard.com/image/43/0/birmanie-bagan-2.1492430.w630.jpg" height="400" width="800">
-            <legend>  #4 En 2011, quel pays initie une politique d’ouverture et de libéralisation après des années de régime de junte militaire ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 ">  <b> 4 -</b> En 2011, quel pays initie une politique d’ouverture et de libéralisation après des années de régime de junte militaire ?</legend>
             <input type="radio" name="x4" value="1"> Cuba <?php if(isset($_POST['x4']) AND $_POST['x4'] == "1") {
                             echo "<font color='red'>  x  </font>"; } ?>
 <br>
@@ -346,7 +345,7 @@ if($score == 10){
                            } ?><br>
             <br>
              <img src="https://www.aquaportail.com/pictures1505/futaie-hetres.jpg" width="800" height="400">
-            <legend> #5 À quel autre animal ressemble le wallaby ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 5 -</b> À quel autre animal ressemble le wallaby ?</legend>
             <input type="radio" name="x5" value="1"> Au Koala . <?php if(isset($_POST['x5']) AND $_POST['x5'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x5" value="2"> Au Kangourou . <?php if(isset($_POST['x5']) AND $_POST['x5'] == "2") {
@@ -361,7 +360,7 @@ if($score == 10){
             <br>
 
             <img src="https://thetravelersclub.boardingarea.com/wp-content/uploads/2020/04/tokyo_4296_649687843.jpg" width="800" height="400">
-            <legend> #6 « Voyage à Tokyo » est un film de …</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 6 -</b> « Voyage à Tokyo » est un film de …</legend>
             <input type="radio" name="x6" value="1"> Akira Kurosawa <?php if(isset($_POST['x6']) AND $_POST['x6'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x6" value="2"> Kitano Takeshi <?php if(isset($_POST['x6']) AND $_POST['x6'] == "2"){
@@ -375,7 +374,7 @@ if($score == 10){
             <br>
             <br>
             <img src="https://i.f1g.fr/media/eidos/493x178_crop/2019/06/19/XVM3642a50a-91d8-11e9-908c-e04cf7f68362.jpg" width="800" height="400">
-            <legend> #7 De quel pays Salazar était-il le dictateur ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 7 -</b> De quel pays Salazar était-il le dictateur ?</legend>
             <input type="radio" name="x7" value="1"> Du Portugal <?php if(isset($_POST['x7']) AND $_POST['x7'] == "1"){
                             echo "<font color='green'>  ✔  </font>"; } ?><br>
             <input type="radio" name="x7" value="2"> Du Brésil <?php if(isset($_POST['x7']) AND $_POST['x7'] == "2"){
@@ -389,7 +388,7 @@ if($score == 10){
             <br>
             <br>
 <img src="https://www.lepointdufle.net/ia/orthographe1.jpg" width="800" height="400">
-            <legend> #8 Complétez : « Lors de son intervention télévisée, le journaliste a mis le l’homme politique sur le … »</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 8 -</b> Complétez : « Lors de son intervention télévisée, le journaliste a mis le l’homme politique sur le … »</legend>
             <input type="radio" name="x8" value="1"> gril <?php if(isset($_POST['x8']) AND $_POST['x8'] == "1"){
                             echo "<font color='green'>  ✔  </font>"; } ?><br>
             <input type="radio" name="x8" value="2"> grile <?php if(isset($_POST['x8']) AND $_POST['x8'] == "2"){
@@ -403,7 +402,7 @@ if($score == 10){
             <br>
             <br>
             <img src="https://cdn.radiofrance.fr/s3/cruiser-production/2019/09/927d76d9-1b74-4047-b5b8-e0fc2768f85d/838_primo_levi.jpg" width="800" height="400">
-            <legend> #9 De quoi traite le livre « Si c’est un homme » de Primo Levi ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 9 -</b> De quoi traite le livre « Si c’est un homme » de Primo Levi ?</legend>
             <input type="radio" name="x9" value="1"> De la fraternisation des camps ennemis pendant la Première Guerre mondiale. <?php if(isset($_POST['x9']) AND $_POST['x9'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x9" value="2"> Des crimes de la révolution culturelle en Chine.<?php if(isset($_POST['x9']) AND $_POST['x9'] == "2"){
@@ -417,7 +416,7 @@ if($score == 10){
             <br>
             <br>
             <img src="https://voyage.tv5monde.com/sites/default/files/egypte_croisiere_nil_luxor.jpg" width="800" height="400">
-            <legend> #10 Quelle capitale se trouve au confluent du Nil blanc et du Nil bleu ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 10 -</b> Quelle capitale se trouve au confluent du Nil blanc et du Nil bleu ?</legend>
             <input type="radio" name="x10" value="1"> Addis-Adeba <?php if(isset($_POST['x10']) AND $_POST['x10'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x10" value="2"> Khartoum  <?php if(isset($_POST['x10']) AND $_POST['x10'] == "2"){
@@ -529,6 +528,7 @@ if($score == 10){
     <script src="js/mail-script.js"></script>
     <!--gmaps Js-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+    <script src="https://kit.fontawesome.com/6e8ba3d05b.js" crossorigin="anonymous"></script>
     <script src="js/gmaps.min.js"></script>
     <script src="js/theme.js"></script>
     <script>

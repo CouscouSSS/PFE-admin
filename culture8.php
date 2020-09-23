@@ -261,17 +261,15 @@ if($score == 10){
     <!--================End Home Banner Area =================-->
 
     <!--================ Start Course Details Area =================-->
-   <section class="course_details_area section_gap bg-light text-center">
-
-        <h2> Test 1 </h2>
+   <section class="course_details_area bg-light text-center">
+    <br>
+        <h2 class="text-capitalize text-success display-4 font-weight-bold "><i class="fas fa-feather-alt" style="transform:rotateZ(180deg);"></i> Quizz 2 - Expert level <i class="fas fa-feather-alt" style="transform: rotate(180deg) rotateY(180deg);"></i></h2>
 
         <form method="POST">
             <br>
-            <h4>Choose the correct response :</h4>
-            <br>
             <img src="https://i.ytimg.com/vi/qbQE8fhZ9vc/maxresdefault.jpg" width="800" height="400">
             <br>
-            <legend> #1 Qui est le créateur de du tableau « Le radeau de la Méduse » ? </legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 1 -</b> Qui est le créateur de du tableau « Le radeau de la Méduse » ? </legend>
             <input type="radio" name="x1" value="1" > Delacroix <?php if(isset($_POST['x1']) AND $_POST['x1'] == "1"){
                 
                             echo "<font color='red'>  x  </font>"; } ?>
@@ -294,7 +292,7 @@ if($score == 10){
                            <br>
 
                            <img src="https://statics.lesinrocks.com/content/thumbs/uploads/2019/10/30/1446259/width-1125-height-612-quality-10/davidbowieaufestivaldecannesen1983creditphotocralphgattiafp.jpg" width="800" height="400">
-            <legend> #2 Avec qui David Bowie chantait-il « Dancing in the street » en 1985 ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 2 -</b> Avec qui David Bowie chantait-il « Dancing in the street » en 1985 ?</legend>
             <input type="radio" name="x2" value="1"> Michael Jackson .<?php if(isset($_POST['x2']) AND $_POST['x2'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?>
 <br>
@@ -307,7 +305,7 @@ if($score == 10){
             <br>
 
             <img src="https://www.costakreuzfahrten.ch/content/dam/costa/inventory-assets/countries/IND/IND.jpg.image.750.563.low.jpg" width="800" height="400">
-            <legend> #3 Combien d’états fédérés l’Inde compte-t-elle en 2019 ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 3 -</b> Combien d’états fédérés l’Inde compte-t-elle en 2019 ?</legend>
             <input type="radio" name="x3" value="1"> 28 <?php if(isset($_POST['x3']) AND $_POST['x3'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x3" value="2"> 30 <?php if(isset($_POST['x3']) AND $_POST['x3'] == "2"){
@@ -324,7 +322,7 @@ if($score == 10){
                            } ?> <br>
             <br>
             <img src="https://i2.wp.com/cms.babbel.news/wp-content/uploads/2017/11/Nouveaux-Mots-Dictionnaire-Header.jpg?h=9999&quality=100&w=993" width="800" height="400">
-            <legend>  #4 Que signifie « messeoir » ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 ">  <b> 4 -</b> Que signifie « messeoir » ?</legend>
             <input type="radio" name="x4" value="1"> Réservé aux seuls initiés . <?php if(isset($_POST['x4']) AND $_POST['x4'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?>
 <br>
@@ -342,7 +340,7 @@ if($score == 10){
                            } ?><br>
             <br>
              <img src="https://img.over-blog-kiwi.com/1/49/01/76/20170301/ob_3642d7_style-3.jpg" width="800" height="400">
-            <legend> #5 Quel écrivain voulait « être Chateaubriand ou rien » ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 5 -</b> Quel écrivain voulait « être Chateaubriand ou rien » ?</legend>
             <input type="radio" name="x5" value="1"> Musset <?php if(isset($_POST['x5']) AND $_POST['x5'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x5" value="2"> Rimbaud <?php if(isset($_POST['x5']) AND $_POST['x5'] == "2"){
@@ -357,7 +355,7 @@ if($score == 10){
             <br>
 
             <img src="https://media.senscritique.com/media/000008437007/source_big/Paris_Texas.jpg" width="800" height="400">
-            <legend> #6 Pour quelle raison le film de Wim Wenders « Paris, Texas » est-il ainsi nommé ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 6 -</b> Pour quelle raison le film de Wim Wenders « Paris, Texas » est-il ainsi nommé ?</legend>
             <input type="radio" name="x6" value="1"> Parce que le héros chercherait à retrouver une ville perdue nommé Paris, au Texas. <?php if(isset($_POST['x6']) AND $_POST['x6'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x6" value="2"> Parce que le héros du film aurait été conçu à Paris, au Texas. <?php if(isset($_POST['x6']) AND $_POST['x6'] == "2"){
@@ -369,7 +367,7 @@ if($score == 10){
             <br>
             <br>
             <img src="https://medias.liberation.fr/photo/1221472-000_1gt1hb.jpg?modified_at=1558609729&width=960" width="800" height="400">
-            <legend> #7 Le BJP, auquel appartient le premier ministre indien Narendra Modi, est-il un parti …</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 7 -</b> Le BJP, auquel appartient le premier ministre indien Narendra Modi, est-il un parti …</legend>
             <input type="radio" name="x7" value="1"> de droite nationaliste ? <?php if(isset($_POST['x7']) AND $_POST['x7'] == "1"){
                             echo "<font color='green'>  ✔  </font>"; } ?><br>
             <input type="radio" name="x7" value="2"> de centre-droit ? <?php if(isset($_POST['x7']) AND $_POST['x7'] == "2"){
@@ -383,7 +381,7 @@ if($score == 10){
             <br>
             <br>
 <img src="https://cdn.shopify.com/s/files/1/1127/4778/articles/budgies_1024x1024.jpg?v=1569253016" width="800" height="400">
-            <legend> #8 On dit qu’une perruche …</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 8 -</b> On dit qu’une perruche …</legend>
             <input type="radio" name="x8" value="1"> pupule <?php if(isset($_POST['x8']) AND $_POST['x8'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x8" value="2"> feule <?php if(isset($_POST['x8']) AND $_POST['x8'] == "2"){
@@ -397,7 +395,7 @@ if($score == 10){
             <br>
             <br>
             <img src="https://img.src.ca/2014/11/14/635x357/141114_c2923_arebours_canal-suez_sn635.jpg" width="800" height="400">
-            <legend> #9 Quel diplomate et entrepreneur français est à l’origine de la création du canal de Suez ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 9 -</b> Quel diplomate et entrepreneur français est à l’origine de la création du canal de Suez ?</legend>
             <input type="radio" name="x9" value="1"> Hubert Lyautey <?php if(isset($_POST['x9']) AND $_POST['x9'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x9" value="2"> Gustave Eiffel <?php if(isset($_POST['x9']) AND $_POST['x9'] == "2"){
@@ -411,7 +409,7 @@ if($score == 10){
             <br>
             <br>
             <img src="https://www.babelio.com/users/QUIZ_Qui-a-dit--La-nature_2110.jpeg" width="800" height="400">
-            <legend> #10 Qui a dit « ce qui se conçoit bien s’énonce clairement, et les mots pour le dire arrivent aisément » ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 10 -</b> Qui a dit « ce qui se conçoit bien s’énonce clairement, et les mots pour le dire arrivent aisément » ?</legend>
             <input type="radio" name="x10" value="1"> Marivaux <?php if(isset($_POST['x10']) AND $_POST['x10'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x10" value="2"> Boileau <?php if(isset($_POST['x10']) AND $_POST['x10'] == "2"){
@@ -523,6 +521,7 @@ if($score == 10){
     <script src="js/mail-script.js"></script>
     <!--gmaps Js-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+    <script src="https://kit.fontawesome.com/6e8ba3d05b.js" crossorigin="anonymous"></script>
     <script src="js/gmaps.min.js"></script>
     <script src="js/theme.js"></script>
     <script>

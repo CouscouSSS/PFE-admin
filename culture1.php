@@ -258,17 +258,16 @@ if($score == 10){
     <!--================End Home Banner Area =================-->
 
     <!--================ Start Course Details Area =================-->
-   <section class="course_details_area section_gap bg-light text-center lead">
-
-        <h2> Quizz 1 </h2>
+   <section class="course_details_area  bg-light text-center lead">
+   <br>
+   <h2 class="text-capitalize text-success display-4 font-weight-bold "><i class="fas fa-feather-alt" style="transform:rotateZ(180deg);"></i> Quizz 1 - Beginner level <i class="fas fa-feather-alt" style="transform: rotate(180deg) rotateY(180deg);"></i></h2>
 
         <form method="POST">
+           
+        <br>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/CroppedStalin1943.jpg/220px-CroppedStalin1943.jpg" width="800" height="400">
             <br>
-            <h4>Choose the correct response :</h4>
-            <br>
-            <img src="https://www.laculturegenerale.com/wp-content/uploads/2019/12/quiz-culture-generale-debutant-1.png" width="800" height="400">
-            <br>
-            <legend> <b> 1: </b> Quel célèbre dictateur dirigea l’URSS du milieu des années 1920 à 1953 ? </legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 1 - </b>  Quel célèbre dictateur dirigea l’URSS du milieu des années 1920 à 1953 ? </legend>
             <input type="radio" name="x1" value="1" > Trotski <?php if(isset($_POST['x1']) AND $_POST['x1'] == "1"){
                 
                             echo "<font color='red'>  x  </font>"; } ?>
@@ -290,8 +289,8 @@ if($score == 10){
                            <br>
                            <br>
 
-                           <img src="https://www.laculturegenerale.com/wp-content/uploads/2019/12/quiz-culture-generaale-debutant-10.jpg" width="800" height="400">
-            <legend> #2 Dans quel pays peut-on trouver la Catalogne, l’Andalousie et la Castille ?</legend>
+                           <img src="https://resize-europe1.lanmedia.fr/img/var/europe1/storage/images/media/images/drapeau-de-la-catalogne/44529638-1-fre-FR/Drapeau-de-la-Catalogne.png" width="800" height="400">
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 2 -</b> Dans quel pays peut-on trouver la Catalogne, l’Andalousie et la Castille ?</legend>
             <input type="radio" name="x2" value="1"> Le Portugal <?php if(isset($_POST['x2']) AND $_POST['x2'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?>
 <br>
@@ -304,7 +303,7 @@ if($score == 10){
             <br>
 
             <img src="https://toutpourlejeu.com/1065-medium_default/grand-de-a-jouer-32-mm-de-1-a-6-.jpg" width="800" height="400">
-            <legend> #3 Qui a dit : « Le sort en est jeté » (Alea jacta est) ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 3 -</b> Qui a dit : « Le sort en est jeté » (Alea jacta est) ?</legend>
             <input type="radio" name="x3" value="1"> Vercingétorix <?php if(isset($_POST['x3']) AND $_POST['x3'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x3" value="2"> Auguste <?php if(isset($_POST['x3']) AND $_POST['x3'] == "2"){
@@ -321,7 +320,7 @@ if($score == 10){
                            } ?> <br>
             <br>
             <img src="https://img-4.linternaute.com/Qz81ml7dAr0wfho1xXZkMx7zUGA=/620x/smart/45f0ae961471407ebeb80551557ed386/ccmcms-linternaute/10759231.jpg" width="800" height="400">
-            <legend>  #4 Quel cinéaste a réalisé « Parle avec elle » et « Volver » ? </legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 ">  <b> 4 -</b> Quel cinéaste a réalisé « Parle avec elle » et « Volver » ? </legend>
             <input type="radio" name="x4" value="1"> Guillermo del Toro <?php if(isset($_POST['x4']) AND $_POST['x4'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?>
 <br>
@@ -339,7 +338,7 @@ if($score == 10){
                            } ?><br>
             <br>
              <img src="https://bdn-data.s3.amazonaws.com/uploads/2017/06/16548361_H20577819-600x407.jpg" width="800" height="400">
-            <legend> #5 À qui doit-on la chanson « I Shot the Sheriff » ?e</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 5 -</b> À qui doit-on la chanson « I Shot the Sheriff » ?e</legend>
             <input type="radio" name="x5" value="1"> Bob Marley <?php if(isset($_POST['x5']) AND $_POST['x5'] == "1"){
                             echo "<font color='green'>  ✔  </font>"; } ?><br>
             <input type="radio" name="x5" value="2"> UB40 <?php if(isset($_POST['x5']) AND $_POST['x5'] == "2"){
@@ -354,7 +353,7 @@ if($score == 10){
             <br>
 
             <img src="https://static.onzemondial.com/photo_article/154867/30262/1200-L-coupe-du-monde-2014-l-equipe-type-onze-mondial.jpg" width="800" height="400">
-            <legend> #6 Quel pays a remporté la coupe du monde de football en 2014 ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 6 -</b> Quel pays a remporté la coupe du monde de football en 2014 ?</legend>
             <input type="radio" name="x6" value="1"> L'allemagne <?php if(isset($_POST['x6']) AND $_POST['x6'] == "1"){
                             echo "<font color='green'>  ✔  </font>"; } ?><br>
             <input type="radio" name="x6" value="2"> L'argentine <?php if(isset($_POST['x6']) AND $_POST['x6'] == "2"){
@@ -368,7 +367,7 @@ if($score == 10){
             <br>
             <br>
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Shakespeare.jpg/1280px-Shakespeare.jpg" width="800" height="400">
-            <legend>#7 Dans quelle ville italienne l’action de la pièce de Shakespeare « Roméo et Juliette » se situe-t-elle ? </legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 7 -</b> Dans quelle ville italienne l’action de la pièce de Shakespeare « Roméo et Juliette » se situe-t-elle ? </legend>
             <input type="radio" name="x7" value="1"> Milan <?php if(isset($_POST['x7']) AND $_POST['x7'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x7" value="2"> Vérone <?php if(isset($_POST['x7']) AND $_POST['x7'] == "2"){
@@ -382,7 +381,7 @@ if($score == 10){
             <br>
             <br>
 <img src="https://i.pinimg.com/474x/b1/21/7b/b1217be13186b112d4ba6b7d944bd3a7--growth-factor-woman-portrait.jpg" width="800" height="400">
-            <legend> #8 Par quel mot désigne-t-on une belle-mère cruelle ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 8 -</b> Par quel mot désigne-t-on une belle-mère cruelle ?</legend>
             <input type="radio" name="x8" value="1"> Une jocrisse <?php if(isset($_POST['x8']) AND $_POST['x8'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x8" value="2"> Une chenapan <?php if(isset($_POST['x8']) AND $_POST['x8'] == "2"){
@@ -396,7 +395,7 @@ if($score == 10){
             <br>
             <br>
             <img src="https://latatoueuse.com/dieux-et-deesses/images/1/ares.jpg" width="800" height="400">
-            <legend> #9 Qui était le dieu de la guerre dans la mythologie grecque ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 9 -</b> Qui était le dieu de la guerre dans la mythologie grecque ?</legend>
             <input type="radio" name="x9" value="1"> Apollon <?php if(isset($_POST['x9']) AND $_POST['x9'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x9" value="2"> Hadès <?php if(isset($_POST['x9']) AND $_POST['x9'] == "2"){
@@ -410,7 +409,7 @@ if($score == 10){
             <br>
             <br>
             <img src="http://soutien67.free.fr/svt/animaux/zoo/expos/felins/images/bt_g_felin.png" width="800" height="400">
-            <legend> #10 Parmi les animaux suivants, lequel peut se déplacer le plus rapidement ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 10 -</b> Parmi les animaux suivants, lequel peut se déplacer le plus rapidement ?</legend>
             <input type="radio" name="x10" value="1"> Le chevreuil <?php if(isset($_POST['x10']) AND $_POST['x10'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x10" value="2"> Le mgbobe <?php if(isset($_POST['x10']) AND $_POST['x10'] == "2"){
@@ -522,6 +521,7 @@ if($score == 10){
     <script src="js/mail-script.js"></script>
     <!--gmaps Js-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+    <script src="https://kit.fontawesome.com/6e8ba3d05b.js" crossorigin="anonymous"></script>
     <script src="js/gmaps.min.js"></script>
     <script src="js/theme.js"></script>
     <script>

@@ -260,17 +260,17 @@ if($score == 10){
     <!--================End Home Banner Area =================-->
 
     <!--================ Start Course Details Area =================-->
-    <section class="course_details_area section_gap bg-light text-center">
+    <section class="course_details_area bg-light text-center">
+    
+    <br>
 
-        <h2> Test 3 </h2>
+    <h2 class="text-capitalize text-success display-4 font-weight-bold "><i class="fas fa-feather-alt" style="transform:rotateZ(180deg);"></i> Quizz 3 - Beginner level <i class="fas fa-feather-alt" style="transform: rotate(180deg) rotateY(180deg);"></i></h2>
 
         <form method="POST">
             <br>
-            <h4>Choose the correct response :</h4>
-            <br>
             <img src="https://i.pinimg.com/originals/b5/8f/1a/b58f1a7c8c0fbf9e5432fd8800b5c6c1.jpg" width="800" height="400">
             <br>
-            <legend> #1 Quelle est la date de la signature de l’armistice de la Première Guerre mondiale ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 1 -</b> Quelle est la date de la signature de l’armistice de la Première Guerre mondiale ?</legend>
             <input type="radio" name="x1" value="1"> 11 novembre 1918  <?php if(isset($_POST['x1']) AND $_POST['x1'] == "1"){
                 
                             echo "<font color='green'>  ✔  </font>"; } ?>
@@ -293,7 +293,7 @@ if($score == 10){
                            <br>
 
                            <img src="https://patronat.bf/wp-content/uploads/2016/09/eu.jpg" width="800" height="400">
-            <legend> #2 Parmi les pays suivants, lequel n’est pas membre de l’Union européenne ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 2 -</b> Parmi les pays suivants, lequel n’est pas membre de l’Union européenne ?</legend>
             <input type="radio" name="x2" value="1">  La Suède <?php if(isset($_POST['x2']) AND $_POST['x2'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?>
 <br>
@@ -306,7 +306,7 @@ if($score == 10){
             <br>
 
             <img src="https://cdn.futura-sciences.com/buildsv6/images/wide1920/7/0/5/705121344c_110004_colisee-rome.jpg" width="800" height="400">
-            <legend> #3 Dans quelle ville le Colisée (l’amphithéâtre Flavien) se trouve-t-il ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 3 -</b> Dans quelle ville le Colisée (l’amphithéâtre Flavien) se trouve-t-il ?</legend>
             <input type="radio" name="x3" value="1"> Nîmes <?php if(isset($_POST['x3']) AND $_POST['x3'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x3" value="2"> Venise <?php if(isset($_POST['x3']) AND $_POST['x3'] == "2") {
@@ -323,7 +323,7 @@ if($score == 10){
                            } ?> <br>
             <br>
             <img src="https://www.telerama.fr/sites/tr_master/files/styles/simplecrop1000/public/8-starwarsepisode3larevan_ver_1_0.jpg?itok=EKPiWtCq&sc=318b65389891ae9d971af4317acc3ae2" height="400" width="800">
-            <legend>  #4 Dans quel film Dark Vador déclare-t-il à Luke Skywalker : Je suis ton père ? </legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 4 -</b> Dans quel film Dark Vador déclare-t-il à Luke Skywalker : Je suis ton père ? </legend>
             <input type="radio" name="x4" value="1"> Star Trek <?php if(isset($_POST['x4']) AND $_POST['x4'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?>
 <br>
@@ -341,7 +341,7 @@ if($score == 10){
                            } ?><br>
             <br>
              <img src="https://www.associationmodeemploi.fr/mediatheque/4/0/2/000010204_600x400_c.jpg" width="800" height="400">
-            <legend> #5 Quel est l’album le plus vendu de l’histoire ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 5 -</b> Quel est l’album le plus vendu de l’histoire ?</legend>
             <input type="radio" name="x5" value="1"> Their Greatest Hits des Eagles <?php if(isset($_POST['x5']) AND $_POST['x5'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x5" value="2"> Back in Black des AC/DC <?php if(isset($_POST['x5']) AND $_POST['x5'] == "2"){
@@ -356,7 +356,7 @@ if($score == 10){
             <br>
 
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Boule_de_Suif.jpg/500px-Boule_de_Suif.jpg" width="800" height="400">
-            <legend> #6 À quel écrivain doit-on le personnage de Boule de Suif ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 6 -</b> À quel écrivain doit-on le personnage de Boule de Suif ?</legend>
             <input type="radio" name="x6" value="1"> Maupassant <?php if(isset($_POST['x6']) AND $_POST['x6'] == "1"){
                             echo "<font color='green'>  ✔  </font>"; } ?><br>
             <input type="radio" name="x6" value="2"> Voltaire <?php if(isset($_POST['x6']) AND $_POST['x6'] == "2"){
@@ -370,7 +370,7 @@ if($score == 10){
             <br>
             <br>
             <img src="https://jeretiens.net/wp-content/uploads/2016/09/accent_aigu_grave_élève_circonflexe_différence_truc.jpg" width="800" height="400">
-            <legend> #7 Quel est l’accent du deuxième e sur le mot FENETRE ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 7 -</b> Quel est l’accent du deuxième e sur le mot FENETRE ?</legend>
             <input type="radio" name="x7" value="1"> L'accent grave <?php if(isset($_POST['x7']) AND $_POST['x7'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x7" value="2"> L'accent aigu <?php if(isset($_POST['x7']) AND $_POST['x7'] == "2"){
@@ -384,7 +384,7 @@ if($score == 10){
             <br>
             <br>
 <img src="https://www.expression-anglaise.com/wp-content/uploads/2014/10/annee-en-anglais.jpg" width="800" height="400">
-            <legend> #8 Combien de jours une année bissextile compte-t-elle ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 8 -</b> Combien de jours une année bissextile compte-t-elle ?</legend>
             <input type="radio" name="x8" value="1"> 365 <?php if(isset($_POST['x8']) AND $_POST['x8'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x8" value="2"> 366 <?php if(isset($_POST['x8']) AND $_POST['x8'] == "2"){
@@ -397,7 +397,7 @@ if($score == 10){
             <br>
             <br>
             <img src="https://www.disneyphile.fr/wp-content/uploads/2020/01/bambi-live-action-960x485.jpg" width="800" height="400">
-            <legend> #9 Quel animal est « pan-pan » dans Bambi ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 9 -</b> Quel animal est « pan-pan » dans Bambi ?</legend>
             <input type="radio" name="x9" value="1"> Un chien <?php if(isset($_POST['x9']) AND $_POST['x9'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x9" value="2"> Un cerf <?php if(isset($_POST['x9']) AND $_POST['x9'] == "2"){
@@ -411,7 +411,7 @@ if($score == 10){
             <br>
             <br>
             <img src="http://img.over-blog-kiwi.com/1/49/01/76/20170301/ob_601dcf_style.jpg" width="800" height="400">
-            <legend> #10 Quel célèbre écrivain débute son plaidoyer en faveur du capitaine Dreyfus par « J’accuse… » ?</legend>
+            <legend class="font-weight-bold text-dark pb-2 pt-4 "> <b> 10 -</b> Quel célèbre écrivain débute son plaidoyer en faveur du capitaine Dreyfus par « J’accuse… » ?</legend>
             <input type="radio" name="x10" value="1"> Marcel Proust<?php if(isset($_POST['x10']) AND $_POST['x10'] == "1"){
                             echo "<font color='red'>  x  </font>"; } ?><br>
             <input type="radio" name="x10" value="2"> Émile Zola <?php if(isset($_POST['x10']) AND $_POST['x10'] == "2"){
@@ -523,6 +523,7 @@ if($score == 10){
     <script src="js/mail-script.js"></script>
     <!--gmaps Js-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+    <script src="https://kit.fontawesome.com/6e8ba3d05b.js" crossorigin="anonymous"></script>
     <script src="js/gmaps.min.js"></script>
     <script src="js/theme.js"></script>
     <script>
