@@ -274,7 +274,7 @@ if(isset($_POST['annuler'])){
                             </li>
                             <li class="nav-item">
                                 <?php if (isset($_SESSION['id'])) : ?>
-                                <a class="nav-link" href="calendrier/3a-3a-calendar.php">Calendrier</a>
+                                    <a class="nav-link" href="calendrier/3a-calendar.php">Calendrier</a>
                                 <?php endif; ?>
                             </li>
                             <li class="nav-item">

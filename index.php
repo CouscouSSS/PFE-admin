@@ -196,11 +196,11 @@ $sections=$req->fetchAll();
                             <?php else : ?> 
                                 <?php if($_SESSION['sexe']=="homme") : ?> 
                                 
-                                    <div style="font-family:Rubik,sans-serif;" class="display-2 text-warning mb-5"> Bienvenue Mr:
+                                    <div style="font-family:Rubik,sans-serif;" class="display-4 text-warning mb-2"> Bienvenue Mr:
                                     <span class="text-capitalize "><?= $_SESSION['name']?></span> </div>
                                 
                                 <?php else : ?>
-                                    <div style="font-family:Rubik,sans-serif;" class="display-2 text-warning mb-5"> Bienvenue Mme:
+                                    <div style="font-family:Rubik,sans-serif;" class="display-2 text-warning mb-2"> Bienvenue Mme:
                                 <span class="text-capitalize "><?= $_SESSION['name']?></span> </div>
                                 
                                 <?php endif; ?>
@@ -215,16 +215,12 @@ $sections=$req->fetchAll();
     <!--================ End Home Banner Area =================-->
 
     <!--================ Start Registration Area =================-->
-    <section class="section_gap_top" style="background-color:#002347;">
+    <section style="background-color:#002347;">
         <div class="container text-center text-white">
 
-            <div class="text-danger" style="position:relative; bottom:30px">
+            <i class="pb-2 pt-4 text-danger fas fa-exclamation-triangle fa-10x"></i>
 
-                <i class="pb-2 fas fa-exclamation-triangle fa-10x"></i>
-
-                <h2 class=" display-3 text-danger text-uppercase text-white" style="letter-spacing:2px;"> Coronavirus disease </h2>
-
-            </div>
+            <h2 class=" display-5 text-danger text-uppercase text-white" style="letter-spacing:2px;"> Coronavirus disease </h2>
 
             <div class=" mb-2 text-center lead" style="position:relative; bottom:45px;">
 

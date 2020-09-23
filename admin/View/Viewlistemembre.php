@@ -245,7 +245,7 @@
                     <?php endif ?>
 
                     <?php if(!empty($membres)) : ?>
-                        <table class="table table-bordered font-weight-bold text-center" id="dataTable" width="100%" cellspacing="0">
+                        <table class=" table table-bordered font-weight-bold text-center" id="dataTable" width="100%" cellspacing="0">
                             <thead class="thead-dark ">
                                 <tr>
                                     <th style="vertical-align: middle;">Name </th>
