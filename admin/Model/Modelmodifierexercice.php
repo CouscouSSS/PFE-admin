@@ -143,7 +143,6 @@ if(isset($_GET['section'],$_GET['id']) && $_GET['section']==="editq"){
         }
 
         if(!empty($_POST['choix3'])){
-            die('lol');
             if(empty($_POST['reponse'])){
                 $errors['reponse']="Quand vous modifier une question il faut réentrez la valeur de la bonne reponse";
             }
