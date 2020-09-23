@@ -38,7 +38,7 @@ if(!isset($_SESSION['id'])){
                     $to=$_POST['email'];
                     $subject="Recuperation de votre mot de passe";
                     $message="Bonjour afin de recuperer votre compte voici le code a entrer :  $token ";
-                    $_SESSION['flash']['success']="Un email de confirmation a été envoyé pour validé votre compte";
+                    $_SESSION['flash']['success']="Un email avec le code vous a été envoyé";
                     header('location: http://localhost/PFE-lastversion/recover.php?section=code');
                     mail($to,$subject,$message);
                 }else{
@@ -47,7 +47,7 @@ if(!isset($_SESSION['id'])){
                     $to=$_POST['email'];
                     $subject="Recuperation de votre mot de passe";
                     $message="Bonjour afin de recuperer votre compte voici le code a entrer :  $token ";
-                    $_SESSION['flash']['success']="Un email de confirmation a été envoyé pour validé votre compte";
+                    $_SESSION['flash']['success']="Un email avec le code vous a été envoyé.";
                     header('location: http://localhost/PFE-lastversion/recover.php?section=code');
                     mail($to,$subject,$message);
                 }
