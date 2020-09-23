@@ -90,7 +90,7 @@ if($test_info['position']!=1){
 $score = 0;
 if(isset($_POST['submit'])){
     if(isset($_POST['a1'])  AND $_POST['a1'] != 0){
-    $score++;
+        $score++;
     }    
     if(isset($_POST['a2'])  AND $_POST['a2'] != 0){
         $score++;

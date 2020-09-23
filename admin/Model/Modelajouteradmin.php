@@ -10,9 +10,9 @@ function str_random($lenght){
 include "../connexion.inc.php";
 session_start();
 
-if($_SESSION['role']!='admin' && $_SESSION['role']!='admin_cours' && $_SESSION['role']!='admin_membre' ){
+if($_SESSION['role']!='admin'){
 
-    $_SESSION['flash']['danger']="Vous n'avez pas l'accés a cette page (ADMIN ONLY)";
+    $_SESSION['flash']['danger']="Vous n'avez pas accés a cette page ";
     header('location: ../index.php');
 
 }
