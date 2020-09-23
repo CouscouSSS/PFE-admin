@@ -259,10 +259,10 @@
                         <?php if($admin['role'] == 'admin_membre' or $admin['role']=='admin_cours') :?>
 
                             <tr>
-                                <td><?=$admin['name']?></td>
-                                <td><?=$admin['email']?></td>
-                                <td><?=$admin['confirmed_at']?></td>
-                                <td class="text-white bg-success"><?=$admin['role']?></td>
+                                <td style="vertical-align: middle;"><?=$admin['name']?></td>
+                                <td style="vertical-align: middle;"><?=$admin['email']?></td>
+                                <td style="vertical-align: middle;"><?=$admin['confirmed_at']?></td>
+                                <td style="vertical-align: middle;" class="text-white bg-success"><?=$admin['role']?></td>
                             </tr>
 
                         <?php endif; ?>
