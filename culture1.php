@@ -188,7 +188,7 @@ if($score == 10){
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="home.php">Home</a>
+                                <a class="nav-link" href="index.php">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="about-us.php">About</a>
@@ -247,14 +247,7 @@ if($score == 10){
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
                         <div class="banner_content text-center">
-                            <h2>Course Details</h2>
-                            <div class="page_link">
-                                <a href="home.php">Home</a>
-                                <a href="courses.php">Courses</a>
-                                <a href="course-details.php">Courses Details</a>
-                                <a href="course-detail.php">Grammar</a>
-
-                            </div>
+                            <h1 class="text-white font-weight-bold " style="letter-spacing:2px;"> General Culture Quizzs</h1>
                         </div>
                     </div>
                 </div>
@@ -436,84 +429,62 @@ if($score == 10){
     <!--================ End Course Details Area =================-->
 
     <!--================ Start footer Area  =================-->
-    <footer class="footer-area section_gap">
+        <!-- Footer -->
+        <footer class="page-footer font-small indigo bg-light border-top border-primary rounded-top">
+
+        <!-- Footer Links -->
         <div class="container">
-            <div class="row">
-                <div class="col-lg-2 col-md-6 single-footer-widget">
-                    <h4>Top Products</h4>
-                    <ul>
-                        <li><a href="#">Managed Website</a></li>
-                        <li><a href="#">Manage Reputation</a></li>
-                        <li><a href="#">Power Tools</a></li>
-                        <li><a href="#">Marketing Service</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-6 single-footer-widget">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#">Jobs</a></li>
-                        <li><a href="#">Brand Assets</a></li>
-                        <li><a href="#">Investor Relations</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-6 single-footer-widget">
-                    <h4>Features</h4>
-                    <ul>
-                        <li><a href="#">Jobs</a></li>
-                        <li><a href="#">Brand Assets</a></li>
-                        <li><a href="#">Investor Relations</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-6 single-footer-widget">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="#">Guides</a></li>
-                        <li><a href="#">Research</a></li>
-                        <li><a href="#">Experts</a></li>
-                        <li><a href="#">Agencies</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-4 col-md-6 single-footer-widget">
-                    <h4>Newsletter</h4>
-                    <p>You can trust us. we only send promo offers,</p>
-                    <div class="form-wrap" id="mc_embed_signup">
-                        <form target="_blank"
-                            action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                            method="get" class="form-inline">
-                            <input class="form-control" name="EMAIL" placeholder="Your Email Address"
-                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address'"
-                                required="" type="email" />
-                            <button class="click-btn btn btn-default">
-                                <span>subscribe</span>
-                            </button>
-                            <div style="position: absolute; left: -5000px;">
-                                <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value=""
-                                    type="text" />
-                            </div>
 
-                            <div class="info"></div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="row footer-bottom d-flex justify-content-between">
-                <p class="col-lg-8 col-sm-12 footer-text m-0 text-white">
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            <!-- Grid row-->
+            <div class="row text-center d-flex justify-content-center pt-5  mb-3">
 
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                </p>
-                <div class="col-lg-4 col-sm-12 footer-social">
-                    <a href="#"><i class="ti-facebook"></i></a>
-                    <a href="#"><i class="ti-twitter"></i></a>
-                    <a href="#"><i class="ti-dribbble"></i></a>
-                    <a href="#"><i class="ti-linkedin"></i></a>
-                </div>
+            <!-- Grid column -->
+            <div class="col-md-2 mb-3">
+                <h6 class="text-uppercase font-weight-bold">
+                <a href="about-us.php">About us</a>
+                </h6>
             </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2 mb-3">
+                <h6 class="text-uppercase font-weight-bold">
+                <a href="contact.php">Contact</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+
+            </div>
+            <!-- Grid row-->
+            <hr class="rgba-white-light" style="margin: 0 15%;">
+
+            <!-- Grid row-->
+            <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+
+            <!-- Grid column -->
+            <div class="col-md-8 col-12 mt-5">
+                <p style="line-height: 1.7rem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos inventore qui minima corrupti eos quas pariatur atque eveniet, excepturi impedit, dolor voluptates unde quidem nam commodi, autem iste? Enim, libero!</p>
+            </div>
+            <!-- Grid column -->
+
+            </div>
+            <!-- Grid row-->
+            <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
+
+            </div>
+            <!-- Grid row-->
+
+            <!-- Copyright -->
+        <div class="footer-copyright text-center py-3"> <b class="text-dark"> © 2020 Copyright: ARCHKAK Khalil && IZEND Hamza </b> </div>
+        <!-- Copyright -->
         </div>
-    </footer>
-    <!--================ End footer Area  =================-->
+        <!-- Footer Links -->
+
+
+
+        </footer>
+        <!-- Footer -->
+    <!--================ End footer Area  =================--
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
